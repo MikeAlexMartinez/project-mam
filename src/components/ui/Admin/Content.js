@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import createMuiTheme from 'material-ui/styles/theme';
-import { MuiThemeProvider } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import ProjectTable from './ProjectTable';
 import ProjectForm from './ProjectForm';
 

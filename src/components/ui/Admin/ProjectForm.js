@@ -157,13 +157,13 @@ class ProjectForm extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(project),
     }).then((response) => {
-      console.log('posted');
+      console.log('posting...');
       if (response.ok) {
         response.json().then((newProject) => {
           newProject.createdDate = moment(newProject.createdDate);
           newProject.lastUpdate = moment(newProject.lastUpdate);
           console.log(`Created project ${newProject._id}`);
-          this.setState({ project: newProject, preEditProject: newProject, fireRedirect: true });
+          this.setState({ project: newProject, preEditProject: newProject, fireRedirect: true, changed: false, edit: true, new: false });
         });
       } else {
         response.json().then((error) => {
