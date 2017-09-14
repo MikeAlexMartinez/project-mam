@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import uuid from 'uuid/v4';
 import 'whatwg-fetch';
 import { withStyles } from 'material-ui/styles';
 import { TextField, Button, Grid, Switch, IconButton } from 'material-ui';
@@ -70,7 +71,6 @@ class ProjectForm extends React.Component {
       fireRedirect: false,
       edit: props.edit,
       new: props.new,
-      value: '',
       project: {
         _id: '',
         title: '',
@@ -101,28 +101,65 @@ class ProjectForm extends React.Component {
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleFavourite = this.handleFavourite.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
+    this.submitNew = this.submitNew.bind(this);
   }
 
   componentDidMount() {
     this.loadData();
   }
 
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
   loadData() {
     if (this.state.edit) {
+      console.log('edit state is true');
       // load object
-
+      const projectId = this.props.match.params.projectId;
       // fetch data from API
-
-      // set project and preEditProject to data from API
+      fetch(`/api/v1/project/${projectId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        if (response.ok) {
+          response.json().then((project) => {
+            console.log(project);
+            project.createdDate = moment(project.createdDate).format('YYYY-MM-DD');
+            project.lastUpdate = moment(project.lastUpdate).format('YYYY-MM-DD');
+            console.log(`Retrieved project ${project._id}!`);
+            this.setState({ project, changed: false, preEditProject: project });
+          });
+        } else {
+          response.json().then((error) => {
+            console.log(`issue retrieving project ${projectId}: ${error}`);
+          });
+        }
+      }).catch((err) => {
+        console.log(`issue retrieving project ${projectId}: ${err}`);
+      });
     } else {
-      // render project with empty attributes
+      const newProject = {
+        _id: uuid(),
+        title: '',
+        link: '',
+        miniDetail: '',
+        git: '',
+        real: false,
+        favourite: false,
+        lastUpdate: moment().format('YYYY-MM-DD'),
+        createdDate: moment().format('YYYY-MM-DD'),
+        public: false,
+      };
+      this.setState({ project: newProject, preEditProject: newProject, changed: false });
     }
   }
 
   handleDate(evt) {
     const id = evt.target.id;
     const updatedProject = spreadObject(this.state.project, {});
-    updatedProject[id] = moment(evt.target.value);
+    updatedProject[id] = moment(evt.target.value).format('YYYY-MM-DD');
     this.setState({ project: updatedProject, changed: true });
   }
 
@@ -145,28 +182,48 @@ class ProjectForm extends React.Component {
     this.setState({ project: updatedProject, changed: true });
   }
 
-  handleSubmit(evt) {
-    console.log(evt);
-    const project = Object.assign({}, this.state.project);
-    console.log(project);
+  handleSubmit() {
+    if (this.state.edit) {
+      this.submitEdit();
+    } else {
+      this.submitNew();
+    }
+  }
+  
+  submitEdit() {
+    
+  }
+  
+  submitNew() {
+    const project = spreadObject({}, this.state.project);
 
-    delete project._id;
+    project.createdDate = moment(project.createdDate);
+    project.lastUpdate = moment(project.lastUpdate);
 
     fetch('/api/v1/project', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(project),
     }).then((response) => {
-      console.log('posting...');
+      console.log(response);
       if (response.ok) {
+        console.log('posted');
         response.json().then((newProject) => {
-          newProject.createdDate = moment(newProject.createdDate);
-          newProject.lastUpdate = moment(newProject.lastUpdate);
+          newProject.createdDate = moment(newProject.createdDate).format('YYYY-MM-DD');
+          newProject.lastUpdate = moment(newProject.lastUpdate).format('YYYY-MM-DD');
           console.log(`Created project ${newProject._id}`);
-          this.setState({ project: newProject, preEditProject: newProject, fireRedirect: true, changed: false, edit: true, new: false });
+          this.setState({
+            project: newProject,
+            preEditProject: newProject,
+            fireRedirect: true,
+            edit: true,
+            new: false,
+            changed: false,
+          });
         });
       } else {
         response.json().then((error) => {
+          console.log(error);
           alert(`Failed to create new project: ${error.message}`);
         });
       }
@@ -178,7 +235,7 @@ class ProjectForm extends React.Component {
   render() {
     const { from } = this.props.location.state || '/';
     const { classes } = this.props;
-    const { project, edit, fireRedirect } = this.state;
+    const { project, preEditProject, edit, fireRedirect } = this.state;
 
     return (
 
@@ -200,6 +257,7 @@ class ProjectForm extends React.Component {
                     label="Project Title"
                     required
                     fullWidth
+                    placeholder={preEditProject.title}
                     onChange={this.handleChange}
                     value={project.title}
                   />
@@ -208,10 +266,11 @@ class ProjectForm extends React.Component {
                   <TextField
                     id="_id"
                     label="_id"
-                    disabled={this.state.new}
+                    disabled
                     fullWidth
                     onChange={this.handleChange}
-                    value={this.state.value}
+                    value={project._id}
+                    placeholder={preEditProject._id}
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -237,6 +296,7 @@ class ProjectForm extends React.Component {
                     label="Project Web Address"
                     fullWidth
                     onChange={this.handleChange}
+                    placeholder={preEditProject.link}
                     value={project.link}
                   />
                 </Grid>
@@ -245,6 +305,7 @@ class ProjectForm extends React.Component {
                     id="git"
                     label="Github Repository"
                     fullWidth
+                    placeholder={preEditProject.git}
                     onChange={this.handleChange}
                     value={project.git}
                   />
@@ -256,6 +317,7 @@ class ProjectForm extends React.Component {
                     type="date"
                     helperText={'dd/mm/yyyy'}
                     className={classes.textField}
+                    placeholder={project.createdDate}
                     onBlur={this.handleDate}
                     margin="normal"
                     InputLabelProps={{
@@ -269,6 +331,7 @@ class ProjectForm extends React.Component {
                     label="Last Update"
                     type="date"
                     helperText={'dd/mm/yyyy'}
+                    placeholder={project.lastUpdate}
                     className={classes.textField}
                     onBlur={this.handleDate}
                     margin="normal"
@@ -289,6 +352,7 @@ class ProjectForm extends React.Component {
                 multiline
                 fullWidth
                 rowsMax="10"
+                placeholder={preEditProject.miniDetail}
                 value={project.miniDetail}
                 onChange={this.handleChange}
                 className={classes.textField}
@@ -312,6 +376,7 @@ ProjectForm.propTypes = {
   edit: PropTypes.bool,
   new: PropTypes.bool,
   location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 ProjectForm.defaultProps = {
