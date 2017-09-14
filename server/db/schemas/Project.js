@@ -1,10 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
-
-const ObjectId = mongoose.Types.ObjectId;
+import uuid from 'uuid/v4';
 
 const db = mongoose.createConnection('localhost', 'project-mam');
 
-const ProjectSchema = mongoose.Schema({
+const ProjectSchema = Schema({
   title: { type: String, required: true, trim: true },
   link: { type: String, required: false, trim: true },
   miniDetail: { type: String, required: true, trim: true },
@@ -16,7 +15,7 @@ const ProjectSchema = mongoose.Schema({
   public: { type: Boolean, required: true, default: false },
   pictures: [String],
   mainPicture: { type: String, required: false, trim: true },
-  _id: { type: Schema.Types.ObjectId, required: true, default: new ObjectId() },
+  _id: { type: String, required: true, default: uuid() },
 });
 
 const Project = db.model('project', ProjectSchema);
