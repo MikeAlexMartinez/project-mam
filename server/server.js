@@ -11,18 +11,10 @@ SourceMapSupport.install();
 const app = express();
 
 app.use(bodyParser.json());
+app.use(express.static('../static'));
 
 /* projects api */
 app.use('/api', projectsApi);
-
-/* send admin app */
-app.use('/admin/*', express.static(path.resolve(__dirname, '../static/admin')));
-
-/* fcc app */
-app.use('/fcc/*', express.static(path.resolve(__dirname, '../static/fcc')));
-
-/* main portfolio app */
-app.use('/*', express.static(path.resolve(__dirname, '../static/')));
 
 app.listen(3000, () => {
   console.log('App started on port 3000');

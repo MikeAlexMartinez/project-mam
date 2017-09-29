@@ -9,6 +9,7 @@ import Projects from './components/ui/Admin/Content';
 import Blog from './components/ui/Admin/Blog';
 import Messages from './components/ui/Admin/Messages';
 import SiteStats from './components/ui/Admin/SiteStatistics';
+import Gallery from './components/ui/Admin/Gallery';
 
 const styles = {
   contentHeaderMenuLink: {
@@ -95,6 +96,7 @@ class AdminContainer extends React.Component {
               <Route exact path="/" component={() => <Redirect from="/" to="/projects" />} />
               <Route path="/projects" component={Projects} />
               <Route path="/blog" component={Blog} />
+              <Route path="/images" component={Gallery} />
               <Route path="/messages" component={Messages} />
               <Route path="/statistics" component={SiteStats} />
             </Switch>
