@@ -3,9 +3,6 @@ import SourceMapSupport from 'source-map-support';
 import 'babel-polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
-import vhost from 'vhost';
-import virtualHosts from './vhosts.json';
-
 import projectsApi from './api/projects';
 
 // enable Source Map support for debugging of server soure code.
@@ -14,21 +11,18 @@ SourceMapSupport.install();
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('static'));
 
+/* projects api */
 app.use('/api', projectsApi);
 
+/* send admin app */
+app.use('/admin/*', express.static(path.resolve(__dirname, '../static/admin')));
 
-// Virtual hosts
-virtualHosts.forEach((virtualHost) => {
-  const virtualHostApp = express();
-  virtualHostApp.use(express.static(path.join(__dirname, virtualHost.path)));
-  app.use(vhost(virtualHost.domain, virtualHostApp));
-});
+/* fcc app */
+app.use('/fcc/*', express.static(path.resolve(__dirname, '../static/fcc')));
 
-app.get('/admin/*', (req, res) => {
-  res.sendFile(path.resolve('./static/admin/index.html'));
-});
+/* main portfolio app */
+app.use('/*', express.static(path.resolve(__dirname, '../static/')));
 
 app.listen(3000, () => {
   console.log('App started on port 3000');

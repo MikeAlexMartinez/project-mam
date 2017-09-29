@@ -31,7 +31,7 @@ const styles = {
 const AdminSidebarContent = (props) => {
   const style = props.style ? spreadObject(styles.sidebar, props.style) : styles.sidebar;
 
-  const SidebarHeadings = ['Projects', 'Blog', 'Messages', 'Statistics'];
+  const SidebarHeadings = ['Projects', 'Blog', 'Images', 'Messages', 'Statistics'];
 
   const links = SidebarHeadings.map(v => <a key={`${v}`} href={`#${v}`} style={styles.siderbarLink}>{v}</a>);
 
