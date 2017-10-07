@@ -109,10 +109,6 @@ class ProjectForm extends React.Component {
     this.loadData();
   }
 
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   loadData() {
     if (this.state.edit) {
       console.log('edit state is true');
@@ -242,14 +238,14 @@ class ProjectForm extends React.Component {
       <div className={classes.container} id="project-form">
         <form>
           <Grid container spacing={16} >
-            <Grid item xs={12} sm={12} md={6} style={{ border: '1px solid grey', fontSize: '24px' }}>
+            <Grid item xs={12} sm={12} md={6} style={{ fontSize: '24px' }}>
               {edit ? 'Edit Project' : 'New Project'}
             </Grid>
-            <Grid item xs={12} sm={12} md={6} style={{ border: '1px solid grey' }}>
+            <Grid item xs={12} sm={12} md={6} >
               <Undo classes={classes} disabled={this.state.changed} onClick={this.reset} />
               <Submit classes={classes} disabled={this.state.changed} onClick={this.handleSubmit} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} style={{ border: '1px solid grey' }}>
+            <Grid item xs={12} sm={12} md={6} >
               <Grid container spacing={8}>
                 <Grid item xs={12}>
                   <TextField
@@ -342,10 +338,10 @@ class ProjectForm extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={6} style={{ border: '1px solid grey' }}>
+            <Grid item xs={12} sm={12} md={6} >
               Picture Management
             </Grid>
-            <Grid item xs={12} style={{ border: '1px solid grey' }}>
+            <Grid item xs={12} >
               <TextField
                 id="miniDetail"
                 label="Project Detail"
