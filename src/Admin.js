@@ -19,6 +19,7 @@ const styles = {
   },
   content: {
     padding: '16px',
+    backgroundColor: '#dadee5',
   },
 };
 

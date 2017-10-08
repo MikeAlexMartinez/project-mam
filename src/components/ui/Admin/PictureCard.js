@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 const styles = {
   card: {
     maxWidth: 345,
+    margin: 30,
   },
   media: {
     height: 200,
@@ -16,21 +17,21 @@ const styles = {
 
 function PictureCard(props) {
   const { pictureData, classes } = props;
-  const { url, pictureTitle, projectTitle, projectPictureText } = pictureData;
+  const { url } = pictureData;
   return (
     <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
           image={url}
-          title={pictureTitle}
+          title={'pictureTitle'}
         />
         <CardContent>
           <Typography type="headline" component="h2">
-            {projectTitle}
+            {'projectTitle'}
           </Typography>
           <Typography component="p">
-            {projectPictureText}
+            {'projectPictureText'}
           </Typography>
         </CardContent>
         <CardActions>

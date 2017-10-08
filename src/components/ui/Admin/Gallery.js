@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { CloudinaryContext, Image } from 'cloudinary-react';
+import { withStyles } from 'material-ui/styles';
+import { CloudinaryContext } from 'cloudinary-react';
 import 'whatwg-fetch';
+import PictureCard from './PictureCard';
 
 const imageStartUrl = 'http://res.cloudinary.com/di6bv5utg/image/upload/v1506681645/';
 const cloudName = 'di6bv5utg';
 
 function ProjectPhoto({ url }) {
+  const pictureData = {
+    url: imageStartUrl + url,
+  };
   return (
     <CloudinaryContext cloudName={cloudName} >
       <div className="responsive" >
-        <div className="img">
-          <a target="_blank" href={`${imageStartUrl + url}.jpg`}>
-            <Image publicId={url} />
-          </a>
-        </div>
+        <PictureCard pictureData={pictureData} />
       </div>
     </CloudinaryContext>
   );
@@ -22,6 +23,12 @@ function ProjectPhoto({ url }) {
 
 ProjectPhoto.propTypes = {
   url: PropTypes.string.isRequired,
+};
+
+const styles = {
+  gallery: {
+    /**/
+  },
 };
 
 class Gallery extends Component {
@@ -59,9 +66,10 @@ class Gallery extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { gallery } = this.state;
     return (
-      <div>
+      <div className={classes.gallery} >
         <h1>Image Gallery</h1>
         {gallery.length !== 0 ?
           gallery.map(({ public_id }, i) => {
@@ -77,4 +85,8 @@ class Gallery extends Component {
   }
 }
 
-export default Gallery;
+Gallery.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Gallery);
