@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
 import { CloudinaryContext } from 'cloudinary-react';
 import 'whatwg-fetch';
 import PictureCard from './PictureCard';
@@ -26,8 +27,16 @@ ProjectPhoto.propTypes = {
 };
 
 const styles = {
+  root: {
+    flexGrow: 1,
+    marginTop: 30,
+  },
   gallery: {
     /**/
+  },
+  projectPhoto: {
+    textAlign: 'center',
+    padding: 16,
   },
 };
 
@@ -71,15 +80,19 @@ class Gallery extends Component {
     return (
       <div className={classes.gallery} >
         <h1>Image Gallery</h1>
-        {gallery.length !== 0 ?
-          gallery.map(({ public_id }, i) => {
-            const id = `image_${i}`;
-            return (
-              <ProjectPhoto url={public_id} key={id} />
-            );
-          }) :
-          <div>No Images found (WAH)</div>
-        }
+        <Grid container spacing={16} className={classes.root}>
+          {gallery.length !== 0 ?
+            gallery.map(({ public_id }, i) => {
+              const id = `image_${i}`;
+              return (
+                <Grid item xs={12} md={6} lg={4}>
+                  <ProjectPhoto url={public_id} key={id} className={classes.projectPhoto} />
+                </Grid>
+              );
+            }) :
+            <div>No Images found (WAH)</div>
+          }
+        </Grid>
       </div>
     );
   }
