@@ -1,5 +1,5 @@
 # project-mam
-This is the code for my personal website which will host my personal portfolio and my blog.
+This is the code for my personal website which will eventually host my personal portfolio, my blog, and will allow people to contact me directly throught the webpage.
 
 The homepage of this website should meet the following criteria or 'user-stories' as defined by
 FreeCodeCamp.
