@@ -1,0 +1,48 @@
+.footer {
+  background-color: $bg-black;
+  color: #fff;
+
+  div,
+  p,
+  i {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+  div,
+  p {
+    margin: 1.5em 1em;
+  }
+
+  .copy {
+    float: left;
+    text-transform: uppercase;
+
+    i {
+      color: crimson;
+    }
+  }
+
+  #scrollToTop {
+    float: right;
+
+    i {
+      position: relative;
+      margin: 1.5em 1.2em 0.7em 0;
+      padding-bottom: 0.5em;
+
+      top: 0;
+      transform: scale(2);
+      
+      transition: top 0.1s linear;
+
+      &:hover {
+        cursor: pointer;
+        top: -10px;
+      
+        transition: top 0.1s linear;        
+      }
+    }
+    
+  }
+}

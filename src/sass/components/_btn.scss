@@ -1,0 +1,26 @@
+.btn {
+  padding: $entry-padding;
+  color: #fff;
+  background-color: $bg-btn;
+  border-radius: 5px;
+  border: none;
+} 
+.btn.clear {
+  background-color: transparent;
+  border: 2px solid #fff;
+
+  transition: all 0.1s linear;
+
+  &:hover {
+    background-color: $bg-btn;
+    border-color: $bg-btn;
+    cursor: pointer;
+
+    transition: all 0.1s linear;
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  overflow: hidden;
+}

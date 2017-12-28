@@ -1,0 +1,78 @@
+.title {
+  /* fallback background */
+  background: $bg-title-end;
+  /* main */
+  background: linear-gradient($bg-title-start, $bg-title-end);
+
+  padding: 100px;
+  color: #fff;
+  
+  @media all and (max-width: $screen-md-end) {
+    width: 100%;
+    display: block;
+    min-height: 100vh;
+    
+    position: static;
+  }
+  
+  @media all and (min-width: $screen-lg) {
+    width: 50%;
+    display: inline-block;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .brandLogo {
+
+    img {
+      transform: scale(0.75);
+
+      position: relative;
+      left: -30px;
+      top: -50px;
+  
+    }
+  }
+
+  .titleText {
+    margin-top: 100px;
+  }
+  
+  p {
+    font-size: 0.9em;
+    font-weight: 500;
+    line-height: 2em;
+  }
+  
+  h1 {
+    font-size: 2.4em;
+    font-weight: 400;
+  }
+  
+  .socialItems {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    margin: 100px;
+  }
+
+  .socialIcon {
+    display: inline-block;
+    margin-right: 24px; 
+  }
+
+  .white {
+    font-size: 24px;
+    color: #fff;
+    transition: 0.1s linear;
+  }
+  .white:hover {
+    transition: 0.1s linear;
+    color: $social-hover;
+    cursor: pointer;
+  }
+}

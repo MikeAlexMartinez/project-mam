@@ -1,0 +1,14 @@
+include ./_mixins.pug
+
+section#services.services
+  div.serviceList
+    for s in data.services.serviceList.left
+      +serviceItem(s)
+  div.serviceList  
+    for s in data.services.serviceList.right
+      +serviceItem(s)
+  div.btn.price
+    p
+      span $
+      span.value=data.services.price
+    p.period Per Month

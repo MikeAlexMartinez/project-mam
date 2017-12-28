@@ -1,0 +1,91 @@
+.gallery {
+  margin: 3% 3% 0 5%;
+
+  .grid {
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  /* clearfix */
+  .grid:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  /* ---- grid-item ---- */
+
+  .grid-sizer,
+  .grid-item {
+    @media all and (max-width: $screen-sm) {
+      width: 100%;
+
+    }    
+    @media all and (min-width: $screen-md-start) {
+      width: 47%;
+    }
+
+  }
+  .grid-item { 
+    position: relative;
+    float: left;
+    margin-bottom: 3%;
+    overflow: hidden;
+    
+    img {
+      display: block;
+      max-width: 100%;
+    }
+    
+    .imgInfo {
+      position: absolute;
+      left: 0;
+      bottom: -70px;
+      height: 70px;
+      width: 100%;
+      background-color: $bg-black;
+
+      transition: bottom 0.25s ease-in-out;
+
+      .text {
+        position: absolute;
+        left: 20px;
+        bottom: 5px;
+        color: #fff;
+        text-align: left;
+
+        h4 {
+          font-weight: 400;
+          margin: 0.7em 0 0.5em 0;
+        }
+
+        p {
+          color: $bg-btn;
+          font-size: 0.8em;
+          margin: 0.5em 0 0.7em 0;
+        }
+      }
+
+      .btn {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        transition: background-color 0.1s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $bg-btn-hover;
+
+          transition: background-color 0.1s ease-in-out;
+        }
+      }
+    }
+    
+    &:hover .imgInfo {
+      bottom: 0px;
+
+      transition: bottom 0.25s ease-in-out;
+    }
+  
+  }
+}

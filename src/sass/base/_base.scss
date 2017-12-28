@@ -1,0 +1,69 @@
+/* clearfix - source: https://css-tricks.com/snippets/css/clear-fix/ */
+.cf:before,
+.cf:after {
+  content: "";
+  display: table;
+} 
+.cf:after {
+  clear: both;
+}
+.cf {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/*
+ ========================================================
+ Grid
+ ========================================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.rightSide {
+  @media all and (max-width: $screen-md-end) {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+  
+  @media all and (min-width: $screen-lg) {
+    width: 50%;
+    display: inline-block;
+    
+    position: relative;
+    top: 0;
+    right: -50%;
+  }
+}
+
+.content {
+  @media all and (max-width: $screen-md-end) {
+    position: relative;
+  }
+  
+  @media all and (min-width: $screen-lg) {
+    position: relative;
+  }
+}
+
+/*
+========================================================
+Main
+========================================================
+*/
+
+body {
+  overflow-x: hidden;
+  font-family: $main-font-family;
+}
+
+.hide {
+  position: fixed;
+  left: -100%;
+}
