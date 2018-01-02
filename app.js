@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Core node modules
 const path = require('path');
@@ -29,4 +29,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // my routes
 app.use(routes);
 
-app.listen(3030, () => console.log('App listening on port 3030!'));
+module.export = app;

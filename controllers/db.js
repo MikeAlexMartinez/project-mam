@@ -1,3 +1,5 @@
+'use strict';
+
 const mongooose = require('mongoose');
 
 const options = {

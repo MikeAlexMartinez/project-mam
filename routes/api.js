@@ -9,15 +9,32 @@ const projectTypes = require('../controllers/projectTypes');
 
 // Messages api routes
 router
+  .route('/message/:id')
+  .get(messages.fetch)
+  .put(messages.edit)
+  .delete(messages.delete);
+
+router
   .route('/message')
   .post(messages.submit);
 
-// Subscriptions api routes
+/**
+ * Subscriptions api routes
+ */ 
+router
+  .route('/subscribe/:id')
+  .get(subscribe.fetch)
+  .put(subscribe.edit)
+  .delete(subscribe.delete);
+
 router
   .route('/subscribe')
   .post(subscribe.submit);
 
-// Project Types api routes
+  /**
+ * Project Types api routes
+ */ 
+
 // fetch all 1st level types (parent field is null)
 router
   .route('/projecttypes/types')

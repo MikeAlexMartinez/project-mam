@@ -66,6 +66,4 @@ const projectTypes = [
   },
 ];
 
-module.exports = {
-  projectTypes: projectTypes,
-}
+module.exports = projectTypes;
