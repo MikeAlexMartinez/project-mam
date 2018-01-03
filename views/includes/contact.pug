@@ -1,0 +1,29 @@
+include ./_mixins.pug
+
+section#contact.contact
+  h2 Get in #[span touch], we'd love to hear from you.
+  p=data.contactForm.mainText
+  div.contactDetails
+    div.cd-group.left
+      p
+        i.ion-ios-home
+        =data.contactForm.address
+    div.cd-group
+      p
+        i.ion-ios-call
+        =' ' + data.contactForm.phone
+      p
+        i.ion-ios-mail
+        =' ' + data.contactForm.email
+  div.contactForm
+    form(class="form-group" action="" id="contactForm")
+      input(id="contact-source" class="hidden" type="text" value="templates/deft" name="source" hidden)
+      div.mainInputs
+        div.formSide.left
+          input(id="contact-name" class="entry" type="text" placeholder="Name" name="name" required)
+          input(id="contact-email" class="entry" type="email" placeholder="Email" name="email" required)
+        div.formSide.right
+          textarea(id="contact-message" class="entry" type="text" placeholder="Message" name="message" rows="4" required)
+      div.buttonContainer
+        button(type="submit" class="btn") Send
+        div#contactToast.toast

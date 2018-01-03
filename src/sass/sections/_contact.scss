@@ -1,0 +1,115 @@
+.contact {
+  padding: $section-padding;
+
+  h2 {
+    font-size: 1.85em;
+    font-weight: 400;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  p {
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1.5em;    
+    padding-top: 15px;
+    color: $txt-grey;
+  }
+
+  .cd-group {
+    vertical-align: top; 
+
+    i {
+      color: $bg-btn;
+      margin-right: 5px;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 1.05em;
+      font-weight: 600;
+    }
+    
+    @media all and (max-width: $screen-sm) {
+      display: block;
+      width: 100%;
+      
+      p {
+        padding: 0;
+      }
+    }
+    
+    @media all and (min-width: $screen-md-start) {
+      display: inline-block;
+      width: 50%;
+      
+
+      p.left {
+        padding-right: 20px;
+      }
+    }
+    
+  }
+
+  .formSide {
+    vertical-align: top;
+    height: 100%;
+    
+    input,
+    textarea {
+      background-color: $bg-black;
+      border: none;
+      border-radius: 5px;
+      padding: $entry-padding-lrg;
+      font-size: 1em;
+      color: #fff;
+    }
+
+    @media all and (max-width: $screen-sm) {
+      display: block;
+      width: 100%;
+
+      #contact-name,
+      #contact-email,
+      #contact-message {
+        width: 100%;
+        margin-bottom: 2%;
+      }
+    }
+    
+    @media all and (min-width: $screen-md-start) {
+      display: inline-block;
+      width: 50%;
+
+      #contact-message {
+        width: 100%;
+        padding-bottom: 8%;
+      }
+      #contact-name,
+      #contact-email {
+        width: 96%;
+        margin-right: 4%;
+        margin-bottom: 4%;
+      }
+      #contact-email {
+        margin-bottom: 6%;
+      }
+    }
+  }
+
+  #contactForm {
+    position: relative;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1.2em;
+    
+    &:hover {
+      background-color: $bg-btn-hover;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.subscribe {
+  background: $bg-black;
+  color: #fff;
+  padding: $section-padding;
+
+  h2 {
+    font-size: 1.85em;
+    font-weight: 400;
+  }
+
+  #subscribeForm {
+    z-index: 6;
+    position: relative;
+    margin-top: 100px;
+    overflow: hidden;
+    min-height: 45px;
+
+    button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 1.2em;
+    }
+
+    .entry {
+      background-color: rgb(43, 51, 60);
+      border: none;
+      max-width: 50%;
+
+      padding: $entry-padding;
+      border-radius: 5px;
+      font-size: 1.2em;
+
+      color: #fff;
+    }
+  }
+}

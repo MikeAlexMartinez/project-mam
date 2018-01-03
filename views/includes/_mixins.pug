@@ -1,0 +1,36 @@
+mixin socialItem(sI)
+  div.socialIcon
+    a(href=sI.link)
+      span(class=`${sI.icon} white`)
+
+mixin skill(s)
+  div.skill
+    div.upper
+      i(class=s.icon)
+    div.skillText
+      p=s.skill
+
+mixin serviceItem(sI)
+  p=sI
+
+mixin project(p)
+  .grid-item
+    img(src=p.image)
+    +projectOverlay(p)
+
+mixin projectOverlay(p)
+  figcaption.imgInfo.cf
+    div.text
+      h4=p.heading
+      p=p.author
+    button.btn(target=p.heading.toLowerCase().replace(' ','')) View
+
+mixin projectDetail(p)
+  div(id=p.heading.toLowerCase().replace(' ','') class="gallerySlide out-right")
+    div.imgContainer
+      div.btn.ion-md-close.close-project
+      img(src=p.image)
+    div.projectDetail
+      h2=p.heading
+      for text in p.detail
+        p=text

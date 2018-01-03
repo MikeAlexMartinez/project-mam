@@ -1,0 +1,81 @@
+.gallerySlide {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  min-height: 100%;
+
+  @media all and (max-width: $screen-md-end) {
+    width: 100%;
+  }
+
+  @media all and (min-width: $screen-lg) {
+    width: 50%;
+  }
+
+  .imgContainer {
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  .projectDetail {
+    background-color: #fff;
+    padding: $section-padding;
+
+    h2 {
+      font-weight: 400;
+    }
+
+    p {
+      display: inline-block;
+
+      font-size: 0.95em;
+      line-height: 1.5em;
+      color: $txt-grey;
+
+      padding-bottom: 25px;
+      
+      &:first-child {
+        margin-top: 100px;
+      }
+      &:last-child {
+        margin-bottom: 150px;
+      }
+    }
+  }
+
+  .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    padding: 15px 20px;
+    font-size: 2em;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &.out-right {
+    
+    @media all and (max-width: $screen-md-end) {
+      right: -100%;
+    }
+  
+    @media all and (min-width: $screen-lg) {
+      right: -50%;
+    }
+    
+  
+    transition: right 0.3s ease-in-out;
+
+    &.show {
+      right: 0;
+
+      transition: right 0.3s ease-in-out;
+    }
+  }
+}
+
