@@ -113,11 +113,13 @@ exports.edit = (req, res) => {
 
     const id = req.params.id;
 
-    const fetched = (m) => {
-      console.log('Message fetched succesfully');
+    const updatedMessage = req.body;
+
+    const updated = (m) => {
+      console.log('Message updated succesfully');
       
       const response = {
-        message: 'Message retrieved!',
+        message: 'Message updated!',
         type: 'success',
         data: m
       };
@@ -138,7 +140,99 @@ exports.edit = (req, res) => {
       res.status(500).send(response);
     };
     
-    Message.findByIdAndUpdate(id, {})
+    Message.findByIdAndUpdate(id, updatedMessage)
+      .then(updated)
+      .catch(error);
+  });
+};
+
+exports.delete = (req, res) => {
+  console.log('message delete request received');
+  
+  db((err) => {
+    if (err) {
+      console.log('Error connecting to database!');
+      const message = req.body;
+      
+      message.error = 'Error connecting to database, please retry later.';
+      res.status(500).send(message);
+    }
+
+    const id = req.params.id;
+
+    const deleted = (m) => {
+      console.log('Message deleted succesfully');
+      
+      const response = {
+        message: 'Message deleted!',
+        type: 'success',
+        data: m
+      };
+      
+      mongoose.disconnect();
+      res.status(201).send(response);
+    };
+    
+    const error = (err) => {
+      
+      const response = {
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
+        err: err
+      };
+
+      mongoose.disconnect();
+      res.status(500).send(response);
+    };
+    
+    Message.findByIdAndRemove(id)
+      .then(deleted)
+      .catch(error);
+  });
+};
+
+exports.fetchAll = (req, res) => {
+  console.log('message fetchAll request received');
+  
+  db((err) => {
+    if (err) {
+      console.log('Error connecting to database!');
+      const message = req.body;
+      
+      message.error = 'Error connecting to database, please retry later.';
+      res.status(500).send(message);
+    }
+
+    console.log(req.query);
+
+    const filter = req.query;
+
+    const fetched = (m) => {
+      console.log('Message(s) fetched succesfully');
+      
+      const response = {
+        message: 'Message deleted!',
+        type: 'success',
+        data: m
+      };
+      
+      mongoose.disconnect();
+      res.status(201).send(response);
+    };
+    
+    const error = (err) => {
+      
+      const response = {
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
+        err: err
+      };
+
+      mongoose.disconnect();
+      res.status(500).send(response);
+    };
+    
+    Message.find(filter)
       .then(fetched)
       .catch(error);
   });

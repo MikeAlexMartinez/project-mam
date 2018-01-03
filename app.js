@@ -29,4 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // my routes
 app.use(routes);
 
+// start app
+app.listen(3030, () => console.log('Listening for requests on port 3030...'));
+
 module.export = app;

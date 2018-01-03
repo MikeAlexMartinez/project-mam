@@ -1,9 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const db = require('../controllers/db');
 const uuidv4 = require('uuid/v4');
 
-const Schema = mongoose.Schema;
+const Schema = db.Schema;
 
 const projectSchema = new Schema({
   _id: {type: String, default: uuidv4() },
@@ -15,8 +15,8 @@ const projectSchema = new Schema({
   git: String,
   real: {type: Boolean, default: true },
   favourite: { type: Boolean, default: false },
-  lastUpdate: { type: Date, default: new Date() },
-  createdDate: { type: Date, default: new Date() },
+  lastUpdate: { type: Date, default: Date.now },
+  createdDate: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   pictures: Array,
   mainPicture: String,
@@ -24,7 +24,7 @@ const projectSchema = new Schema({
   subtype: String
 });
 
-const Project = mongoose.model('Project', projectSchema);
+const Project = db.model('Project', projectSchema);
 
 module.exports = Project;
 

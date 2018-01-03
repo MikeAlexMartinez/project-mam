@@ -1,6 +1,6 @@
 'use strict';
 
-const subscribes = [
+const subscribers = [
   {
     source: 'deft',
     email: 'test1@mail.com',
@@ -36,6 +36,6 @@ const subscribes = [
     validated: false,
     active: true,
   },
-]
+];
 
-module.exports = subscribes;
+module.exports = subscribers;

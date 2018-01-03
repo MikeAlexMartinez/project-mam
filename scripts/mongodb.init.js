@@ -7,7 +7,7 @@ const async = require('async');
 const projectTypes = require('./projectTypes');
 const projects = require('./projects');
 const messages = require('./messages');
-const subscribes = require('./subscribes');
+const subscribers = require('./subscribers');
 
 const collectionsToInsert = [
   {
@@ -24,7 +24,7 @@ const collectionsToInsert = [
   },
   {
     name: 'subscribes',
-    data: subscribes
+    data: subscribers
   }
 ];
 
@@ -68,7 +68,7 @@ function refreshCollection(colToInsert) {
       const colToCreate = colToInsert.name;
       const data = colToInsert.data;
 
-      db.collection(colToCreate, {strict: true}, function(err, col) {
+      db.collection(colToCreate, {strict: true}, function(err) {
         
         // If no error collection exists;
         if(!err) {
@@ -92,7 +92,7 @@ function refreshCollection(colToInsert) {
       });
     });
   });
-};
+}
   
 /**
  * creates or refreshes a mongodb collection in the target database
@@ -116,7 +116,8 @@ function createCollection(colToCreate, data, db) {
         }
 
         try {
-          assert.equal(data.length, result.result.n, `Expected ${data.length} items to be inserted`);
+          assert.equal(data.length, result.result.n, 
+            `Expected ${data.length} items to be inserted`);
         }
         catch (err) {
           rej(err);

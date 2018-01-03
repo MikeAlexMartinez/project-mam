@@ -1,19 +1,19 @@
-const mongoose = require('mongoose');
+const db = require('../controllers/db');
 
-const Schema = mongoose.Schema;
+const Schema = db.Schema;
 
 const messageSchema = new Schema({
   sender: String,
   subject: { type: String, default: '' },
   email: String,
   message: String,
-  date: { type: Date, default: Date.now },
+  createdDate: { type: Date, default: Date.now },
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
   replied: { type: Boolean, default: false },
   source: String
 });
 
-const Message = mongoose.model('Message', messageSchema);
+const Message = db.model('Message', messageSchema);
 
 module.exports = Message;

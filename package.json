@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npm-run-all -p gulp-watch serve",
     "gulp-watch": "gulp watch",
-    "serve": "nodemon ./app.js",
+    "serve": "nodemon ./dev.js",
+    "production": "nodemon ./production.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "michael martinez",

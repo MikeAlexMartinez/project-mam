@@ -3,11 +3,28 @@
 const express = require('express');
 const router = express.Router();
 
-const messages = require('../controllers/messages');
-const subscribe = require('../controllers/subscribe');
-const projectTypes = require('../controllers/projectTypes');
+const DbComm = require('../helpers/api').DbCommunicator; 
 
-// Messages api routes
+const message = require('../models/message');
+const subscriber = require('../models/subscriber');
+const projectType = require('../models/projectType');
+const project = require('../models/project');
+
+const messages = new DbComm(message);
+const subscribers = new DbComm(subscriber);
+const projectTypes = new DbComm(projectType);
+const projects = new DbComm(project);
+
+const collections = [
+  {
+    messages,
+    subscribers,
+    project
+  }
+];
+/**
+ *  Messages api routes
+ */ 
 router
   .route('/message/:id')
   .get(messages.fetch)
@@ -18,52 +35,31 @@ router
   .route('/message')
   .post(messages.submit);
 
+router
+  .route('/messages')
+  .get(messages.fetchAll);
+
 /**
- * Subscriptions api routes
+ *  Subscriptions api routes
  */ 
 router
   .route('/subscribe/:id')
-  .get(subscribe.fetch)
-  .put(subscribe.edit)
-  .delete(subscribe.delete);
+  .get(subscribes.fetch)
+  .put(subscribes.edit)
+  .delete(subscribes.delete);
 
 router
   .route('/subscribe')
-  .post(subscribe.submit);
+  .post(subscribes.submit);
 
-  /**
- * Project Types api routes
+router
+  .route('/subscribers')
+  .get(subscribes.fetchAll);
+
+/**
+ *  Project Types api routes
  */ 
 
-// fetch all 1st level types (parent field is null)
-router
-  .route('/projecttypes/types')
-  .get(projectTypes.fetchTypes);
-
-// fetch specfic parent type
-router
-  .route('/projecttypes/types/:type')
-  .get(projectTypes.fetchType);
-
-// fetch all types that have parents (ie. 2nd level subtypes)  
-router
-  .route('/projecttypes/subtypes')
-  .get(projectTypes.fetchSubtypes);
-
-// fetch specific subtype
-router
-  .route('/projecttypes/subtypes/:subtype')
-  .get(projectTypes.fetchSubtype);
-
-// fetch specific subtype with defined parent type
-router
-.route('/projecttypes/subtypeof/:type')
-.get(projectTypes.fetchSubtypeOf);
-
-// fetch all projects
-router  
-  .route('/projecttypes')
-  .get(projectTypes.fetchAll);
 
 
 module.exports = router;

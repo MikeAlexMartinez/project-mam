@@ -1,25 +1,25 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const db = require('./db');
 const projectTypes = require('../models/projectType');
 
 exports.fetchAll = (req, res) => {
-  console.log("projectTypes.fetchAll request received");
+  console.log('projectTypes.fetchAll request received');
 
   db((err) => {
     if (err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);
     }
     
+    const filter = req.query || {};
+
     const fetched = (m) => {
-      console.log("Project Types");
+      console.log('Project Types');
       
-      mongoose.disconnect();
       res.status(201).send(m);
     };
     
@@ -27,15 +27,14 @@ exports.fetchAll = (req, res) => {
       console.log(err);
 
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
-      }
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
+      };
 
-      mongoose.disconnect();
       res.status(500).send(response);
-    }
+    };
     
-    projectTypes.find({})
+    projectTypes.find(filter)
       .then(fetched)
       .catch(error);
   });
@@ -44,20 +43,20 @@ exports.fetchAll = (req, res) => {
 
 // Fetch all parent types of projects
 exports.fetchTypes = (req, res) => {
-  console.log("projectTypes.fetchTypes request received");
+  console.log('projectTypes.fetchTypes request received');
   
   db((err) => {
     if(err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);  
     }
 
     const found = (m) => {
 
-      console.log("Project Types");
+      console.log('Project Types');
       
       mongoose.disconnect();
       res.status(201).send(m);
@@ -67,8 +66,8 @@ exports.fetchTypes = (req, res) => {
       console.log(err);
       
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
       }
 
       mongoose.disconnect();
@@ -84,14 +83,14 @@ exports.fetchTypes = (req, res) => {
 
 // Fetch a single type of project
 exports.fetchType = (req, res) => {
-  console.log("projectTypes.fetchTypes request received");
+  console.log('projectTypes.fetchTypes request received');
   
   db((err) => {
     if(err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);  
     }
 
@@ -99,7 +98,7 @@ exports.fetchType = (req, res) => {
   
     const found = (m) => {
 
-      console.log("Project Types");
+      console.log('Project Types');
       
       mongoose.disconnect();
       res.status(201).send(m);
@@ -109,8 +108,8 @@ exports.fetchType = (req, res) => {
       console.log(err);
       
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
       }
 
       mongoose.disconnect();
@@ -126,20 +125,20 @@ exports.fetchType = (req, res) => {
 
 // Fetch all subtypes
 exports.fetchSubtypes = (req, res) => {
-  console.log("projectTypes.fetchSubtypes request received");
+  console.log('projectTypes.fetchSubtypes request received');
   
   db((err) => {
     if(err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);  
     }
   
     const found = (m) => {
 
-      console.log("Project Types");
+      console.log('Project Types');
       
       mongoose.disconnect();
       res.status(201).send(m);
@@ -149,8 +148,8 @@ exports.fetchSubtypes = (req, res) => {
       console.log(err);
       
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
       }
 
       mongoose.disconnect();
@@ -167,14 +166,14 @@ exports.fetchSubtypes = (req, res) => {
 
 // Fetch a single subtype of project
 exports.fetchSubtype = (req, res) => {
-  console.log("projectTypes.fetchSubtypes request received");
+  console.log('projectTypes.fetchSubtypes request received');
   
   db((err) => {
     if(err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);  
     }
 
@@ -182,7 +181,7 @@ exports.fetchSubtype = (req, res) => {
   
     const found = (m) => {
 
-      console.log("Project Types");
+      console.log('Project Types');
       
       mongoose.disconnect();
       res.status(201).send(m);
@@ -192,8 +191,8 @@ exports.fetchSubtype = (req, res) => {
       console.log(err);
       
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
       }
 
       mongoose.disconnect();
@@ -209,14 +208,14 @@ exports.fetchSubtype = (req, res) => {
 
 // Fetch a subtypes with defined parent
 exports.fetchSubtypeOf = (req, res) => {
-  console.log("projectTypes.fetchSubtypesOf request received");
+  console.log('projectTypes.fetchSubtypesOf request received');
   
   db((err) => {
     if(err) {
-      console.log("Error connecting to database!");
+      console.log('Error connecting to database!');
       const message = req.body;
       
-      message.error = "Error connecting to database, please retry later.";
+      message.error = 'Error connecting to database, please retry later.';
       res.status(500).send(message);  
     }
 
@@ -224,7 +223,7 @@ exports.fetchSubtypeOf = (req, res) => {
   
     const found = (m) => {
 
-      console.log("Project Types");
+      console.log('Project Types');
       
       mongoose.disconnect();
       res.status(201).send(m);
@@ -234,8 +233,8 @@ exports.fetchSubtypeOf = (req, res) => {
       console.log(err);
       
       const response = {
-        message: "We encountered an error, please try again later!",
-        type: "error",
+        message: 'We encountered an error, please try again later!',
+        type: 'error',
       }
 
       mongoose.disconnect();
