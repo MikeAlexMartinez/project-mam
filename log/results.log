@@ -13,3 +13,24 @@
 {"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T13:07:16.653Z"}
 {"level":"info","message":"Running server in test mode!","timestamp":"2018-01-04T13:07:16.937Z"}
 {"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T13:07:16.939Z"}
+{"meta":{"someKey":"some-value"},"level":"info","message":"Hello log files!","timestamp":"2018-01-04T14:09:36.378Z"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-01-04T14:09:36.379Z"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T14:09:36.381Z"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-01-04T14:09:36.658Z"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T14:09:36.660Z"}
+{"meta":{"someKey":"some-value"},"level":"info","message":"Hello log files!","timestamp":"2018-01-04T14:10:43.187Z"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-01-04T14:10:43.188Z"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T14:10:43.190Z"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-01-04T14:10:43.464Z"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T14:10:43.466Z"}
+{"meta":{"someKey":"some-value"},"level":"info","message":"Hello log files!","timestamp":"2018-01-04T14:11:55.110Z"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-01-04T14:11:55.111Z"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T14:11:55.113Z"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-01-04T14:11:56.465Z"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T14:11:56.467Z"}
+{"meta":{"someKey":"some-value"},"level":"info","message":"Hello log files!","timestamp":"2018-01-04T14:12:41.515Z"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-01-04T14:12:41.517Z"}
+{"level":"debug","message":"Hello world!","timestamp":"2018-01-04T14:12:41.517Z"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T14:12:41.519Z"}
+{"level":"info","message":"Running server in development mode!","timestamp":"2018-01-04T14:12:41.912Z"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T14:12:41.913Z"}

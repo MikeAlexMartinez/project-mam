@@ -14,7 +14,7 @@ if (!fs.existsSync(logDir)) {
 
 const tsFormat = () => (new Date()).toISOString();
 
-const logger = winston.createLogger({
+const logger = new (winston.Logger)({
   transports: [
     // Colorize the output to the console
     new winston.transports.Console({ 
