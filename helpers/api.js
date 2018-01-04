@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const logger = require('../winston');
 
 const conStates = {
   0: 'disconnected',
@@ -22,7 +23,7 @@ function DbCommunicator(Model) {
     };
     
     if (err.code === 11000) {
-      console.log('Indexed item already exists!');
+      logger.error('Indexed item already exists!');
 
       res.status(409).send(response);
     } else {
@@ -34,7 +35,7 @@ function DbCommunicator(Model) {
   return {
     name: name,
     submit: function(req, res) {      
-      console.log(`${name} request received`);
+      logger.info(`${name} request received`);
       
       const newModel = req.body;
         
@@ -43,7 +44,7 @@ function DbCommunicator(Model) {
       const model = new Model(newModel);
       
       const saved = (m) => {
-        console.log(`${name} item created succesfully`);
+        logger.info(`${name} item created succesfully`);
         
         const response = {
           message: `${name} item created succesfully`,
@@ -57,18 +58,18 @@ function DbCommunicator(Model) {
       model.save()
         .then(saved)
         .catch((err) => {
-          console.log("Error encountered");
+          logger.error("Error encountered");
           error(err, res);
         });
     },
     fetch: function(req, res) {
-      console.log(`${name} fetch request received`);
+      logger.info(`${name} fetch request received`);
       
       const id = req.params.id;
     
       const fetched = (m) => {
         const message = `${name} item fetched succesfully`;
-        console.log(message);
+        logger.info(message);
         
         const response = {
           message: message,
@@ -86,7 +87,7 @@ function DbCommunicator(Model) {
         });
     },
     edit: function(req, res) {
-      console.log(`${name} update request received`);
+      logger.info(`${name} update request received`);
 
       const id = req.params.id;
       const updatedItem = req.body;
@@ -94,7 +95,7 @@ function DbCommunicator(Model) {
       const updated = (m) => {
         const message = `${name} item updated successfully`;
         
-        console.log(message);
+        logger.info(message);
         
         const response = {
           message: message,
@@ -112,14 +113,14 @@ function DbCommunicator(Model) {
         });
     },
     delete: function(req, res) {
-      console.log(`${name} delete request received`);
+      logger.info(`${name} delete request received`);
     
       const id = req.params.id;
   
       const deleted = (m) => {
         const message = `${name} deleted successfully`;
         
-        console.log(message);
+        logger.info(message);
         
         const response = {
           message: message,
@@ -137,7 +138,7 @@ function DbCommunicator(Model) {
         });
     },
     fetchAll: function(req, res) {
-      console.log(`${name} fetchAll request received`);
+      logger.info(`${name} fetchAll request received`);
       
       const conState =  mongoose.connection.readyState;
 
@@ -149,7 +150,7 @@ function DbCommunicator(Model) {
         
         const fetched = (m) => {
           const message = `${name} item(s) fetched succesfully`;
-          console.log(message);
+          logger.info(message);
           
           const response = {
             message: message,
@@ -163,7 +164,6 @@ function DbCommunicator(Model) {
         Model.find(filter, null, {maxTimeMS: 5000 })
         .then(fetched)
         .catch((err) => {
-          console.log("UH OH>>>>")
           error(err, res);
         });
       }

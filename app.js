@@ -9,6 +9,9 @@ const expressWinston = require('express-winston');
 const winston = require('winston');
 const bodyParser = require('body-parser');
 
+// Helpers
+const { fileDate, tsFormat } = require('./helpers/dates');
+
 // Logging
 const logger = require('./winston');
 logger.info('Started Logging module!');
@@ -36,13 +39,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressWinston.logger({
   transports: [
     new winston.transports.Console({
-      colorize: true
+      colorize: true,
+    }),
+    new winston.transports.File({
+      filename: `logs/requests/${fileDate()}requests.log`,
     })
   ],
-  meta: true, // optional: control whether you want to log the meta data about the request (default to true)
-  msg: "HTTP {{req.method}} {{res.statusCode}} {{req.url}}", // optional: customize the default logging message. E.g. "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
-  expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
-  colorize: true, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+  meta: true,
+  msg: 'HTTP {{req.method}} {{res.statusCode}} {{req.url}}',
+  expressFormat: true, 
+  colorize: true,
+  skip: () => process.env.NODE_ENV === 'test',
 }));
 
 // my routes
