@@ -10,31 +10,26 @@ const subscriber = require('../models/subscriber');
 const projectType = require('../models/projectType');
 const project = require('../models/project');
 
-const messages = new DbComm(message);
-const subscribers = new DbComm(subscriber);
-const projectTypes = new DbComm(projectType);
-const projects = new DbComm(project);
-
 const collections = [
   {
     name: 'messages',
     singular: 'message',
-    model: messages
+    model: new DbComm(message)
   },
   {
     name: 'subscribers',
     singular: 'subscriber',
-    model: subscribers
+    model: new DbComm(subscriber)
   },
   {
-    name: 'projectTypes',
-    singular: 'projectType',
-    model: projectTypes
+    name: 'projecttypes',
+    singular: 'projecttype',
+    model: new DbComm(projectType)
   },
   {
     name: 'projects',
     singular: 'project',
-    model: projects
+    model: new DbComm(project)
   },
 ];
 

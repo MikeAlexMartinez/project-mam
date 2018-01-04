@@ -2,6 +2,7 @@
 
 const projectTypes = [
   {
+    _id: 'protyp01-3c83-4b4b-9089-69362f729ae7',
     name: 'FreeCodeCamp',
     parent: null,
     detail: 'These projects are those that are set and / or defined by the FreeCodeCamp website. ' +
@@ -11,6 +12,7 @@ const projectTypes = [
     source: 'https://www.freecodecamp.org/mikealexmartinez',
   },
   {
+    _id: 'protyp02-3c83-4b4b-9089-69362f729ae7',
     name: 'P1xt',
     parent: null,
     detail: 'My P1xt projects are those that have been set by the github user P1xt. ' +
@@ -20,6 +22,7 @@ const projectTypes = [
     source: 'https://github.com/P1xt/p1xt-guides/blob/master/cs-wd.md',
   },
   {
+    _id: 'protyp03-3c83-4b4b-9089-69362f729ae7',
     name: 'Templates',
     parent: null,
     detail: 'These represent my attempts at cloning a websites appearance and feel without using ' +
@@ -31,6 +34,7 @@ const projectTypes = [
     source: 'https://github.com/MikeAlexMartinez/templates',
   },
   {
+    _id: 'protyp04-3c83-4b4b-9089-69362f729ae7',
     name: 'Other',
     parent: null,
     detail: 'These are projects that I\'ve completed but don\'t fall into any of the other ' +
@@ -39,6 +43,7 @@ const projectTypes = [
     source: null,
   },
   {
+    _id: 'protyp05-3c83-4b4b-9089-69362f729ae7',
     name: 'Backend',
     parent: 'FreeCodeCamp',
     detail: 'These are projects set in the FreeCodeCamp curriculum and are set in order to ' +
@@ -47,6 +52,7 @@ const projectTypes = [
     source: null,
   },
   {
+    _id: 'protyp06-3c83-4b4b-9089-69362f729ae7',
     name: 'Frontend',
     parent: 'FreeCodeCamp',
     detail: 'These are projects set in the FreeCodeCamp curriculum and are set in order to ' +
@@ -55,6 +61,7 @@ const projectTypes = [
     source: null,
   },
   {
+    _id: 'protyp07-3c83-4b4b-9089-69362f729ae7',
     name: 'Dataviz',
     parent: 'FreeCodeCamp',
     detail: 'These are projects set in the FreeCodeCamp curriculum and are set in order to ' +

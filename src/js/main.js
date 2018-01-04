@@ -77,6 +77,7 @@ $(document).ready(() => {
    * @param { Object } target 
    * @param { Object } move 
    * @param { Number } speed 
+   * @return { null }
    * 
    * Handles smooth scroll of move element, to the 
    * target with no offset at the defined speed.
@@ -89,6 +90,8 @@ $(document).ready(() => {
       target.focus();
     });
   }
+
+  const errorMessage = 'Oops! We encountered an error. Please retry later...   ( -_-)';
 
   /**
    * contact form handling
@@ -105,15 +108,17 @@ $(document).ready(() => {
       message: $('#contact-message').val(),
     };
 
+    const successMessage = 'Message received! Please check your inbox ( ^_^) ';
+    
     const posting = $.post('/api/message', data, "json");
 
     posting.done(function(data) {
       
-      showToast('contact','success', data.message);
+      showToast('contact','success', successMessage);
     
     }).fail(function(err) {
       
-      showToast('contact','error', err.responseJSON.message);
+      showToast('contact','error', errorMessage);
     });
 
   });
@@ -132,20 +137,22 @@ $(document).ready(() => {
       active: true,
     };
 
-    const posting = $.post('/api/subscribe', data, "json");
+    const posting = $.post('/api/subscriber', data, "json");
 
-    posting.done(function(data) {
+    const successMessage = 'Thanks for subscribing! Please check your inbox. ( ^_^) ';
+
+    posting.done(function() {
       
-      showToast('subscribe', 'success', data.message);
+      showToast('subscribe', 'success', successMessage);
 
     }).fail(function(err) {
 
-      const message = err.responseJSON.message;
+      console.log(err);
 
       if(err.status === 409) {
-        showToast('subscribe', 'warning', message);
+        showToast('subscribe', 'success', successMessage);
       } else {
-        showToast('subscribe', 'error', message);
+        showToast('subscribe', 'error', errorMessage);
       }
 
     });

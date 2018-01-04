@@ -1,7 +1,8 @@
 'use strict';
 
-const db = require('../controllers/db');
 const uuidv4 = require('uuid/v4');
+
+const db = require('../controllers/db');
 
 const Schema = db.Schema;
 

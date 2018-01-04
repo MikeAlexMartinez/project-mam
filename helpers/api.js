@@ -14,13 +14,21 @@ const conStates = {
 function DbCommunicator(Model) {
   const name = Model.modelName;
   const error = (err, res) => {
+    
     const response = {
       message: 'We encountered an error, please try again later!',
       type: 'error',
       err: err
     };
+    
+    if (err.code === 11000) {
+      console.log('Indexed item already exists!');
+
+      res.status(409).send(response);
+    } else {
+      res.status(500).send(response);
+    }
   
-    res.status(500).send(response);
   };
 
   return {
@@ -68,7 +76,7 @@ function DbCommunicator(Model) {
           data: m
         };
         
-        res.status(201).send(response);
+        res.status(200).send(response);
       };
       
       Model.findById(id)
@@ -94,7 +102,7 @@ function DbCommunicator(Model) {
           data: m
         };
         
-        res.status(201).send(response);
+        res.status(200).send(response);
       };
         
       Model.findByIdAndUpdate(id, updatedItem)
@@ -119,7 +127,7 @@ function DbCommunicator(Model) {
           data: m
         };
         
-        res.status(201).send(response);
+        res.status(200).send(response);
       };
       
       Model.findByIdAndRemove(id)
@@ -149,7 +157,7 @@ function DbCommunicator(Model) {
             data: m
           };
           
-          res.status(201).send(response);
+          res.status(200).send(response);
         };
         
         Model.find(filter, null, {maxTimeMS: 5000 })

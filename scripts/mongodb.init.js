@@ -4,10 +4,10 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('chai').assert;
 const async = require('async');
 
-const projectTypes = require('./projectTypes');
-const projects = require('./projects');
-const messages = require('./messages');
-const subscribers = require('./subscribers');
+const projectTypes = require('./db/projectTypes');
+const projects = require('./db/projects');
+const messages = require('./db/messages');
+const subscribers = require('./db/subscribers');
 
 const collectionsToInsert = [
   {
