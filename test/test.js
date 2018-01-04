@@ -6,14 +6,14 @@ function importTest(name, path) {
   });
 }
 
-var common = require("./common");
+require('./common');
 
-describe("top", function () {
+describe('Testing...', function () {
   beforeEach(function () {
-     console.log("running something before each test");
+     console.log('==========');
   });
-  importTest("API Messages", './api/messages');
+  importTest('API Messages', './api/messages');
   after(function () {
-      console.log("after all tests");
+      console.log('^^^^^^^^^');
   });
 });

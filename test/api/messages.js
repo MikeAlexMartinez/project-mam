@@ -5,8 +5,11 @@ const rp = require('request-promise');
 
 const api = `http://localhost:3030/api/`;
 
+process.env.NODE_ENV = 'test';
 
-describe("top", function () {
+require('../../app');
+
+describe('top', function () {
   describe('Messages', function() {
     it('should return json', function(done) {
       
@@ -19,7 +22,7 @@ describe("top", function () {
       rp(rpOptions)
         .then((resp) => {
           
-          assert(resp.headers["content-type"],/json/,'content-type should be JSON');
+          assert(resp.headers['content-type'] ,/json/,'content-type should be JSON');
 
           done();
         })
