@@ -7,6 +7,10 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+// Logging
+const logger = require('./winston');
+logger.info('Started Logging module!');
+
 // Load my routes
 const routes = require('./routes');
 
@@ -26,10 +30,16 @@ app.use(bodyParser.json());
 // supports parsing of application/x-www-form-urlendcoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Add logging before routes
+app.use(logger);
+
 // my routes
 app.use(routes);
 
 // start app
-app.listen(3030, () => console.log('Listening for requests on port 3030...'));
+app.listen(3030, () => {
+  logger.info(`Running server in ${process.env.NODE_ENV} mode!`);
+  logger.info('Listening for requests on port 3030...');
+});
 
 module.export = app;

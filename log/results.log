@@ -1,0 +1,15 @@
+{"someKey":"some-value","level":"info","message":"Hello log files!","timestamp":"2018-1-4"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-1-4"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-1-4"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-1-4"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-1-4"}
+{"someKey":"some-value","level":"info","message":"Hello log files!","timestamp":"2018-1-4"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-1-4"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-1-4"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-1-4"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-1-4"}
+{"meta":{"someKey":"some-value"},"level":"info","message":"Hello log files!","timestamp":"2018-01-04T13:07:16.649Z"}
+{"level":"warn","message":"You've been warned","timestamp":"2018-01-04T13:07:16.650Z"}
+{"level":"info","message":"Started Logging module!","timestamp":"2018-01-04T13:07:16.653Z"}
+{"level":"info","message":"Running server in test mode!","timestamp":"2018-01-04T13:07:16.937Z"}
+{"level":"info","message":"Listening for requests on port 3030...","timestamp":"2018-01-04T13:07:16.939Z"}
