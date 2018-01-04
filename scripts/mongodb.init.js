@@ -23,7 +23,7 @@ const collectionsToInsert = [
     data: messages
   },
   {
-    name: 'subscribes',
+    name: 'subscribers',
     data: subscribers
   }
 ];

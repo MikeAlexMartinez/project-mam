@@ -1,7 +1,18 @@
 'use strict';
 
+const mongoose = require('mongoose');
+
+const conStates = {
+  0: 'disconnected',
+  1: 'connected',
+  2: 'connecting',
+  3: 'disconnecting',
+  4: 'unauthorized',
+  99: 'uninitialized'
+};
+
 function DbCommunicator(Model) {
-  const name = Model.prototype.name;
+  const name = Model.modelName;
   const error = (err, res) => {
     const response = {
       message: 'We encountered an error, please try again later!',
@@ -38,6 +49,7 @@ function DbCommunicator(Model) {
       model.save()
         .then(saved)
         .catch((err) => {
+          console.log("Error encountered");
           error(err, res);
         });
     },
@@ -118,25 +130,35 @@ function DbCommunicator(Model) {
     },
     fetchAll: function(req, res) {
       console.log(`${name} fetchAll request received`);
-    
-      const filter = req.query;
-    
-      const fetched = (m) => {
-        const message = `${name} item(s) fetched succesfully`;
-        console.log(message);
+      
+      const conState =  mongoose.connection.readyState;
+
+      if(conState !== 1) {
+        error(new Error(`ERROR: MongoDB Connection State is ${conStates[conState]}`), res);
+      } else {
+
+        const filter = req.query;
         
-        const response = {
-          message: message,
-          type: 'success',
-          data: m
+        const fetched = (m) => {
+          const message = `${name} item(s) fetched succesfully`;
+          console.log(message);
+          
+          const response = {
+            message: message,
+            type: 'success',
+            data: m
+          };
+          
+          res.status(201).send(response);
         };
         
-        res.status(201).send(response);
-      };
-      
-      Model.find(filter)
+        Model.find(filter, null, {maxTimeMS: 5000 })
         .then(fetched)
-        .catch(error);
+        .catch((err) => {
+          console.log("UH OH>>>>")
+          error(err, res);
+        });
+      }
     }
   };
 }

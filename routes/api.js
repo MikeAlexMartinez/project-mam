@@ -17,49 +17,41 @@ const projects = new DbComm(project);
 
 const collections = [
   {
-    messages,
-    subscribers,
-    project
-  }
+    name: 'messages',
+    singular: 'message',
+    model: messages
+  },
+  {
+    name: 'subscribers',
+    singular: 'subscriber',
+    model: subscribers
+  },
+  {
+    name: 'projectTypes',
+    singular: 'projectType',
+    model: projectTypes
+  },
+  {
+    name: 'projects',
+    singular: 'project',
+    model: projects
+  },
 ];
-/**
- *  Messages api routes
- */ 
-router
-  .route('/message/:id')
-  .get(messages.fetch)
-  .put(messages.edit)
-  .delete(messages.delete);
 
-router
-  .route('/message')
-  .post(messages.submit);
-
-router
-  .route('/messages')
-  .get(messages.fetchAll);
-
-/**
- *  Subscriptions api routes
- */ 
-router
-  .route('/subscribe/:id')
-  .get(subscribes.fetch)
-  .put(subscribes.edit)
-  .delete(subscribes.delete);
-
-router
-  .route('/subscribe')
-  .post(subscribes.submit);
-
-router
-  .route('/subscribers')
-  .get(subscribes.fetchAll);
-
-/**
- *  Project Types api routes
- */ 
-
-
+collections.forEach((v) => {
+  router
+    .route(`/${v.singular}/:id`)
+    .get(v.model.fetch)
+    .put(v.model.edit)
+    .delete(v.model.delete);
+  
+  router
+    .route(`/${v.singular}`)
+    .post(v.model.submit);
+  
+  router
+    .route(`/${v.name}`)
+    .get(v.model.fetchAll);
+});
 
 module.exports = router;
