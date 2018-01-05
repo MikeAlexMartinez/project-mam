@@ -49,8 +49,8 @@ const errorLogs = () => {
   });
 };
 
+// set transports based on node environment
 let transports;
-
 if (process.env.NODE_ENV === 'test') {
   transports = [];
 } else {

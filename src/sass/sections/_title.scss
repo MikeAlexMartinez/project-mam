@@ -1,17 +1,24 @@
 .title {
   background: $bg-title-end;
   padding: 100px;
+  padding-left: 100px;
   color: #fff;
   
   @media all and (max-width: $screen-md-end) {
+    text-align: center;
     width: 100%;
     display: block;
     min-height: 100vh;
     
     position: static;
+
+    .brandLogo img {
+      right: 0;
+    }
   }
   
   @media all and (min-width: $screen-lg) {
+    text-align: right;
     width: 50%;
     display: inline-block;
     min-height: 100vh;
@@ -19,6 +26,10 @@
     position: fixed;
     top: 0;
     left: 0;
+
+    .brandLogo img {
+      right: -35px;
+    }
   }
 
   .brandLogo {
@@ -27,9 +38,7 @@
       transform: scale(0.75);
 
       position: relative;
-      left: -30px;
       top: -50px;
-  
     }
   }
 
@@ -51,14 +60,13 @@
   .socialItems {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 80%;
+    right: 0;
     margin: 100px;
   }
 
   .socialIcon {
     display: inline-block;
-    margin-right: 24px; 
+    margin-left: 24px; 
   }
 
   .white {

@@ -11076,7 +11076,7 @@ $(document).ready(() => {
     scrollToTop(scrollTo, $('html, body'), 300);
 
     // Slide in project detail
-    target.addClass('show');
+    target.addClass('show');  
 
     // hide main content to prevent excessive overflow-y
     $('#rightSide').addClass('hide');
@@ -11089,94 +11089,100 @@ $(document).ready(() => {
   });
 
   /**
-   * 
-   * @param { Object } target 
-   * @param { Object } move 
-   * @param { Number } speed 
-   * @return { null }
-   * 
-   * Handles smooth scroll of move element, to the 
-   * target with no offset at the defined speed.
+   * Navigation menu control
    * 
    */
-  function scrollToTop(target, move, speed) {
-    move.animate({
-      scrollTop: target.offset().top
-    }, speed, () => {
-      target.focus();
-    });
-  }
+  $('#menu-icon').click(() => {
+    // change burger icon
+    $('#menu-icon').toggleClass('open');
+    // slide in navigation
+    $('#navigation').toggleClass('open');
+  });
 
-  const errorMessage = 'Oops! We encountered an error. Please retry later...   ( -_-)';
+  $('#title').click((evt) => {
+
+    const menu = $('#menu-icon'); 
+
+    if (menu.hasClass('open')) {
+      console.log('menu is open')
+    }
+  });
+  $('#rightSide').click((evt) => {
+    const menu = $('#menu-icon'); 
+    
+    if (menu.hasClass('open')) {
+      console.log('menu is open')
+    }
+  });
 
   /**
    * contact form handling
    * 
    **/
+  const errorMessage = 'Oops! We encountered an error. Please retry later...  ( -_-)';
+  
   $('#contactForm').submit(function(evt) {
     evt.preventDefault();
     console.log("New message Submited!");
-
+    
     const data = {
       source: $('#contact-source').val(),
       name: $('#contact-name').val(),
       email: $('#contact-email').val(),
       message: $('#contact-message').val(),
     };
-
+    
     const successMessage = 'Message received! Please check your inbox ( ^_^) ';
     
     const posting = $.post('/api/message', data, "json");
-
+    
     posting.done(function(data) {
       
       showToast('contact','success', successMessage);
-    
+      
     }).fail(function(err) {
       
       showToast('contact','error', errorMessage);
     });
-
+    
   });
-
-   /**
+  
+  /**
    * subscribe form handling
    * 
    **/
   $('#subscribeForm').submit(function(evt) {
     evt.preventDefault();
     console.log("New Subscriber Submited!");
-
+    
     const data = {
       source: $('#subscribe-source').val(),
       email: $('#subscribe-email').val(),
       active: true,
     };
-
+    
     const posting = $.post('/api/subscriber', data, "json");
-
+    
     const successMessage = 'Thanks for subscribing! Please check your inbox. ( ^_^) ';
-
+    
     posting.done(function() {
       
       showToast('subscribe', 'success', successMessage);
-
+      
     }).fail(function(err) {
-
+      
       console.log(err);
-
+      
       if(err.status === 409) {
         showToast('subscribe', 'success', successMessage);
       } else {
         showToast('subscribe', 'error', errorMessage);
       }
-
+      
     });
-  
+    
   });
-
-
-
+  
 });
 
 function showToast(section, status, message) {
@@ -11184,13 +11190,32 @@ function showToast(section, status, message) {
   
   target.html(message);
   target.addClass(status);
-
+  
   setTimeout(() => {
     target.addClass('exit');
   }, 3500);
-
+  
   setTimeout(() => {
     target.removeClass(`${status} exit`);
     target.html('');
   }, 6000);
+}
+
+/**
+ * 
+ * @param { Object } target 
+ * @param { Object } move 
+ * @param { Number } speed 
+ * @return { null }
+ * 
+ * Handles smooth scroll of move element, to the 
+ * target with no offset at the defined speed.
+ * 
+ */
+function scrollToTop(target, move, speed) {
+  move.animate({
+    scrollTop: target.offset().top
+  }, speed, () => {
+    target.focus();
+  });
 }
