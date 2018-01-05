@@ -1,0 +1,31 @@
+.blog {
+  position: relative;
+  background-color: $bg-black;
+  padding: $section-padding;
+
+  .blog-container {
+    
+    .blog-title {
+      display: inline-block;
+      width: 50%;
+      
+      h2 {
+        color: #fff;
+        font-size: 1.85em;
+        font-weight: 400;
+      }
+    }
+    
+    .blog-text {
+      width: 50%;
+      display: inline-block;
+      font-style: italic;
+
+      p {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: 300;
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ const uuidv4 = require('uuid/v4');
 const Schema = db.Schema;
 
 const messageSchema = new Schema({
-  _id: {type: String, default: uuidv4() },
+  _id: {type: String, default: uuidv4 },
   sender: String,
   subject: { type: String, default: '' },
   email: String,
