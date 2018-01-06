@@ -1,9 +1,8 @@
 const sections = {
   header: {
-    image: 'images/logo.png',
-    title: 'Hello Guys!',
-    subheader: 'Deft is Coming Soon...',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua dolor sit amet.',
+    image: 'myImages/project-mam-logo-black.png',
+    title: 'Welcome to Project MaM',
+    text: 'This is my personal website. It shares my personal projects and will also be the home for my blog (when I get around to writing some posts!)',
     socialItems: [
       {
         link: "https://www.facebook.com/michaelalexandermartinez",

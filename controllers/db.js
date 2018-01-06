@@ -29,6 +29,7 @@ mongoose.connection.on('disconnected', function(){
 process.on('SIGINT', function(){
   mongoose.connection.close(function(){
     logger.info(`Mongoose default connection is disconnected due to application termination`);
+    logger.info('Process shutting down');
     process.exit(0);
   });
 });

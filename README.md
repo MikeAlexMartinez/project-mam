@@ -23,3 +23,5 @@ To Do List:
 - Complete cloudinary - mongodb picture storage integration.
 - Complete image gallery.
 - Add picture management to project edit page.
+
+Favicons were generated with https://realfavicongenerator.net/.

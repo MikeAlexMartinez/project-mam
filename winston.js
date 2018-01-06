@@ -1,24 +1,30 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 
 const winston = require('winston');
 
 const { fileDate, tsFormat } = require('./helpers/dates');
 
-const logDir = 'logs';
+const logDir = path.resolve(__dirname,'logs');
 const env = process.env.NODE_ENV || 'development';
 
 const directories = [
-  '/errors',
-  '/requests',
-  '/general',
+  'errors',
+  'requests',
+  'general',
 ];
 
+// Create logs directory
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir);
+}
+
 directories.forEach((v) => {
-  // Create log directory if it doesn't exist
-  if (!fs.existsSync(logDir + v)) {
-    fs.mkdirSync(logDir + v);
+  // Create lower log directory if it doesn't exist
+  if (!fs.existsSync(path.resolve(logDir, v))) {
+    fs.mkdirSync(path.resolve(logDir, v));
   }
 });
 
@@ -65,6 +71,9 @@ const logger = new (winston.Logger)({
   transports: transports
 });
 
+
 logger.level = process.env.LOG_LEVEL || 'debug';
+
+logger.info('Application Starting Up');
 
 module.exports = logger;

@@ -9,6 +9,7 @@
     width: 100%;
     display: block;
     min-height: 100vh;
+    padding-left: 160px;
     
     position: static;
 
@@ -32,36 +33,40 @@
     }
   }
 
-  .brandLogo {
-
-    img {
-      transform: scale(0.75);
-
-      position: relative;
-      top: -50px;
-    }
+  .titleText {
+    padding-top: 50px;
   }
 
-  .titleText {
-    margin-top: 100px;
+  .brandLogo {
+    position: relative;
+    top: -20px;
+    object-fit: contain;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
   
   p {
-    font-size: 0.9em;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-weight: 400;
     line-height: 2em;
   }
   
   h1 {
-    font-size: 2.4em;
+    font-size: 2.5em;
     font-weight: 400;
   }
   
   .socialItems {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     margin: 100px;
+
+    @media all and (min-width: $screen-lg) {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
   }
 
   .socialIcon {
