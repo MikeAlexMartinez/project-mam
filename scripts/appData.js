@@ -5,29 +5,29 @@ const sections = {
     text: 'This is my personal website. It shares my personal projects and will also be the home for my blog (when I get around to writing some posts!)',
     socialItems: [
       {
-        link: "https://www.facebook.com/michaelalexandermartinez",
-        icon: "ion-logo-facebook"
+        link: 'https://www.facebook.com/michaelalexandermartinez',
+        icon: 'ion-logo-facebook'
       },
       {
-        link: "https://twitter.com/MikeAlMartinez",
-        icon: "ion-logo-twitter"
+        link: 'https://twitter.com/MikeAlMartinez',
+        icon: 'ion-logo-twitter'
       },
       {
-        link: "https://www.linkedin.com/in/michael-alexander-martinez-b9073742",
-        icon: "ion-logo-linkedin"
+        link: 'https://www.linkedin.com/in/michael-alexander-martinez-b9073742',
+        icon: 'ion-logo-linkedin'
       },
       {
-        link: "https://plus.google.com/u/0/106701963549260967393",
-        icon: "ion-logo-googleplus"
+        link: 'https://plus.google.com/u/0/106701963549260967393',
+        icon: 'ion-logo-googleplus'
       },
       {
-        link: "https://github.com/MikeAlexMartinez",
-        icon: "ion-logo-octocat"
+        link: 'https://github.com/MikeAlexMartinez',
+        icon: 'ion-logo-octocat'
       },
     ]
   },
   subscribe: {
-    sectionHeaderText: "Stay tunned we're coming this year",
+    sectionHeaderText: 'Stay tunned we\'re coming this year',
   },
   gallery: {
     projects: [
@@ -88,43 +88,43 @@ const sections = {
     ],
   },
   skills: {
-    sectionHeaderText: "Get started fast with one of our unique, pre-built concepts.",
+    sectionHeaderText: 'Get started fast with one of our unique, pre-built concepts.',
     mainText: [
-      "Customers love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout. love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout.",
-      "Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit."
+      'Customers love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout. love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout.',
+      'Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.'
     ],
     skillList: [
-      {skill: "Javascript", image: "js.png" },
-      {skill: "HTML5", image: "html5.png" },
-      {skill: "CSS3", image: "css3.png" },
-      {skill: "Node", image: "node.png" },
-      {skill: "Express", image: "express.png" },
-      {skill: "MongoDB", image: "mongo.png" },
-      {skill: "Postgres", image: "postgres.png" },
-      {skill: "React", image: "react.png"}
+      {skill: 'Javascript', image: 'js.png' },
+      {skill: 'HTML5', image: 'html5.png' },
+      {skill: 'CSS3', image: 'css3.png' },
+      {skill: 'Node', image: 'node.png' },
+      {skill: 'Express', image: 'express.png' },
+      {skill: 'MongoDB', image: 'mongo.png' },
+      {skill: 'Postgres', image: 'postgres.png' },
+      {skill: 'React', image: 'react.png'}
     ]
   },
   services: {
     serviceList: {
       left: [
-        "Hosting",
-        "Web Security",
-        "Domain",
+        'Hosting',
+        'Web Security',
+        'Domain',
       ],
       right: [
-        "24/7 Support",
-        "Email Hosting",
-        "Premium DNS",
+        '24/7 Support',
+        'Email Hosting',
+        'Premium DNS',
       ]
     },
     price: 29
   },
   contactForm: {
-    sectionHeaderText: "Get in #[span touch], I would love to hear from you.",
-    mainText: ["Whether it's to give me feedback, offer me work, or just to say hello, I'd love to hear from you."],
+    sectionHeaderText: 'Get in #[span touch], I would love to hear from you.',
+    mainText: ['Whether it\'s to give me feedback, offer me work, or just to say hello, I\'d love to hear from you.'],
   },
   footer: {
-    copyright: " MikeAlexMartinez - made with love",
+    copyright: ' MikeAlexMartinez - made with love',
   }
 };
 

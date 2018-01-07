@@ -8,7 +8,7 @@
     "gulp-watch": "gulp watch",
     "serve": "nodemon ./dev.js",
     "production": "nodemon ./production.js",
-    "test": "mocha --exit"
+    "test": "mocha"
   },
   "author": "michael martinez",
   "license": "MIT",

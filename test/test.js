@@ -1,23 +1,32 @@
 'use strict';
 
-function importTest(name, path) {
-  describe(name, function () {
-      require(path);
-  });
-}
+const refreshDB = require('../scripts/mongodb.init');
 
 require('./common');
 
-describe('Testing...', function () {
+describe('Testing...', function() {
   
-  before(function() {
-  
+  before(function(done) {
+    refreshDB()
+    .then(() => {
+      done();
+    })
+    .catch((err) => {
+      console.error(err);
+    });    
   });
   
   importTest('API Messages', './api/messages');
   
-  
   after(function() {
-  
+    process.exit();
   });
+  
 });
+
+// this function imports tests from other files.
+function importTest(name, path) {
+  describe(name, function () {
+    require(path);
+  });
+}
