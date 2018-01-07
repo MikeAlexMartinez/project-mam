@@ -5,8 +5,8 @@ mixin socialItem(sI)
 
 mixin skill(s)
   div.skill
-    div.upper
-      i(class=s.icon)
+    div.imgContainer
+      img(src=`./myImages/${s.image}`)
     div.skillText
       p=s.skill
 

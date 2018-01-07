@@ -25,7 +25,8 @@ gulp.task("js", function() {
       includePaths: [
         __dirname + "/node_modules/jquery/dist",
         __dirname + "/node_modules/masonry-layout/dist",
-        __dirname + "/node_modules/animsition/dist/js"
+        __dirname + "/node_modules/animsition/dist/js",
+        __dirname + "/node_modules/owl.carousel/dist"
       ]
     })).on('error', console.log)
     .pipe(gulp.dest("./public/js"));

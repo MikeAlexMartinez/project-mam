@@ -43,6 +43,7 @@
     "method-override": "^2.3.10",
     "mongoose": "^4.13.7",
     "normalize.css": "^7.0.0",
+    "owl.carousel": "^2.2.0",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",

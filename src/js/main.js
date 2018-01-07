@@ -1,9 +1,32 @@
 'use strict';
 //=include jquery.js
 //=include masonry.pkgd.min.js
+//=include owl.carousel.min.js
 
 $(document).ready(() => {
-  console.log("Testing");
+  
+  /**
+   * Set up owl carousel with skills
+   */
+  const skillsOwl = $('#owl-skill');
+
+  skillsOwl.owlCarousel({
+    loop: true,
+    margin: 0,
+    responsive: {
+      0: {
+        items: 1
+      },
+      500: {
+        items: 3 
+      },
+      1500: {
+        items: 5
+      }
+    }
+  });
+
+  // Add custom owl carousel buttons
 
   /**
    * Set up masonry grid gallery

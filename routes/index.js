@@ -13,31 +13,31 @@ router.use('/api', require('./api'));
 // projects page
 router.get('/projects', function projects(req, res) {
 
-  res.render('projects', {});
+  res.render('projects', {location: 'projects'});
 });
 
 // Blog page
 router.get('/blog', function projects(req, res) {
   
-  res.render('blog', {});
+  res.render('blog', {location: 'blog'});
 });
 
 // admin page
 router.get('/admin', function projects(req, res) {
   
-  res.render('admin', {});
+  res.render('admin', {location: 'admin'});
 });
 
 // Blog page
 router.get('/admin-login', function projects(req, res) {
   
-  res.render('adminLogin', {});
+  res.render('adminLogin', {location: 'admin'});
 });
 
 // home route
 router.get('/', function homePage(req, res) {
 
-  res.render('home', {title: "Deft - Home", data: appData.data });
+  res.render('home', {location: 'home', data: appData.data });
 });
 
 // fallback route

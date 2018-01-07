@@ -4,8 +4,27 @@ section.navigation#navigation
     span
     span
     span
-  div.items
-    div#home.item
-      h3.itemTitle Project MaM
+  div.items.top
+    div#home-nav.item
+      h3(class=`itemTitle ${location === 'home' ? 'red' : 'white'}` ) Project MaM
       div.imgContainer
-        img(src="myImages/small-logo-white.png")
+        img(src=`${location === 'home' ? 'myImages/small-logo-red.png' : 'myImages/small-logo-white.png'}`)
+    div#projects-nav.item
+      h3.itemTitle Projects
+      div.imgContainer
+        i.ion-ios-folder
+    div#blogs-nav.item
+      h3.itemTitle Blog
+      div.imgContainer
+        i.ion-ios-paper
+  div.items.bottom
+    div#contact-nav.item
+      h3.itemTitle Contact
+      div.imgContainer
+        i.ion-ios-megaphone
+    div#bug-report.item
+      h3.itemTitle Report Bug
+      div.imgContainer
+        i.ion-ios-bug
+    
+    

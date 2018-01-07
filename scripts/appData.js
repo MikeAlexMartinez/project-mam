@@ -94,10 +94,14 @@ const sections = {
       "Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit."
     ],
     skillList: [
-      {skill: "simple", icon: "ion-md-heart" },
-      {skill: "creative", icon: "ion-md-flask" },
-      {skill: "smooth", icon: "ion-ios-water" },
-      {skill: "stable", icon: "ion-md-code" }
+      {skill: "Javascript", image: "js.png" },
+      {skill: "HTML5", image: "html5.png" },
+      {skill: "CSS3", image: "css3.png" },
+      {skill: "Node", image: "node.png" },
+      {skill: "Express", image: "express.png" },
+      {skill: "MongoDB", image: "mongo.png" },
+      {skill: "Postgres", image: "postgres.png" },
+      {skill: "React", image: "react.png"}
     ]
   },
   services: {
@@ -116,14 +120,11 @@ const sections = {
     price: 29
   },
   contactForm: {
-    sectionHeaderText: "Get in #[span touch], we'd love to hear from you.",
-    mainText: ["Lorem Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmond tempor incididunt ut labore et dolore magna aliqua."],
-    address: "1355 Market Street, Suite 900 San Francisco, CA 94103",
-    phone: "(123) 456-7890",
-    email: "hello@CodeRarecom",
+    sectionHeaderText: "Get in #[span touch], I would love to hear from you.",
+    mainText: ["Whether it's to give me feedback, offer me work, or just to say hello, I'd love to hear from you."],
   },
   footer: {
-    copyright: "deft - made with love",
+    copyright: " MikeAlexMartinez - made with love",
   }
 };
 

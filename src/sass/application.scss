@@ -4,7 +4,9 @@
         "base/base";
 
 /* import libs */
-@import "ionicons/dist/scss/ionicons"; // From node_modules
+@import "ionicons/dist/scss/ionicons",
+        "owl.carousel/src/scss/owl.carousel",
+        "owl.carousel/src/scss/owl.theme.default"; // From node_modules
 
 /* Components */
 @import "components/all";

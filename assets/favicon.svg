@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (unknown)"
-   sodipodi:docname="favicon.svg">
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/michael/Desktop/Projects/project-mam/assets/small-logo-red.png"
+   inkscape:export-xdpi="11.288865"
+   inkscape:export-ydpi="11.288865">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="356.98126"
+     inkscape:cx="124.12412"
      inkscape:cy="366.97344"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -50,7 +53,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -60,7 +63,7 @@
      id="layer1"
      transform="translate(-5,-202)">
     <path
-       style="fill:#000000;stroke-width:0.99999994"
+       style="fill:#d32f2f;stroke-width:0.99999994;fill-opacity:1"
        d="M 0,0 V 340.1582 H 340.1582 V 0 Z M 37.794922,37.794922 H 302.36133 V 75.589844 H 283.46484 V 283.46484 h 18.89649 v 20.89649 l -75.58985,-2 V 75.589844 H 207.87305 V 188.97656 H 151.18164 V 75.589844 H 132.2832 V 302.36133 H 37.794922 Z M 340.1582,264.56641 H 321.25977 V 113.38672 h 18.89843 z"
        transform="matrix(0.26458333,0,0,0.26458333,5,202)"
        id="rect3699"

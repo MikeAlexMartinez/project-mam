@@ -5,5 +5,10 @@ section#skills.skills
   p=data.skills.mainText[0]
   p=data.skills.mainText[1]
   div.skillList
-    for sk in data.skills.skillList
-      +skill(sk)
+    div.owlBtn.prev
+      i.ion-ios-arrow-back
+    div#owl-skill.owl-carousel
+      for sk in data.skills.skillList
+        +skill(sk)
+    div.owlBtn.next
+      i.ion-ios-arrow-forward

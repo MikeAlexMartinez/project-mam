@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.2 (unknown)"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="/home/michael/Desktop/Projects/project-mam/assets/project-mam-logo.png"
+   inkscape:export-filename="/home/michael/Desktop/Projects/project-mam/assets/project-mam-logo-black.png"
    inkscape:export-xdpi="47.98"
    inkscape:export-ydpi="47.98">
   <defs
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-198.82148"
-     inkscape:cy="430.69229"
+     inkscape:zoom="0.7"
+     inkscape:cx="-114.47742"
+     inkscape:cy="80.250986"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -65,10 +65,10 @@
      transform="translate(-5,-202)">
     <path
        style="fill:#1d2328;fill-opacity:1;stroke-width:0.99999994"
-       d="m 0,0 v 340.1582 h 340.1582 v -18.89843 h 170.07813 v 18.89843 h 340.1582 V 0 H 510.23633 V 56.693359 H 340.1582 V 0 Z M 37.794922,37.794922 H 302.36133 V 75.589844 H 283.46484 V 283.46484 h 18.89649 v 20.89649 l -75.58985,-2 V 75.589844 H 207.87305 V 188.97656 H 151.18164 V 75.589844 H 132.2832 V 302.36133 H 37.794922 Z m 510.236328,0 H 812.59766 V 302.36133 c 0,0 -75.24402,0.83406 -75.58985,0 V 75.589844 H 718.10938 V 188.97656 H 661.41797 V 75.589844 H 642.51953 V 302.36133 h -94.48828 v -18.89649 h 18.89844 V 75.590552 H 548.03125 Z M 340.1582,94.488281 h 170.07813 v 18.898439 h 18.89844 v 151.17969 h -18.89844 v 18.89843 H 340.1582 V 264.56641 H 321.25977 V 113.38672 h 18.89843 z"
+       d="m 0,0 v 340.1582 h 396.8504 v -18.89843 h 56.69291 V 340.1582 H 850.39453 V 0 H 510.23633 V 37.795276 H 340.1582 V 0 Z M 37.794922,37.794922 H 302.36133 V 94.487745 H 283.46484 V 283.46484 h 18.89649 v 20.89649 l -75.58985,-2 V 75.589844 H 207.87305 V 188.97656 H 151.18164 V 75.589844 H 132.2832 V 302.36133 H 37.794922 Z m 510.236328,0 H 812.59766 V 302.36133 c 0,0 -75.24402,0.83406 -75.58985,0 V 75.589844 H 718.10938 V 188.97656 H 661.41797 V 75.589844 H 642.51953 V 302.36133 h -94.48828 v -18.89649 h 18.89844 V 94.487745 H 548.03125 Z M 359.05512,188.97638 h 132.28347 v -56.69291 h -18.89764 v -18.89764 h -94.48819 v 18.89764 h -18.89764 m 0,94.48819 v 37.79511 l 18.89764,1.4e-4 v 37.7953 H 340.1582 V 283.46457 H 321.25977 V 94.488635 H 340.1582 V 75.590552 h 170.07813 v 18.898083 h 18.89844 V 283.46431 h -18.89844 v 18.8979 H 472.44095 V 264.5671 h 18.89764 v -37.79544"
        transform="matrix(0.26458333,0,0,0.26458333,5,202)"
        id="rect3699"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
   </g>
 </svg>

@@ -15,42 +15,9 @@
     font-weight: 500;
     line-height: 1.5em;    
     padding-top: 15px;
+
+    padding-bottom: 50px;
     color: $txt-grey;
-  }
-
-  .cd-group {
-    vertical-align: top; 
-
-    i {
-      color: $bg-btn;
-      margin-right: 5px;
-      font-size: 1.5em;
-    }
-
-    p {
-      font-size: 1.05em;
-      font-weight: 600;
-    }
-    
-    @media all and (max-width: $screen-sm) {
-      display: block;
-      width: 100%;
-      
-      p {
-        padding: 0;
-      }
-    }
-    
-    @media all and (min-width: $screen-md-start) {
-      display: inline-block;
-      width: 50%;
-      
-
-      p.left {
-        padding-right: 20px;
-      }
-    }
-    
   }
 
   .formSide {
