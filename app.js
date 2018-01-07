@@ -10,11 +10,11 @@ const winston = require('winston');
 const bodyParser = require('body-parser');
 
 // Helpers
-const { fileDate, tsFormat } = require('./helpers/dates');
+const { fileDate } = require('./helpers/dates');
 
 // Logging
 const logger = require('./winston');
-logger.info('Started Logging module!');
+logger('info','Started Logging module!');
 
 // Load my routes
 const routes = require('./routes');
@@ -67,8 +67,8 @@ app.use(expressWinston.errorLogger({
 
 // start app
 app.listen(3030, () => {
-  logger.info(`Running server in ${process.env.NODE_ENV} mode!`);
-  logger.info('Listening for requests on port 3030...');
+  logger('info',`Running server in ${process.env.NODE_ENV} mode!`);
+  logger('info','Listening for requests on port 3030...');
 });
 
 module.export = app;

@@ -9,11 +9,15 @@ function importTest(name, path) {
 require('./common');
 
 describe('Testing...', function () {
-  beforeEach(function () {
-     console.log('==========');
+  
+  before(function() {
+  
   });
+  
   importTest('API Messages', './api/messages');
-  after(function () {
-      console.log('^^^^^^^^^');
+  
+  
+  after(function() {
+  
   });
 });

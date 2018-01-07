@@ -71,9 +71,12 @@ const logger = new (winston.Logger)({
   transports: transports
 });
 
-
 logger.level = process.env.LOG_LEVEL || 'debug';
 
-logger.info('Application Starting Up');
+const suppressedLogger = (method, ...args) => {
+  if (process.env.NODE_ENV !== 'test') {
+    logger[method](...args);
+  }
+};
 
-module.exports = logger;
+module.exports = suppressedLogger;

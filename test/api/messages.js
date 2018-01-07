@@ -29,7 +29,7 @@ describe('top', function () {
           done();
         })
         .catch((err) => {
-          logger.error(err);
+          console.error(err);
 
           done(err);
         });
@@ -55,7 +55,7 @@ describe('top', function () {
           done();
         })
         .catch((err) => {
-          logger.error(err);
+          console.error(err);
 
           done(err);
         });
@@ -83,7 +83,7 @@ describe('top', function () {
           done();
         })
         .catch((err) => {
-          logger.error(err);
+          console.error(err);
 
           done(err);
         });
