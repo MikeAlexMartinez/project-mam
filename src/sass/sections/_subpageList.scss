@@ -1,0 +1,19 @@
+.sc-list-container {
+  padding: 50px;
+  padding-top: 0;
+
+  overflow-y: scroll;
+
+  .sc-paper {
+    width: 20%;
+    height: 20%;
+  }
+
+  .sc-image {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+}

@@ -42,10 +42,11 @@ mixin subpageHeader()
       i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
 
 mixin subpageList()
-  div.sc-list
+  div.sc-list-container
     div#sc-list-filter.sc-list-filter
     div#sc-list-tags.sc-list-tags
     div#sc-list
+      +subpageItem()
 
 mixin subpageItem(i)
   div.sc-paper
