@@ -105,21 +105,6 @@ const sections = {
       {skill: 'CIMA', image: 'CIMA.png'}      
     ]
   },
-  services: {
-    serviceList: {
-      left: [
-        'Hosting',
-        'Web Security',
-        'Domain',
-      ],
-      right: [
-        '24/7 Support',
-        'Email Hosting',
-        'Premium DNS',
-      ]
-    },
-    price: 29
-  },
   contactForm: {
     sectionHeaderText: 'Get in #[span touch], I would love to hear from you.',
     mainText: ['Whether it\'s to give me feedback, offer me work, or just to say hello, I\'d love to hear from you.'],
