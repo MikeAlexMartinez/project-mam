@@ -11049,6 +11049,28 @@ $(document).ready(() => {
   });
 
   // Add custom owl carousel buttons
+  // Go to next item in carousel
+  $('.owlBtn.next').click(function() {
+    skillsOwl.trigger('next.owl.carousel');
+  });
+
+  // Go to previous item in carousel
+  $('.owlBtn.prev').click(function() {
+    skillsOwl.trigger('prev.owl.carousel');
+  });
+
+  // Set height of owl buttons
+  setOwlBtnHeight();
+
+  // Reset height when window resizes
+  $( window ).resize(() => {
+    setOwlBtnHeight();
+  });
+  $('body').resize(() => {
+    setOwlBtnHeight();
+  });
+  
+  
 
   /**
    * Set up masonry grid gallery
@@ -11065,7 +11087,7 @@ $(document).ready(() => {
    * Scroll to top click handler for footer
    * 
    **/
-  $('#scrollToTop').click((evt) => {
+  $('#scrollToTop').click(() => {
     
     // get width of viewport
     const width = $( window ).width();
@@ -11112,7 +11134,7 @@ $(document).ready(() => {
 
   });
 
-  $('.close-project').click((evt) => {
+  $('.close-project').click(() => {
     $('.out-right.show').removeClass('show');
     $('#rightSide').removeClass('hide');
   });
@@ -11128,22 +11150,6 @@ $(document).ready(() => {
     $('#navigation').toggleClass('open');
   });
 
-  $('#title').click((evt) => {
-
-    const menu = $('#menu-icon'); 
-
-    if (menu.hasClass('open')) {
-      console.log('menu is open')
-    }
-  });
-  $('#rightSide').click((evt) => {
-    const menu = $('#menu-icon'); 
-    
-    if (menu.hasClass('open')) {
-      console.log('menu is open')
-    }
-  });
-
   /**
    * contact form handling
    * 
@@ -11152,7 +11158,7 @@ $(document).ready(() => {
   
   $('#contactForm').submit(function(evt) {
     evt.preventDefault();
-    console.log("New message Submited!");
+    console.log('New message Submited!');
     
     const data = {
       source: $('#contact-source').val(),
@@ -11163,14 +11169,11 @@ $(document).ready(() => {
     
     const successMessage = 'Message received! Please check your inbox ( ^_^) ';
     
-    const posting = $.post('/api/message', data, "json");
+    const posting = $.post('/api/message', data, 'json');
     
-    posting.done(function(data) {
-      
+    posting.done(function() { 
       showToast('contact','success', successMessage);
-      
-    }).fail(function(err) {
-      
+    }).fail(function() {
       showToast('contact','error', errorMessage);
     });
     
@@ -11182,7 +11185,6 @@ $(document).ready(() => {
    **/
   $('#subscribeForm').submit(function(evt) {
     evt.preventDefault();
-    console.log("New Subscriber Submited!");
     
     const data = {
       source: $('#subscribe-source').val(),
@@ -11190,7 +11192,7 @@ $(document).ready(() => {
       active: true,
     };
     
-    const posting = $.post('/api/subscriber', data, "json");
+    const posting = $.post('/api/subscriber', data, 'json');
     
     const successMessage = 'Thanks for subscribing! Please check your inbox. ( ^_^) ';
     
@@ -11247,4 +11249,15 @@ function scrollToTop(target, move, speed) {
   }, speed, () => {
     target.focus();
   });
+}
+
+/**
+ * @return {null}
+ */
+function setOwlBtnHeight() {
+  // Set height and of buttons
+  const height = $('.owl-item:first-child').height();
+  
+  $('.owlBtn').css('height', height);
+  $('.owlBtn').css('padding-top', height / 2 - 25);
 }

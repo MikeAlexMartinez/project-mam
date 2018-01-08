@@ -1,4 +1,4 @@
-$trans: 0.25s ease-in-out; 
+$trans: 0.30s ease-in-out; 
 
 @mixin menu-transform {
   -webkit-transform-origin: left center;
@@ -106,12 +106,16 @@ $trans: 0.25s ease-in-out;
 
     .item {
       position: relative;
-      color: #fff;
-
-      &:hover {
-        cursor: pointer;
-
-        color: $bg-title-end;
+      
+      a {
+        text-decoration: none;
+        color: #fff;
+        
+        &:hover {
+          cursor: pointer;
+  
+          color: $bg-title-end;
+        }
       }
     }
     
@@ -149,11 +153,16 @@ $trans: 0.25s ease-in-out;
 
       text-align: center;
 
+      &.red {
+        color: $bg-title-end;
+      }
+
       img {
         max-width: 100%;
         max-height: 100%;
-      }
 
+      }
+      
       i {
         font-size: 30px;
       }

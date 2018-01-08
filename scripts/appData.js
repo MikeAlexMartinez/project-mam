@@ -101,7 +101,8 @@ const sections = {
       {skill: 'Express', image: 'express.png' },
       {skill: 'MongoDB', image: 'mongo.png' },
       {skill: 'Postgres', image: 'postgres.png' },
-      {skill: 'React', image: 'react.png'}
+      {skill: 'React', image: 'react.png'},
+      {skill: 'CIMA', image: 'CIMA.png'}      
     ]
   },
   services: {

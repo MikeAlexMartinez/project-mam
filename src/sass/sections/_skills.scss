@@ -23,13 +23,13 @@
     .owlBtn {
       display: inline-block;
     }
-
+    
     .owlBtn {
-      margin-top: 5%;
-      height: 60%;
+      cursor: pointer;
+      position: absolute;
       width: 5%;
       background-color: $bg-btn;
-
+      
       i {
         display: inline-block;
         width: 100%;
@@ -38,56 +38,43 @@
         font-weight: 600;
         font-size: 40px;
       }
-
+      
       &:hover {
         background-color: $bg-btn-hover;
       }
-
+      
       &.prev {
-        position: absolute;
-        top: 0;
         left: 0;
       }
       &.next {
-        position: absolute;
-        top: 0;
         right: 0;
       }
     }
   }
   .skill {
-    position: relative;
-    top: 0;
     width: 100%;
     text-align: center;
     padding: 10px;
     display: inline-block;
     background-color: $bg-offwhite;
 
-    transition: all 0.2s linear;
-
     .imgContainer {
 
       img {
         max-height: 100%;
-        max-width: auto;
+        max-width: 100%;
       }
     }
 
     p {
       color: #000;
-      text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       padding: 0;
     }
 
     &:hover {
-      position: relative;
-      top: -20px;
       cursor: pointer;
       background-color: $bg-hover;
-
-      transition: all 0.2s linear;
     }
   }
 

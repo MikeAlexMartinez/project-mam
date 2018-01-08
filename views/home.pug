@@ -1,25 +1,20 @@
-doctype html
-html
-  head
-    include includes/head.pug
-  
-  body
-    include includes/navigation.pug
-    include includes/title.pug
+extends layout.pug
 
-    div#rightSide.rightSide
-      div#content.content
-        include includes/gallery.pug
-        
-        include includes/subscribe.pug
+block content
+  include includes/title.pug
 
-        include includes/skills.pug
+  div#rightSide.rightSide
+    div#content.content
+      include includes/gallery.pug
+      
+      include includes/subscribe.pug
 
-        include includes/blog.pug
+      include includes/skills.pug
 
-        include includes/contact.pug
+      include includes/blog.pug
 
-        include includes/footer.pug
+      include includes/contact.pug
 
-    include includes/gallerySlides.pug
-    include includes/js.pug
+      include includes/footer.pug
+
+  include includes/gallerySlides.pug

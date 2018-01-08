@@ -10,21 +10,25 @@ section.navigation#navigation
       div.imgContainer
         img(src=`${location === 'home' ? 'myImages/small-logo-red.png' : 'myImages/small-logo-white.png'}`)
     div#projects-nav.item
-      h3.itemTitle Projects
-      div.imgContainer
-        i.ion-ios-folder
+      a(href="/projects")
+        h3(class=`itemTitle ${location === 'projects' ? 'red' : '' }`) Projects
+        div(class=`imgContainer ${location === 'projects' ? 'red' : '' }`)
+          i.ion-ios-folder
     div#blogs-nav.item
-      h3.itemTitle Blog
-      div.imgContainer
-        i.ion-ios-paper
+      a(href="/blog")
+        h3(class=`itemTitle ${location === 'blog' ? 'red' : '' }`) Blog
+        div(class=`imgContainer ${location === 'blog' ? 'red' : '' }`)
+          i.ion-ios-paper
   div.items.bottom
     div#contact-nav.item
-      h3.itemTitle Contact
-      div.imgContainer
-        i.ion-ios-megaphone
+      a(href="/#contact-name" class=`${location === 'home' ? 'red' : '' }`)
+        h3.itemTitle Contact
+        div.imgContainer
+          i.ion-ios-megaphone
     div#bug-report.item
-      h3.itemTitle Report Bug
-      div.imgContainer
-        i.ion-ios-bug
+      a(href="#")
+        h3.itemTitle Report Bug
+        div.imgContainer
+          i.ion-ios-bug
     
     
