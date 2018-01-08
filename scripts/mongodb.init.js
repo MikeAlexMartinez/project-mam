@@ -14,7 +14,13 @@ const subscribers = require('./db/subscribers');
 const args = process.argv;
 
 if (path.parse(args[1]).name === 'mongodb.init' ) {
-  refreshCollections();
+  refreshCollections()
+    .then(() => {
+      console.log('Database Refresh Complete!');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function refreshCollections() {

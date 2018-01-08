@@ -34,3 +34,17 @@ mixin projectDetail(p)
       h2=p.heading
       for text in p.detail
         p=text
+
+mixin subpageHeader()
+  div.sc-header
+    div.sc-header-content
+      h2=location
+      i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
+
+mixin subpageList()
+  div.sc-list
+    div#sc-list-filter.sc-list-filter
+    div#sc-list-tags.sc-list-tags
+    div#sc-list
+
+mixin subpageItem(i)

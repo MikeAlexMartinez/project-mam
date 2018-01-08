@@ -13,13 +13,13 @@ router.use('/api', require('./api'));
 // projects page
 router.get('/projects', function projects(req, res) {
 
-  res.render('projects', {location: 'projects'});
+  res.render('projects', {location: 'projects', filtered: false});
 });
 
 // Blog page
 router.get('/blog', function projects(req, res) {
   
-  res.render('blog', {location: 'blog'});
+  res.render('blog', {location: 'blog', filtered: false});
 });
 
 // admin page
@@ -28,7 +28,7 @@ router.get('/admin', function projects(req, res) {
   res.render('admin', {location: 'admin'});
 });
 
-// Blog page
+// admin-login page
 router.get('/admin-login', function projects(req, res) {
   
   res.render('adminLogin', {location: 'admin'});

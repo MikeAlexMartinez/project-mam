@@ -1,0 +1,33 @@
+.sc-header {
+  
+  .sc-header-content {
+    
+    position: relative;
+    border-bottom: $bg-black 2px solid;
+    overflow: auto;
+
+    h2,
+    i {
+      display: inline-block;
+      padding-left: 30px;
+      padding-right: 30px;
+
+      -webkit-margin-before: 0.25em;
+      -webkit-margin-after: 0.25em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+    
+    h2 {
+      float: left;
+      font-size: 42px;
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+    
+    i {
+      float: right;
+      font-size: 42px;
+    }
+  }
+}

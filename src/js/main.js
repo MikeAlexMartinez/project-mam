@@ -44,11 +44,6 @@ $(document).ready(() => {
   $( window ).resize(() => {
     setOwlBtnHeight();
   });
-  $('body').resize(() => {
-    setOwlBtnHeight();
-  });
-  
-  
 
   /**
    * Set up masonry grid gallery
@@ -126,6 +121,13 @@ $(document).ready(() => {
     $('#menu-icon').toggleClass('open');
     // slide in navigation
     $('#navigation').toggleClass('open');
+
+    const navSlide = $('.nav-slide');
+
+    if(navSlide.length) {
+      navSlide.toggleClass('open');
+    }
+    
   });
 
   /**

@@ -68,3 +68,25 @@ body {
   position: fixed;
   left: -100%;
 }
+
+.nav-slide {
+  padding-left: 60px;
+
+  transition: padding-left $trans;
+
+  &.open {
+    padding-left: 300px;
+
+    transition: padding-left $trans;
+  }
+}
+
+.sub-content {
+  height: 100%;
+  width: 100%;
+
+  margin-top: 60px;
+
+  padding: 50px;
+
+}

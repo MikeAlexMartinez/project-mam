@@ -1,4 +1,4 @@
-section.navigation#navigation
+section(id="navigation" class=`navigation ${location === 'home' ? 'home' : ''}`)
   // Hamburger menu - hidden on widescreen
   div(id="menu-icon")
     span
@@ -6,9 +6,9 @@ section.navigation#navigation
     span
   div.items.top
     div#home-nav.item
-      h3(class=`itemTitle ${location === 'home' ? 'red' : 'white'}` ) Project MaM
-      div.imgContainer
-        img(src=`${location === 'home' ? 'myImages/small-logo-red.png' : 'myImages/small-logo-white.png'}`)
+      a(href="/")
+        h3(class=`itemTitle ${location === 'home' ? 'red' : ''}` ) Project MaM
+        div(id="smallLogo" class=`imgContainer ${location === 'home' ? 'red' : ''}`)
     div#projects-nav.item
       a(href="/projects")
         h3(class=`itemTitle ${location === 'projects' ? 'red' : '' }`) Projects

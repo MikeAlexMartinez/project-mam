@@ -1,8 +1,10 @@
-doctype html
-html
-  head
+extends layout.pug
 
-  body
-    div
-      h1 Blog
-      p This is my Blog
+include includes/_mixins.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()
