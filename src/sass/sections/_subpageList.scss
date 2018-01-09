@@ -95,7 +95,7 @@
           margin-right: $icon-margin;
         }
 
-        span i:first-child {
+        a span i:first-child {
           margin-left: $icon-margin;
         }
       }
@@ -107,17 +107,22 @@
           margin-left: $icon-margin;
         }
 
-        span i:last-child {
+        a span i:last-child {
           margin-right: $icon-margin;
         }
       }
       
+      a {
+        text-decoration: none !important;
+      }
+
       span {
         cursor: pointer;
       }
 
       i {
         font-size: 32px;
+        color: #000;
       }
 
     }
