@@ -2,18 +2,131 @@
   padding: 50px;
   padding-top: 0;
 
-  overflow-y: scroll;
+  overflow: visible;
 
   .sc-paper {
+    position: relative;
+
     width: 20%;
     height: 20%;
-  }
+    
+    transition: transform 0.5s ease-in-out;
 
-  .sc-image {
-    img {
-      max-width: 100%;
-      max-height: 100%;
+    &:hover {
+
+      transform: scale(1.05);
+
+      transition: transform 0.5s ease-in-out;
+
+      .sc-detail,
+      .sc-background {
+        transition: opacity 0.5s ease-in-out;
+      }
+      .sc-detail {
+        opacity: 1;
+      }
+      .sc-background {
+        opacity: 0.5;
+      }
+    }
+
+    .sc-background {
+      position: absolute;
+      background: $bg-title-end;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .sc-detail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      text-align: center;
+      color: #000;
+
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .sc-item-header {
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      
+      h4 {
+        margin: 0;
+        padding-top: 15px;
+      }
+    }
+    .sc-item-summary {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .content-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .sc-item-controls {
+      position: absolute;
+      bottom: 0px;
+      height: 45px;
+      width: 100%;
+      background: $bg-white-red;
+      opacity: 1;
+
+      div {
+        display: inline-block;
+      }
+      
+      .left-controls {
+        position: absolute;
+        left: 0;
+        
+        i {
+          margin-right: $icon-margin;
+        }
+
+        span i:first-child {
+          margin-left: $icon-margin;
+        }
+      }
+      .right-controls {
+        position: absolute;
+        right: 0;
+        
+        i {
+          margin-left: $icon-margin;
+        }
+
+        span i:last-child {
+          margin-right: $icon-margin;
+        }
+      }
+      
+      span {
+        cursor: pointer;
+      }
+
+      i {
+        font-size: 32px;
+      }
+
+    }
+
+    .sc-image {
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
-
 }

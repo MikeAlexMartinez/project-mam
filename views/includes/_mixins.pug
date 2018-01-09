@@ -40,6 +40,8 @@ mixin subpageHeader()
     div.sc-header-content
       h2=location
       i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
+      i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)
+      i(class=`${block ? 'ion-ios-grid' : 'ion-ios-grid-outline'}`)
 
 mixin subpageList()
   div.sc-list-container
@@ -53,8 +55,18 @@ mixin subpageItem(i)
     div.sc-image
       img(src="images/shells-massage-therapy-sand.jpg")
     div.sc-detail
-      div.sc-item-header
-        h4 Sand
-      div.sc-item-summary
-        p This is a placeholder project
-      div.sc-item-controls
+      div.sc-background
+      div.content-container
+        div.sc-item-header
+          h4 Sand
+        div.sc-item-summary
+          p This is a placeholder project
+        div.sc-item-controls
+          div.left-controls
+            span(data-tooltip="View Project" data-tooltip-position="top")
+              i.ion-md-eye
+          div.right-controls
+            span(data-tooltip="View Source Code" data-tooltip-position="top")
+              i.ion-logo-octocat
+            span(data-tooltip="More Information" data-tooltip-position="top")
+              i.ion-md-information
