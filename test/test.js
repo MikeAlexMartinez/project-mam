@@ -4,16 +4,17 @@ const refreshDB = require('../scripts/mongodb.init');
 
 require('./common');
 
-describe('Testing...', function() {
+describe('Start Testing...', function() {
   
   before(function(done) {
+    console.log('Refreshing DB...');
     refreshDB()
-    .then(() => {
-      done();
-    })
-    .catch((err) => {
-      console.error(err);
-    });    
+      .then(() => {
+        done();
+      })
+      .catch((err) => {
+        console.error(err);
+      });    
   });
   
   importTest('API Messages', './api/messages');

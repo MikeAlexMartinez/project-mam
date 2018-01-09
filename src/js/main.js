@@ -213,7 +213,9 @@ function showToast(section, status, message) {
 }
 
 /**
- * 
+ * animates move by scrolling from the target to 
+ * the top of the page at the defined speed 
+ * @function scrollToTop
  * @param { Object } target 
  * @param { Object } move 
  * @param { Number } speed 
