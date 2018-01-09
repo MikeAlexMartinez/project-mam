@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "my personal portfolio",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MikeAlexMartinez/project-mam"
+  },
   "scripts": {
     "dev": "npm-run-all -p gulp-watch serve",
     "gulp-watch": "gulp watch",

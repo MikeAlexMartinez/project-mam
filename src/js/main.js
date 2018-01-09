@@ -139,10 +139,10 @@ $(document).ready(() => {
   $('#contactForm').submit(function(evt) {
     evt.preventDefault();
     console.log('New message Submited!');
-    
+
     const data = {
       source: $('#contact-source').val(),
-      name: $('#contact-name').val(),
+      sender: $('#contact-name').val(),
       email: $('#contact-email').val(),
       message: $('#contact-message').val(),
     };

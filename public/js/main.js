@@ -11164,7 +11164,7 @@ $(document).ready(() => {
     
     const data = {
       source: $('#contact-source').val(),
-      name: $('#contact-name').val(),
+      sender: $('#contact-name').val(),
       email: $('#contact-email').val(),
       message: $('#contact-message').val(),
     };

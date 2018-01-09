@@ -36,18 +36,20 @@ function DbCommunicator(Model) {
     name: name,
     submit: function(req, res) {      
       logger('info',`${name} request received`);
-      
+
       const newModel = req.body;
+
+      console.log(newModel);
         
       newModel.createdDate = new Date();
       
       const model = new Model(newModel);
       
       const saved = (m) => {
-        logger('info',`${name} item created succesfully`);
+        logger('info',`${name} item created successfully`);
         
         const response = {
-          message: `${name} item created succesfully`,
+          message: `${name} item created successfully`,
           type: 'success',
           data: m
         };
@@ -68,7 +70,7 @@ function DbCommunicator(Model) {
       const id = req.params.id;
     
       const fetched = (m) => {
-        const message = `${name} item fetched succesfully`;
+        const message = `${name} item fetched successfully`;
         logger('info',message);
         
         const response = {
@@ -146,11 +148,56 @@ function DbCommunicator(Model) {
         error(new Error(`ERROR: MongoDB Connection State is ${conStates[conState]}`), res);
       } else {
 
-        const filter = req.query;
-        
+        let startDate, 
+            endDate,
+            sortDirection = 1,
+            sort = {};
+
+        let filter = req.query;
+
+        // Check if filter contains start date in query
+        if (filter.hasOwnProperty('startdate')) {
+          startDate = filter.startdate;
+          delete filter.startdate;
+        }
+
+        // Check if filter contains end date in query
+        if (filter.hasOwnProperty('enddate')) {
+          endDate = filter.enddate;
+          delete filter.enddate;
+        }
+
+        // if startDate or endDate have had values assigned we
+        // need to contruct a date filter.
+        if (startDate || endDate) {
+          filter.createdDate = {};
+          
+          if (startDate) {
+            filter.createdDate.$gte = new Date(startDate);
+          }
+          if(endDate) {
+            filter.createdDate.$lt = new Date(endDate);
+          }
+        }
+
+        // check for sortdirection before constructing sortfield
+        if (filter.hasOwnProperty('sortdirection')) {
+          sortDirection = parseInt(filter.sortdirection);
+          delete filter.sortdirection;
+        }
+
+        // check for sortfield option
+        if (filter.hasOwnProperty('sortfield')) {
+          sort[filter.sortfield] = sortDirection;
+
+          delete filter.sortfield;
+        } else {
+          sort.createdDate = sortDirection;
+        }
+
         const fetched = (m) => {
-          const message = `${name} item(s) fetched succesfully`;
-          logger('info',message);
+          const message = `${name} item(s) fetched successfully`;
+          logger('info', message);
           
           const response = {
             message: message,
@@ -162,10 +209,11 @@ function DbCommunicator(Model) {
         };
         
         Model.find(filter, null, {maxTimeMS: 5000 })
-        .then(fetched)
-        .catch((err) => {
-          error(err, res);
-        });
+          .sort(sort)
+          .then(fetched)
+          .catch((err) => {
+            error(err, res);
+          });
       }
     }
   };
