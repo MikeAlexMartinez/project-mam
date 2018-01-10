@@ -16,12 +16,8 @@ FreeCodeCamp.
 
 
 To Do List:
-- Create hard-coded front page, to meet user-stories defined above for the time being, while CMS is developed.
-- complete project edit page
-- fix dates, for existing projects, and edit projects
-- wire up projects list page
-- Complete cloudinary - mongodb picture storage integration.
-- Complete image gallery.
-- Add picture management to project edit page.
+- Add tests for all API endpoints
+- create screenshots and for projects so far.
+- create gulp task and uniform format to bring in projects to home page automatically.
 
 Favicons were generated with https://realfavicongenerator.net/.

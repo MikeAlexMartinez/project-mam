@@ -9,7 +9,7 @@ const projects = [
     'associatedBlogPosts' : [ ],
     'detail': [
       {
-        type: 'h2',
+        type: 'h3',
         content: 'This is my personal website'
       },
       {
@@ -28,18 +28,19 @@ const projects = [
     'git' : 'https://github.com/MikeAlexMartinez/project-mam.git',
     'real' : true,
     'favourite' : true,
-    'lastUpdate' : 1503603567506,
-    'createdDate' : 1503603567506,
+    'lastUpdate' : new Date(),
+    'createdDate' : new Date(),
     'public' : true,
-    'pictures' : [ ],
-    'mainPicture' : null,
+    'tags': ['node', 'express', 'winston', 'gulp','jshint', 'mocha','mongodb', 'puppeteer', 'animate', 'async'],
+    'pictures' : ['myImages/projects/project-mam/project-mam.png'],
+    'mainPicture' : 'myImages/projects/project-mam/project-mam.png',
     'type': 'FreeCodeCamp',
     'subtype': 'Frontend'
   },
   {
     '_id' : 'deftca36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Deft',
-    'link' : 'https://www.projectmam.com/deft',
+    'link' : 'https://www.projectmam.com/view/deft',
     'miniDetail' : 'Deft is the third FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -63,18 +64,19 @@ const projects = [
     'git' : 'https://github.com/MikeAlexMartinez/templates/tree/master/cloned/FreeCSS/Deft',
     'real' : true,
     'favourite' : true,
-    'lastUpdate' : 1503603567506,
-    'createdDate' : 1503603567506,
+    'lastUpdate' : new Date(),
+    'createdDate' : new Date(),
     'public' : true,
-    'pictures' : [ ],
-    'mainPicture' : null,
+    'tags': ['node', 'express', 'gulp', 'puppeteer', 'masonry', 'HTML5', 'CSS3', 'Javascript', 'jQuery'],
+    'pictures' : ['myImages/projects/deft/deft-home-short.png', 'myImages/projects/deft/deft-long-short.png'],
+    'mainPicture' : 'myImages/projects/deft/deft-home-short.png',
     'type': 'Templates',
     'subtype': null
   },
   {
     '_id' : 'ranger36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'ranger',
-    'link' : 'https://www.projectmam.com/ranger',
+    'link' : 'https://www.projectmam.com/view/ranger',
     'miniDetail' : 'Ranger is the third FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -98,18 +100,19 @@ const projects = [
     'git' : 'https://github.com/MikeAlexMartinez/templates/tree/master/cloned/FreeCSS/Ranger',
     'real' : true,
     'favourite' : true,
-    'lastUpdate' : 1503603567506,
-    'createdDate' : 1503603567506,
+    'lastUpdate' : new Date(),
+    'createdDate' : new Date(),
     'public' : true,
-    'pictures' : [ ],
-    'mainPicture' : null,
+    'tags': ['node', 'express', 'gulp', 'puppeteer', 'animate', 'waypoints', 'owl.carousel', 'HTML5', 'CSS3', 'Javascript', 'jQuery'],
+    'pictures' : ['myImages/projects/ranger/ranger-top.png', 'myImages/projects/ranger/ranger-pricing.png', 'myImages/projects/ranger/ranger-screenshots.png'],
+    'mainPicture' : 'myImages/projects/ranger/ranger-top.png',
     'type': 'Templates',
     'subtype': null
   },
   {
     '_id' : 'minifo36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Minifolio',
-    'link' : 'https://www.projectmam.com/minifolio',
+    'link' : 'https://www.projectmam.com/view/minifolio',
     'miniDetail' : 'Minifolio is the First FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -130,51 +133,53 @@ const projects = [
         content: 'Libraries used include waypoints, pug, animate.css and others.'
       }
     ],
-    'git' : 'https://github.com/MikeAlexMartinez/templates/tree/master/cloned/FreeCSS/Ranger',
+    'git' : 'https://github.com/MikeAlexMartinez/templates/tree/master/cloned/FreeCSS/Minifolio',
     'real' : true,
     'favourite' : true,
-    'lastUpdate' : 1503603567506,
-    'createdDate' : 1503603567506,
+    'lastUpdate' : new Date(),
+    'createdDate' : new Date(),
     'public' : true,
-    'pictures' : [ ],
-    'mainPicture' : null,
+    'tags': ['Node', 'Express', 'MongoDB', 'Gulp', 'Puppeteer', 'animate', 'waypoints', 'fancybox', 'HTML5', 'CSS3', 'Javascript', 'jQuery'],
+    'pictures' : ['myImages/projects/minifolio/minifolio-home.png', 'myImages/projects/minifolio/minifolio-about.png', 'myImages/projects/minifolio/minifolio-contact.png'],
+    'mainPicture' : 'myImages/projects/minifolio/minifolio-home.png',
     'type': 'Templates',
     'subtype': null
   },
   {
-    '_id' : 'testca36-3d7a-40f4-8f06-ae03cc22f045',
-    'title' : 'test',
-    'link' : 'https://www.projectmam.com/',
-    'miniDetail' : 'Test test test.',
+    '_id' : 'resume36-3d7a-40f4-8f06-ae03cc22f045',
+    'title' : 'Resume',
+    'link' : 'https://www.projectmam.com/view/resume',
+    'miniDetail' : 'Resume is one of the first tasks set by P1xt in their web dev curriculum.',
     'associatedBlogPosts' : [ ],
     'detail': [
       {
         type: 'h2',
-        content: 'This is a test'
+        content: 'Resume - P1xt - clone'
       },
       {
         type: 'h3',
-        content: 'Still a test.'
+        content: 'Resume is one of the first tasks set by P1xt in their web dev curriculum.'
       },
       {
         type: 'p',
-        content: 'Still a test.'
+        content: 'I used a range of different librarires to achieve the desired look.'
       },
       {
         type: 'p',
-        content: 'Still a test.'
+        content: 'Libraries used include waypoints, pug, animate.css and others.'
       }
     ],
-    'git' : 'https://github.com/MikeAlexMartinez/project-mam.git',
-    'real' : false,
-    'favourite' : false,
-    'lastUpdate' : 1503603567506,
-    'createdDate' : 1503603567506,
-    'public' : false,
-    'pictures' : [ ],
-    'mainPicture' : null,
-    'type': 'FreeCodeCamp',
-    'subtype': 'Frontend'
+    'git' : 'https://github.com/MikeAlexMartinez/templates/tree/master/cloned/Resume',
+    'real' : true,
+    'favourite' : true,
+    'lastUpdate' : new Date(),
+    'createdDate' : new Date(),
+    'public' : true,
+    'tags': ['HTML5', 'CSS3', 'Javascript', 'jQuery', 'chartjs', ''],
+    'pictures' : ['myImages/projects/resume/resume-resume.png', 'myImages/projects/resume/resume.png', 'myImages/projects/resume/resume-portfolio.png'],
+    'mainPicture' : 'myImages/projects/resume/resume-resume.png',
+    'type': 'P1xt',
+    'subtype': 'clone'
   },
 ];
 
