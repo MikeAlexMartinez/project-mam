@@ -13,6 +13,10 @@ const subscribers = require('./db/subscribers');
 
 const args = process.argv;
 
+if (path.parse(args[1]).name === '_mocha') {
+  console.log("Running in test mode...");
+}
+
 if (path.parse(args[1]).name === 'mongodb.init' ) {
   refreshCollections()
     .then(() => {

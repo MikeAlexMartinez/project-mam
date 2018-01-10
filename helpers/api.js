@@ -38,8 +38,6 @@ function DbCommunicator(Model) {
       logger('info',`${name} request received`);
 
       const newModel = req.body;
-
-      console.log(newModel);
         
       newModel.createdDate = new Date();
       
@@ -93,7 +91,7 @@ function DbCommunicator(Model) {
 
       const id = req.params.id;
       const updatedItem = req.body;
-      
+
       const updated = (m) => {
         const message = `${name} item updated successfully`;
         
@@ -104,11 +102,11 @@ function DbCommunicator(Model) {
           type: 'success',
           data: m
         };
-        
+
         res.status(200).send(response);
       };
         
-      Model.findByIdAndUpdate(id, updatedItem)
+      Model.findByIdAndUpdate(id, updatedItem, {'new': true })
         .then(updated)
         .catch((err) => {
           error(err, res);
@@ -129,7 +127,7 @@ function DbCommunicator(Model) {
           type: 'success',
           data: m
         };
-        
+
         res.status(200).send(response);
       };
       

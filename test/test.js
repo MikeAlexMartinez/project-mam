@@ -2,6 +2,8 @@
 
 const refreshDB = require('../scripts/mongodb.init');
 
+process.env.NODE_ENV = 'test';
+
 require('./common');
 
 describe('Testing...', function() {

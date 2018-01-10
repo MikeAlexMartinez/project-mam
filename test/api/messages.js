@@ -7,8 +7,6 @@ const encode = require('../../helpers/encode');
 
 const api = `http://localhost:3030/api/`;
 
-process.env.NODE_ENV = 'test';
-
 require('../../app');
 
 describe('top', function () {
@@ -90,23 +88,23 @@ describe('top', function () {
         const options = rpOptions('sender=Sender-1');
         
         rp(options)
-        .then((resp) => {
-          
-          const data = resp.data;
-          
-          assert.equal(resp.type, 'success');
-          assert.typeOf(data, 'array');
-          assert.lengthOf(data, 1);
-          assert.equal(data[0].sender, 'Sender-1');
-          assert.equal(data[0].source, 'templates/deft');
-          
-          done();
-        })
-        .catch((err) => {
-          console.error(err);
-          
-          done(err);
-        });
+          .then((resp) => {
+            
+            const data = resp.data;
+            
+            assert.equal(resp.type, 'success');
+            assert.typeOf(data, 'array');
+            assert.lengthOf(data, 1);
+            assert.equal(data[0].sender, 'Sender-1');
+            assert.equal(data[0].source, 'templates/deft');
+            
+            done();
+          })
+          .catch((err) => {
+            console.error(err);
+            
+            done(err);
+          });
       });
 
       it('should filter messages by source', function(done) {
@@ -114,23 +112,23 @@ describe('top', function () {
         const options = rpOptions('source=project-mam');
                 
         rp(options)
-        .then((resp) => {
-          
-          const data = resp.data;
-          
-          assert.equal(resp.type, 'success');
-          assert.typeOf(data, 'array');
-          assert.lengthOf(data, 3);
-          assert.equal(data[0].sender, 'Sender-3');
-          assert.equal(data[0].source, 'project-mam');
-          
-          done();
-        })
-        .catch((err) => {
-          console.error(err);
-          
-          done(err);
-        });
+          .then((resp) => {
+            
+            const data = resp.data;
+            
+            assert.equal(resp.type, 'success');
+            assert.typeOf(data, 'array');
+            assert.lengthOf(data, 3);
+            assert.equal(data[0].sender, 'Sender-3');
+            assert.equal(data[0].source, 'project-mam');
+            
+            done();
+          })
+          .catch((err) => {
+            console.error(err);
+            
+            done(err);
+          });
       });
 
       it('should filter messages by date', function(done) {
@@ -201,7 +199,7 @@ describe('top', function () {
    * - returns json
    * - fetch single message by id
    */
-  describe('/messages get', function() {
+  describe('/message/:id (GET) route', function() {
     const id = `sender01-3c83-4b4b-9089-69362f729ae7`;
     
     it('should return json', function(done) {
@@ -228,13 +226,7 @@ describe('top', function () {
 
     it('should fetch specified message by ID', function(done) {
       
-      const rpOptions = {
-        method: 'GET',
-        uri: `${api}message/${id}`,
-        json: true,
-      };
-
-      rp(rpOptions)
+      findById(id)
         .then((resp) => {
           
           const data = resp.data;
@@ -261,7 +253,7 @@ describe('top', function () {
    * - returns json
    * - can fetch newly created user
    */
-  describe('/message routes', function() {
+  describe('/message/:id (POST, PUT, DELETE) routes', function() {
     
     let _id;
 
@@ -273,16 +265,13 @@ describe('top', function () {
         message: 'Hello from test-user!'
       };
 
-      const formBody = encode.formData(message);
-
       const options = {
         method: 'POST',
         uri: `${api}message`,
         headers: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/json'
         },
-        body: formBody,
-        json: true
+        json: message
       };
 
       rp(options)
@@ -309,16 +298,125 @@ describe('top', function () {
     });
     
     it('should retrieve the message that I just created', function(done) {
-      
+            
+      findById(_id)
+        .then((resp) => {
+          
+          const data = resp.data;
+
+          assert.equal(resp.type, 'success');
+          assert.typeOf(data, 'object');
+          assert.equal(data.sender, 'test-user', 
+            'Expected sender to have value of \'test-user\'');
+          assert.equal(data.email, 'test-email@user.com', 
+            'Expected sender to have value of \'test-email@user.com\'');
+
+          done();
+        })
+        .catch((err) => {
+          console.error(err);
+
+          done(err);
+        });
     });
 
     it('should edit the message that I just created', function(done) {
 
+      const update = {
+        important: true,
+        validated: true,
+        source: 'testing'
+      };
+
+      const options = {
+        method: 'PUT',
+        uri: `${api}message/${_id}`,
+        headers: {
+            'content-type': 'application/json'
+        },
+        json: update
+      };
+
+      rp(options)
+        .then((resp) => {
+          
+          const data = resp.data;
+
+          assert.equal(resp.type, 'success');
+          assert.typeOf(data, 'object');
+          assert.equal(data.sender, 'test-user', 
+            'Expected sender to have value of \'test-user\'');
+          assert.equal(data.important, true, 
+            'Expected sender to have value of \'true\'');
+          assert.equal(data.validated, true, 
+            'Expected sender to have value of \'true\'');
+            assert.equal(data.source, 'testing', 
+              'Expected sender to have value of \'testing\'');
+
+          done();
+        })
+        .catch((err) => {
+          console.error(err);
+
+          done(err);
+        });
     });
 
     it('should delete the message that I just created', function(done) {
+
+      const options = {
+        method: 'DELETE',
+        uri: `${api}message/${_id}`,
+        json: true
+      };
+
+      rp(options)
+        .then((resp) => {
+          
+          const data = resp.data;
+
+          assert.equal(resp.type, 'success');
+          assert.typeOf(data, 'object');
+          assert.equal(resp.message, 'Message deleted successfully');
+
+          done();
+        })
+        .catch((err) => {
+          console.error(err);
+
+          done(err);
+        });
+    });
+  });
+  
+  
+});
+
+
+/**
+ * @function findById
+ * @param {String} _id - The _id of the item being fetched
+ * @return {Object} - The document from the database that matches the _id
+ */
+function findById(_id) {
+  return new Promise((res, rej) => {
+
+    const rpOptions = {
+      method: 'GET',
+      uri: `${api}message/${_id}`,
+      json: true,
+    };
+    
+    rp(rpOptions)
+    .then((resp) => {
       
+      res(resp);
+    })
+    .catch((err) => {
+      console.error(err);
+      
+      rej(err);
     });
   });
 
-});
+} 
