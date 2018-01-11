@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const logger = require('../winston');
+const createArray = require('../helpers/filter.js').createArray;
 
 const conStates = {
   0: 'disconnected',
@@ -149,9 +150,15 @@ function DbCommunicator(Model) {
         let startDate, 
             endDate,
             sortDirection = 1,
-            sort = {};
+            sort = {},
+            tags = {};
 
         let filter = req.query;
+
+        // parse tags provided (if any)
+        if (filter.hasOwnProperty('tags')) {
+          filter.tags = createArray(filter.tags);
+        }
 
         // Check if filter contains start date in query
         if (filter.hasOwnProperty('startdate')) {

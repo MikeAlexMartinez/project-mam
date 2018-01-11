@@ -19,6 +19,7 @@ describe('Testing...', function() {
   });
   
   importTest('API Messages', './api/messages');
+  importTest('API Projects', './api/projects');
   
   after(function() {
     process.exit();
