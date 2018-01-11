@@ -43,33 +43,34 @@ mixin subpageHeader()
       i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)
       i(class=`${block ? 'ion-ios-grid' : 'ion-ios-grid-outline'}`)
 
-mixin subpageList()
+mixin subpageList(projects)
   div.sc-list-container
     div#sc-list-filter.sc-list-filter
     div#sc-list-tags.sc-list-tags
     div#sc-list
-      +subpageItem()
+      for p in projects
+       +subpageItem(p)
 
-mixin subpageItem(i)
+mixin subpageItem(p)
   div.sc-paper
     div.sc-image
-      img(src="images/shells-massage-therapy-sand.jpg")
+      img(src=p.mainPicture)
     div.sc-detail
       div.sc-background
       div.content-container
         div.sc-item-header
-          h4 Sand
+          h4= p.title
         div.sc-item-summary
-          p This is a placeholder project
+          p= p.miniDetail
         div.sc-item-controls
           div.left-controls
             a(href="#")
               span(data-tooltip="View Project" data-tooltip-position="top")
                 i.ion-md-eye
           div.right-controls
-            a(href="https://github.com/MikeAlexMartinez")
+            a(href=p.git)
               span(data-tooltip="View Source Code" data-tooltip-position="top")
                 i.ion-logo-octocat
-            a(href=`#gallery-${''}`)
+            a(href=`#gallery-${p._id}`)
               span(data-tooltip="More Information" data-tooltip-position="top")
                 i.ion-md-information

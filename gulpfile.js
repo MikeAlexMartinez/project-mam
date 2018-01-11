@@ -32,6 +32,11 @@ gulp.task("js", function() {
     .pipe(gulp.dest("./public/js"));
 });
 
+/**
+ * copy view files from templates into relevant directories.
+ */
+
+
 /** 
  *  Sass compiling gulp task allows for including node_modules and also writes
  *  sourcmaps to allow for easier debugging.

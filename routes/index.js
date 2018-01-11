@@ -4,6 +4,11 @@
 const express = require('express');
 const router = express.Router();
 
+const logger = require('../winston');
+
+// Controllers
+const fetchProjects = require('../controllers/fetchProjects').fetchProjects;
+
 // Application data
 const appData = require('../scripts/appData');
 
@@ -13,7 +18,19 @@ router.use('/api', require('./api'));
 // projects page
 router.get('/projects', function projects(req, res) {
 
-  res.render('projects', {location: 'projects', filtered: false});
+  fetchProjects(req, res)
+    .then((data) => {
+      res.render('projects', data);
+    })
+    .catch((err) => {
+      logger.err(err);
+      res.render('projects', 
+        {
+            location: 'projects',  
+            error: 'Error encountered'
+        });
+    });
+
 });
 
 // Blog page
