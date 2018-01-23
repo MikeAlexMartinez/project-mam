@@ -15,9 +15,6 @@ const appData = require('../scripts/appData');
 // api routes
 router.use('/api', require('./api'));
 
-// view projects within project-mam site
-router.use('/view', require('./projects'));
-
 // projects page
 router.get('/projects', function projects(req, res) {
 
