@@ -3,7 +3,7 @@
 const routes = [
   {
     method: 'get',
-    route: '/',
+    route: '/resume-clone',
     fn: function homePage(req, res) {
       res.render('my-projects/resume-clone/home', {title: 'Resume'});
     }
