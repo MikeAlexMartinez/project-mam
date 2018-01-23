@@ -8,12 +8,29 @@
   .sc-paper {
     position: relative;
     margin: 10px;
-    display: inline-block;
+    display: inline-block;  
 
-    width: 20%;
-    height: 250px;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.20);
+  
+    @media all and (max-width: 750px) {
+      width: 85%;
+    }
     
-    transition: transform 0.5s ease-in-out;
+    @media all and (min-width: 750px) and (max-width: 1200px) {
+      width: 45%;
+    }
+    
+    @media all and (min-width: 1200px) and (max-width: 1500px) {
+      width: 30%;  
+    }
+
+    @media all and (min-width: 1500px) {
+      width: 23%;  
+    }
+
+    height: 250px;
+
+    transition: transform 0.5s ease-in-out, box-shadow 0.35s linear;
 
     .sc-image {
       position: absolute;
@@ -28,6 +45,7 @@
       img {
         position: absolute;
         min-width: 100%;
+        max-width: 100%;
         min-height: 250px;
         overflow: hidden;
       }
@@ -36,8 +54,8 @@
     &:hover {
 
       transform: scale(1.05);
-
-      transition: transform 0.5s ease-in-out;
+      box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);      
+      transition: transform 0.5s ease-in-out, box-shadow 0.35s linear;
 
       .sc-detail,
       .sc-background {
@@ -47,7 +65,7 @@
         opacity: 1;
       }
       .sc-background {
-        opacity: 0.5;
+        opacity: 0.85;
       }
     }
 

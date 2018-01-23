@@ -75,12 +75,11 @@ const sections = {
         ],
       },
       {
-        image: 'images/food-plate-yellow-white.jpg',
-        heading: 'Food',
-        author: 'Code Rare',
+        image: '/myImages/projects/project-mam/project-mam-home.png',
+        heading: 'Project MaM',
+        author: 'Michael Martinez',
         detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
+          'This is the website for my project portfolio... You are on it right now! But you knew that right!?'
         ],
       },
     ],
