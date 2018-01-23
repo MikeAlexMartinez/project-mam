@@ -15,18 +15,31 @@ const appData = require('../scripts/appData');
 // api routes
 router.use('/api', require('./api'));
 
+// project routes
+router.use('/view', require('./projects'));
+
 // projects page
 router.get('/projects', function projects(req, res) {
 
   fetchProjects(req, res)
     .then((data) => {
+      
+      if (process.env.NODE_ENV === 'development') {
+        data.dev = true;
+      } else {
+        data.prod = true;
+      }
+      
+      console.log(data);
+
       res.render('projects', data);
+    
     })
     .catch((err) => {
       logger.err(err);
       res.render('projects', 
         {
-            location: 'projects',  
+            location: 'projects',
             error: 'Error encountered'
         });
     });

@@ -1,3 +1,4 @@
+
 mixin socialItem(sI)
   div.socialIcon
     a(href=sI.link)
@@ -64,7 +65,7 @@ mixin subpageItem(p)
           p= p.miniDetail
         div.sc-item-controls
           div.left-controls
-            a(href="#")
+            a(class=`${p.devlink}` href=`${prod ? p.link : p.devlink}`)
               span(data-tooltip="View Project" data-tooltip-position="top")
                 i.ion-md-eye
           div.right-controls

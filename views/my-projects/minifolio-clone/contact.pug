@@ -1,0 +1,28 @@
+extends layout.pug
+
+include includes/mixins.pug
+
+block banner
+  // banner
+  section(class="banner small" id="banner")
+    h1 Contact
+
+block content
+  // Main content
+  section(class="content small")
+    // Main text summary
+    section(class="contact container")
+      p 
+        | I'm a web developer keen to work with others to create beautiful, fast, user-friendly websites. 
+        | If you would like to reach out to me please use the form below.
+
+    // contact form
+    section(class="contact-form")
+      form(class="form-group" action="" id="contactForm")
+        input(id="form-source" class="hidden" type="text" value="templates/minifolio" name="source" hidden)
+        input(id="form-name" class="entry" type="text" placeholder="Your name..." name="name" required)
+        input(id="form-email" class="entry" type="email" placeholder="Email Address..." name="email" required)
+        textarea(id="form-message" class="entry" type="textarea" rows="12" placeholder="Project Details..." name="message" required)
+        div(class="toast" id="toast")
+        button(type="submit" class="btn") Send
+      

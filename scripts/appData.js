@@ -50,12 +50,11 @@ const sections = {
         ],
       },
       {
-        image: 'images/typing-vintage-technology-keyboard.jpg',
-        heading: 'Typing',
-        author: 'Code Rare',
+        image: '/myImages/projects/resume-clone/resume-resume.png',
+        heading: 'Resume Clone',
+        author: 'Michael Martinez',
         detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
+          'This is the first project I completed which was set by P1xt in his comprehensive web development curriculum. It involved replicating the resume found here: https://creativemarket.com/ikonome/686585-Material-Resume-Blue/screenshots/#screenshot1'
         ],
       },
       {
@@ -68,12 +67,11 @@ const sections = {
         ],
       },
       {
-        image: 'images/guitar.jpg',
-        heading: 'Guitar',
-        author: 'Code Rare',
+        image: '/myImages/projects/minifolio-clone/minifolio-home.png',
+        heading: 'Minifolio Clone',
+        author: 'Michael Martinez',
         detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
+          'This is the first website \'clone\' that I\'ve created. It is inspired by the Minifolio template found here <a href="http://www.free-css.com/free-css-templates/page218/minifolio">free-css.com</a>. I didn\'t use any of the source code to create it but did research the libraries used so that I could discover, and learn how to use the libraries that the original developer used when creating the template.'
         ],
       },
       {
