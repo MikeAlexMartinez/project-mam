@@ -1,0 +1,208 @@
+doctype html
+html
+  head
+    title Material Resume Clone
+    link(href='./css/application.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700' rel='stylesheet')
+  
+  body
+    section.paper
+      header.header.grid
+        div.container.group.top-nav
+          nav
+            ul.nav-list
+              li.nav-item.active-tab
+                a(href='#' id='hello') Hello
+              li.nav-item
+                a(href='#' id='resume') Resume
+              li.nav-item
+                a(href='#' id='portfolio') Portfolio
+        section.banner.container.cf
+          div.title
+            h1 Michael Martinez
+            h2 Web Developer
+          div.image-crop
+            img(src='./images/portfolio.jpg' class="profile-pic")
+      
+      div.main.page#hello-content
+        section
+          aside.addressing.col-5-12
+            div.to.add
+              h4 To
+              p.add-item My Future Boss
+              p.add-item My Future Employer
+              p.add-item Future Employer House
+              p.add-item Greater London
+            
+            div.pos.add
+              h4 Position
+              p.add-item Full Stack Developer
+            
+            div.date.add
+              h4 Date
+              time(datetime='2017/11/02' class='add-item') 2nd November 2017
+            
+          
+          section.cover-letter.col-7-12
+            p Dear Future Employer
+            p I'm a passionate problem-solver who loves to code and think about future. I enjoy solving new and novel challenges and am always seeking to learn new skills.
+            p After my Philosophy and Psychology degree I fell into accountancy while working in the finance team at my first job. Accounting is what led to me first engaging with IT as I sought to automate our reporting and to find better ways to access and distribute more of the companies data.
+            p Since engaging with IT I have found myself consistently wanting to delve deeper down the rabbit hole. I find the community engagement in open-source software developement and the ways strangers will support one another truly inspiring, and now I am seeking to start giving back to the communities I have learned so much from.
+            p With little experience in working as a part a larger software development team, I am seeking to join an organisation where I can continue my journey into IT development, so that I can learn from those around me. My ideal employer will encourage their teams to write clear, testable, well-documented code, adhereing to industry best practices, and will also be supportive of my ambitions to give back to the open-source community.
+            p By hiring me, you would be gaining someone who is determined to implement high quality, enduring solutions to any problems that you are faced with, and is completely commited to keep improving.
+            p Yours faithfully,
+
+            img(class='signature' src='./images/signature.png')
+
+            h5.sig-name Michael Martinez
+            p.sig-role Full Stack Web Developer
+      
+      div(class='main page' id='resume-content' hidden)
+        section.subheader
+          p  After spending the last year teaching myself a number of technologies that can be used for web application development I want to work somewhere that I can put these newly acquired skills to the test.
+        section.personal.col-5-12
+          section.left-col
+            h3.top Personal
+            table
+              tbody
+                tr
+                  th(class='personal-item-header' scope='row') Name
+                  td(class='personal-item-data') Michael Martinez
+                tr
+                  th(class='personal-item-header' scope='row') Date of Birth
+                  td(class='personal-item-data') 3rd October 1987
+                tr
+                  th(class='personal-item-header' scope='row') Relationship
+                  td(class='personal-item-data') long-term partner - Unmarried
+                tr
+                  th(class='personal-item-header' scope='row') Nationality
+                  td(class='personal-item-data') British
+                tr
+                  th(class='personal-item-header' scope='row') Languages
+                  td(class='personal-item-data') English
+          section.left-col
+            h3 Skills
+            div.chart-container
+              div
+                canvas#horizontalBar
+          
+          section.left-col
+            h3 Hobbies
+
+            div.hobbies-row
+              div.hobby-container
+                div(class='hobby-background' style='padding-top: 30px;')
+                  img(src='./images/hobbies/coding.png' width="50")
+                p Coding
+              div.hobby-container
+                div(class='hobby-background')
+                  img(src='./images/hobbies/cooking.png'  style='padding-top: 2px;' width="50")
+                p Cooking
+              div.hobby-container
+                div(class='hobby-background')
+                  img(src='./images/hobbies/cycling.png' style='padding-top: 2px;' width="50")
+                p Cycling
+
+            div.hobbies-row
+              div.hobby-container
+                div(class='hobby-background')
+                  img(src='./images/hobbies/learning.png' style='padding-top: 3px;' width="54")
+                p Learning
+              div.hobby-container
+                div(class='hobby-background')
+                  img(src='./images/hobbies/board-games.png'  style='padding-top: 3px;' width="50")
+                p Board Games
+              div.hobby-container
+                div(class='hobby-background')
+                  img(src='./images/hobbies/tennis.png' style='padding-top: 3px;' width="54")
+                p Tennis
+        
+        section.work.col-7-12
+          section.list
+            h3.top Work
+
+            div.list-item
+              div.large.circle
+              div.small.circle
+              h6 Cision, Business Intelligence
+              p With their previous FP&amp;A person leaving at very short notice, I was approached by Cision to help decipher how to produce the reporting that they had had in place so that I could train their replacements. I have also become more systems-oriented assisting with the migration of one piece of accounting software to a cloud-based solution.
+            div.list-item
+              div.large.circle
+              div.small.circle
+              h6 Fintrax, Business Intelligence
+              p At Fintrax I produced a range of consumer and broader macro-level market focused retailer reporting for a range of clients including the likes of Dior, Chanel and Ralph Lauren.
+            div.list-item
+              div.large.circle
+              div.small.circle
+              h6 Gorkana, Financial Planning and Analysis
+              p I worked at the Gorkana Group for 5 years. The last two of which I helped build, maintain and distribute a range of financial reporting tools to people all over our business.
+
+          section
+            h3.chart-header Professional Skills
+            div#doughnuts
+
+          section.list.education
+            h3 Education
+
+            div.list-item
+              div.large.circle
+              div.small.circle
+              h6 Chartered Institute of Management Accounting
+              p Fully qualified in 2015, all exams being passed at the first sitting.
+            
+            div.list-item
+              div.large.circle
+              div.small.circle
+              h6 Heythrop College, University of London
+              p In 2010 I gained a 2:1 in a Philsophy and Psychology degree.
+      
+      div(class='main page' id='portfolio-content' hidden)
+        section.project
+          div.col-5-12
+            div.project-detail-l
+              h3 ProjectMAM
+              p ProjectMaM is my personal website. Currently under development, but once completed will contain a comprehensive list of my personal projects, a personal blog, a messaging system for people to contact me, and will all be backed by a custom built CMS that utilises MongoDB to store data.
+              a(href='https://github.com/MikeAlexMartinez/project-mam') github.com/MikeAlexMartinez/project-mam
+          div.col-7-12.project-pic
+            img(src='./images/project_admin.png')
+        section.project
+          div.col-7-12.project-pic
+            img(src='./images/freecodecamp.png')
+          div.col-5-12
+            div.project-detail-r
+              h3 FreeCodeCamp
+              p In my bid to become a professional full-stack web application developer, I have been using the curriculum at FreeCodeCamp, supplemented by the <a href="https://github.com/P1xt/p1xt-guides/blob/master/wd-cs.md">guide written by github user P1xt</a>, to give myself a broad understanding of everything web dev related, and to also provide myself with a sufficiently sized project portfolio.
+              a(href='https://www.freecodecamp.org/mikealexmartinez') www.freecodecamp.org/MikeAlexMartinez
+
+        section.project
+          div.col-5-12
+            div.project-detail-l
+              h3 #OpenBankHank
+              p Hoping to leverage my knowledge of finance and accountancy, and level-up my coding skills, I'm participating in my first hackathon on the weekend of the 10th of November, 2017.
+              a(href='https://www.eventbrite.com/e/openbankhack17-railsbank-open-banking-api-hackathon-tickets-33847397477') #OpenBankHack
+          div.col-7-12.project-pic
+            img(src='./images/openbankhack.jpg')
+      
+      footer.grid
+        section.social.container.cf
+          div.link
+            a(href='https://github.com/MikeAlexMartinez')
+              img(class='link-img' src='./images/github.png')
+          div.link
+            a(href='https://www.linkedin.com/in/michael-alexander-martinez-b9073742/')
+              div.img-background
+                img(class='link-img' src='./images/linkedin.png')
+          div.link
+            a(href='https://twitter.com/MikeAlMartinez')
+              img(class='link-img' src='./images/twitter.png')
+
+        section.copy.container.cf
+          p London, UK
+          p mike.alex.martinez@gmail.com
+          p ProjectMaM.com
+      
+      script(src="./js/main.js")
+
+
+                
+                
