@@ -70,8 +70,8 @@ const projects = [
     'createdDate' : new Date(2017, 12, 21),
     'public' : true,
     'tags': ['Node', 'express', 'gulp', 'Puppeteer', 'masonry', 'HTML5', 'CSS3', 'Javascript', 'jQuery'],
-    'pictures' : ['/myImages/projects/deft-clone/deft-home-short.png', '/myImages/projects/deft-clone/deft-long-short.png'],
-    'mainPicture' : '/myImages/projects/deft-clone/deft-home-short.png',
+    'pictures' : ['/myImages/projects/deft-clone/deft-front.png', '/myImages/projects/deft-clone/deft-long.png'],
+    'mainPicture' : '/myImages/projects/deft-clone/deft-front.png',
     'type': 'Templates',
     'subtype': null
   },

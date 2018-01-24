@@ -7,6 +7,7 @@ const projects = [
   require('./project-routes/minifolio-clone'),
   require('./project-routes/resume-clone'),
   require('./project-routes/ranger-clone'),
+  require('./project-routes/deft-clone'),
 ];
 
 projects.forEach( project => {

@@ -13,6 +13,6 @@ const allRoutes = [
         res.render(`${views}home`, {title: 'RangerClone - Home', data: appData.data });
     }
   }
-]
+];
 
 module.exports = allRoutes;

@@ -27,7 +27,7 @@ const sections = {
     ]
   },
   subscribe: {
-    sectionHeaderText: 'Stay tunned we\'re coming this year',
+    sectionHeaderText: 'Stay tunned more projects and blog posts are on the way!',
   },
   gallery: {
     projects: [
@@ -48,12 +48,11 @@ const sections = {
         ],
       },
       {
-        image: 'images/hand-taking-photo-photography-vintage.jpg',
-        heading: 'Camera',
-        author: 'Code Rare',
+        image: '/myImages/projects/deft-clone/deft-long.png',
+        heading: 'Deft Clone',
+        author: 'Michael Martinez',
         detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
+          'This is the third website \'clone\' that I\'ve created. It is inspired by the \'Deft\' templace found at free-css.com.'
         ],
       },
       {
@@ -61,7 +60,7 @@ const sections = {
         heading: 'Minifolio Clone',
         author: 'Michael Martinez',
         detail: [
-          'This is the first website \'clone\' that I\'ve created. It is inspired by the Minifolio template found here <a href="http://www.free-css.com/free-css-templates/page218/minifolio">free-css.com</a>. I didn\'t use any of the source code to create it but did research the libraries used so that I could discover, and learn how to use the libraries that the original developer used when creating the template.'
+          'This is the first website \'clone\' that I\'ve created. It is inspired by the Minifolio template found at free-css.com. I didn\'t use any of the source code to create it but did research the libraries used so that I could discover, and learn how to use the libraries that the original developer used when creating the template.'
         ],
       },
       {
@@ -75,10 +74,11 @@ const sections = {
     ],
   },
   skills: {
-    sectionHeaderText: 'Get started fast with one of our unique, pre-built concepts.',
+    sectionHeaderText: 'About Me',
     mainText: [
-      'Customers love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout. love our block-based approach to template building, it makes assembling beautiful pages fast and enjoyable, leaving more time to craft your perfect layout.',
-      'Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.'
+      'Passionate about learning new things, and solving problems, I started to take programming seriously in 2016 when I discovered d3.js and decided that I ought to learn JavaScript as I wanted to be able to make my own visualistaions. Down the rabbit hole I went...',
+      'Fast forward 15 months and in setting out to learn JavaScript I dicovered I love programming and application development especially. I made it my aim to become a professional web application developer in Mid-2018. For too much of 2017 I had my head in books, was solving Kata\'s on codewars and was reading blog posts and tutorials, but now I have decided that 2018 will be a year of action and this will be the hub that hosts my various creations.',
+      'As I create more projects I will add them here. If you want to see projects that specifically used the skills listed below click the skill you are most interested in.'
     ],
     skillList: [
       {skill: 'Javascript', image: 'js.png' },
