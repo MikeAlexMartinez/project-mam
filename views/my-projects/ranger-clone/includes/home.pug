@@ -1,0 +1,7 @@
+include ./mixins
+
+section.home#home.segment.cf
+  div#carouselOne.owl-carousel.owl-theme
+    for fG in data.hero.featureGroups
+      +carouselFeatureGroup(fG)
+  

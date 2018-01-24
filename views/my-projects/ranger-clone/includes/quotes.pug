@@ -1,0 +1,7 @@
+include ./mixins
+
+section#testimonial.testimonial.segment
+  +subheader(data.quotes)
+  div.quotesContainer
+    each quote in data.quotes.quoteGroups
+      +quoteGroup(quote)

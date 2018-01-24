@@ -1,0 +1,7 @@
+include ./mixins
+
+section#pricing.pricing.segment
+  +subheader(data.pricing)
+  div.pricingGroupsContainer
+    for pG in data.pricing.pricingGroups
+      +pricingGroup(pG)

@@ -107,8 +107,8 @@ const projects = [
     'createdDate' : new Date(2017, 12, 15),
     'public' : true,
     'tags': ['Node', 'express', 'gulp', 'animate', 'waypoints', 'owl.carousel', 'HTML5', 'CSS3', 'Javascript', 'jQuery'],
-    'pictures' : ['/myImages/projects/ranger-clone/ranger-top.png', '/myImages/projects/ranger-clone/ranger-pricing.png', '/myImages/projects/ranger-clone/ranger-screenshots.png'],
-    'mainPicture' : '/myImages/projects/ranger-clone/ranger-top.png',
+    'pictures' : ['/myImages/projects/ranger-clone/ranger-front.png', '/myImages/projects/ranger-clone/ranger-pricing.png', '/myImages/projects/ranger-clone/ranger-screenshots.png'],
+    'mainPicture' : '/myImages/projects/ranger-clone/ranger-front.png',
     'type': 'Templates',
     'subtype': null
   },

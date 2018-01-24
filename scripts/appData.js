@@ -32,21 +32,11 @@ const sections = {
   gallery: {
     projects: [
       {
-        image: 'images/pexels-photo-14075.jpeg',
-        heading: 'Music Player',
-        author: 'Code Rare',
+        image: '/myImages/projects/ranger-clone/ranger-long.png',
+        heading: 'Ranger Clone',
+        author: 'Michael Martinez',
         detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
-        ],
-      },
-      {
-        image: 'images/shells-massage-therapy-sand.jpg',
-        heading: 'Sea Shells',
-        author: 'Code Rare',
-        detail: [
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?',
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, amet, voluptatibus et omnis dolore illo saepe voluptatem qui quibusdam sunt corporis ut iure repellendus delectus voluptate explicabo temporibus quos eaque?'
+          'This is the second website \'clone\' that I\'ve created. It is inspired by the \'Ranger\' templace found at free-css.com.'
         ],
       },
       {

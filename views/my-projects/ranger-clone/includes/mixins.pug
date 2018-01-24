@@ -1,0 +1,94 @@
+mixin socialItem(s)
+  div(class="socialItem")
+    a(href=s.link)
+      span(class=`${s.icon}`)
+
+mixin textGroup1(fG)
+  div(class=`textGroupOne ${fG.style}`)
+    h2= fG.title
+    p= fG.text
+    button(class=`btn active ${fG.section ? 'lrg' : ''}`)= fG.button
+
+mixin textGroupTwo(services)
+  each tG in services
+    div.textGroupTwo.hide
+      div(class=`simpleIcon ${tG.color}`)
+        span(class=`${tG.icon} ${tG.color}`)
+      div.header
+        h5= tG.title
+      div.text
+        p= tG.detail
+
+mixin textGroupThree(f)
+  div.textGroupThree.hide
+    div.simpleIcon
+      span(class=`${f.icon} default`)
+    div.textContainer
+      div.header
+        h5= f.title
+      div.text
+        p= f.detail
+
+mixin featureGroup(fG)
+  //- If orientation is missing from fG render
+  //- containers in reverse order 
+  div(class=`featureGroup ${fG.style}`)
+    div(class=`imgContainer ${fG.style}`)
+      img(src=`${fG.image}` class=`${fG.imgStyle}`)
+    div(class=`textContainer ${fG.style}`)
+      +textGroup1(fG)
+
+mixin quoteGroup(q)
+  div.quoteGroup.hide
+    blockquote.quote
+      p= q.quote
+      div.point.cf
+    div.speaker
+      p
+        span= q.name
+        = ` ${q.company}`
+      p.role= q.role
+
+mixin pricingGroup(pG)
+  div(class=`pricingGroup hide ${pG.bestValue ? 'bestValue' : ''}`)
+    if pG.bestValue
+      div.bestValue Best value
+    h5= pG.title
+    div.upper
+      div.price
+        p.dollar= `$`
+      div.price
+        p.value= pG.price
+      div.price
+        p.month= `/mo`
+      div.description
+        p= pG.description
+    div.lower
+      div.pricingFeatures
+        each f in pG.features
+          p= f
+      button(class=`btn ${pG.bestValue ? 'active' : 'clear'}`) Get Started
+
+mixin subheader(s)
+  div.subheader.hide
+    h3= s.title
+    h4= s.subheader
+
+mixin carouselImages(img)
+  div(class=`screenshotImage`)
+    img(src=`${img}` class="hide")
+
+mixin carouselFeatureGroup(fG)
+  //- If orientation is missing from fG render
+  //- containers in reverse order 
+  div(class=`carouselFeatureGroup ${fG.style}`).hide
+    if fG.orientation
+      div(class=`imgContainer ${fG.style}`)
+        img(src=`${fG.image}` class="mobile-img")
+      div(class=`textContainer ${fG.style}`)
+        +textGroup1(fG)
+    else
+      div(class=`textContainer ${fG.style}`)
+        +textGroup1(fG)
+      div(class=`imgContainer ${fG.style}`)
+        img(src=`${fG.image}` class="mobile-img")
