@@ -29,8 +29,6 @@ router.get('/projects', function projects(req, res) {
       } else {
         data.prod = true;
       }
-      
-      console.log(data);
 
       res.render('projects', data);
     

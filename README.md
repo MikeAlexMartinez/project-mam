@@ -22,5 +22,5 @@ To Do List:
 - Add filtering, sorting and view change functionality to projects viewing page.
 - Add authentication, and behind-the-scenes management pages so that I can manage website content
   and view messages from within the website.
+- Use nodemailer (or equivalent) to verify subscriptions and messages
 
-Favicons were generated with https://realfavicongenerator.net/.
