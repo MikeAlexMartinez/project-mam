@@ -10,7 +10,7 @@ const logger = require('../winston');
 const fetchProjects = require('../controllers/fetchProjects').fetchProjects;
 
 // Application data
-const appData = require('../scripts/appData');
+const appData = require('../scripts/project-mam-data');
 
 // api routes
 router.use('/api', require('./api'));

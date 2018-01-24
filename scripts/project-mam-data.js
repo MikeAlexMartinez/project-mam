@@ -76,8 +76,8 @@ const sections = {
   skills: {
     sectionHeaderText: 'About Me',
     mainText: [
-      'Passionate about learning new things, and solving problems, I started to take programming seriously in 2016 when I discovered d3.js and decided that I ought to learn JavaScript as I wanted to be able to make my own visualistaions. Down the rabbit hole I went...',
-      'Fast forward 15 months and in setting out to learn JavaScript I dicovered I love programming and application development especially. I made it my aim to become a professional web application developer in Mid-2018. For too much of 2017 I had my head in books, was solving Kata\'s on codewars and was reading blog posts and tutorials, but now I have decided that 2018 will be a year of action and this will be the hub that hosts my various creations.',
+      'Passionate about learning new things, solving problems, and finding patterns in all things, I started to take programming seriously in 2016 when I discovered d3.js and decided that I ought to learn JavaScript as I wanted to be able to make my own visualistaions. Down the rabbit hole I went...',
+      'Fast forward 15 months and in setting out to learn JavaScript I discovered that I love programming and application development especially, and I made it my aim to become a professional web application developer by Mid-2018. For too much of 2017 I had my head in books, I was solving Kata\'s on codewars and I was reading blog posts and tutorials, but now I have decided that 2018 will be a year of action, where I learn by doing and not reading. This website will be the hub that hosts my various creations.',
       'As I create more projects I will add them here. If you want to see projects that specifically used the skills listed below click the skill you are most interested in.'
     ],
     skillList: [
