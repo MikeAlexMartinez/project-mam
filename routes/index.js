@@ -46,8 +46,8 @@ router.get('/projects', function projects(req, res) {
 
 // Blog page
 router.get('/blog', function projects(req, res) {
-  
-  res.render('blog', {location: 'blog', filtered: false});
+   
+  res.render('blog', { location: 'blog', filtered: false, posts: [] });
 });
 
 // admin page

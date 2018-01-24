@@ -42,6 +42,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-winston": "^2.4.0",
+    "helmet": "^3.10.0",
     "ionicons": "^3.0.0",
     "jquery": "^1.9.1",
     "masonry-layout": "^4.2.0",

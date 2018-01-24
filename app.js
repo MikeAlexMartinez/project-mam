@@ -8,6 +8,7 @@ const express = require('express');
 const expressWinston = require('express-winston');
 const winston = require('winston');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
 // Helpers
 const { fileDate } = require('./helpers/dates');
@@ -21,6 +22,9 @@ const routes = require('./routes');
 
 // initiate express app
 const app = express();
+
+// instantiate helmet headers and protections
+app.use(helmet());
 
 // tell express where templates are kept.
 app.set('views', './views');

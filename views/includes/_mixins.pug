@@ -40,9 +40,10 @@ mixin subpageHeader()
   div.sc-header
     div.sc-header-content
       h2=location
-      i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
-      i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)
-      i(class=`${block ? 'ion-ios-grid' : 'ion-ios-grid-outline'}`)
+      //-
+        i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
+        i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)
+        i(class=`${block ? 'ion-ios-grid' : 'ion-ios-grid-outline'}`)
 
 mixin subpageList(projects)
   div.sc-list-container
@@ -82,3 +83,6 @@ mixin projectFloat()
     div.controls
       a(href="/")
         div(id="smallLogo" class='imgContainer red')
+
+mixin blogPost(b)
+  h2 Blog Post
