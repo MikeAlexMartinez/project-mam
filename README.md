@@ -3,8 +3,7 @@
 
 This is the code for my personal website which will eventually host my personal portfolio, my blog, and will allow people to contact me directly throught the webpage.
 
-The homepage of this website should meet the following criteria or 'user-stories' as defined by
-FreeCodeCamp.
+The homepage of this website should meet the following criteria or 'user-stories' as defined by FreeCodeCamp.
 
 - User Story: I can access all of the portfolio webpage's content just by scrolling.
 
@@ -17,7 +16,11 @@ FreeCodeCamp.
 
 To Do List:
 - Add tests for all API endpoints
-- create screenshots and for projects so far.
-- create gulp task and uniform format to bring in projects to home page automatically.
+- Create gulp task and uniform format to bring in projects to home page automatically.
+- Add row layout to project page
+- Add project-mam 'back' floating button to be placed on top of projects hosted within the site.
+- Add filtering, sorting and view change functionality to projects viewing page.
+- Add authentication, and behind-the-scenes management pages so that I can manage website content
+  and view messages from within the website.
 
 Favicons were generated with https://realfavicongenerator.net/.
