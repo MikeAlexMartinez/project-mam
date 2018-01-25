@@ -11027,6 +11027,8 @@ return jQuery;
 
 $(document).ready(() => {
   
+  const errorMessage = 'Oops! We encountered an error. Please retry later...  ( -_-)';
+
   /**
    * Set up owl carousel with skills
    */
@@ -11117,17 +11119,70 @@ $(document).ready(() => {
       navSlide.toggleClass('open');
     }
     
+    // adjust bug-reporting entry point
+    $('.bug-reporter').toggleClass('nav-open');
+
+  });
+
+  /**
+   * Login form visibility control
+   */
+  $('.brandLogo').click(() => {
+    $('#adminForm').toggleClass('show');
+  });
+
+  $('#closeLogin').click(() => {
+    $('#adminForm').toggleClass('show');
+  });
+
+  /**
+   * Login form handling
+   */
+
+  /**
+   * Bug reporting Transitions 
+   */
+  $('#bug-report').click(() => {
+
+    // change bug-reporter colour to red
+    $('#bug-report .imgContainer').toggleClass('red');
+    // rotate and fadin in bug-reporter
+    $('.bug-reporter').toggleClass('show');;
+    
+  });
+  
+  /**
+   * Bug reporting form handling
+   */
+  $('#bugReporter').submit(function(evt) {
+    evt.preventDefault();
+    console.log('new Bug Submitted!');
+
+    const data = {
+      source: $('#bug-source').val(),
+      sender: $('#bug-name').val(),
+      email: $('#bug-email').val(),
+      bugDescription: $('#bug-message').val(),
+    };
+    
+    const successMessage = 'Bug Report received! Exterminator en-route!';
+    
+    const posting = $.post('/api/bug', data, 'json');
+    
+    posting.done(function() { 
+      showToast('bug','success', successMessage);
+    }).fail(function() {
+      showToast('bug','error', errorMessage);
+    });
+
   });
 
   /**
    * contact form handling
-   * 
    **/
-  const errorMessage = 'Oops! We encountered an error. Please retry later...  ( -_-)';
-  
   $('#contactForm').submit(function(evt) {
     evt.preventDefault();
-    console.log('New message Submited!');
+    console.log('New message Submitted!');
 
     const data = {
       source: $('#contact-source').val(),
@@ -11150,11 +11205,11 @@ $(document).ready(() => {
   
   /**
    * subscribe form handling
-   * 
    **/
   $('#subscribeForm').submit(function(evt) {
     evt.preventDefault();
-    
+    console.log('New Subscription Submitted!');
+
     const data = {
       source: $('#subscribe-source').val(),
       email: $('#subscribe-email').val(),
@@ -11170,8 +11225,6 @@ $(document).ready(() => {
       showToast('subscribe', 'success', successMessage);
       
     }).fail(function(err) {
-      
-      console.log(err);
       
       if(err.status === 409) {
         showToast('subscribe', 'success', successMessage);

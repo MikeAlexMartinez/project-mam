@@ -197,18 +197,24 @@
 
   border-radius: 15px;
   background-color: #e8eaed;
+  opacity: 0;
 
   box-shadow: 0px 7px 14px 7px rgba(0, 0, 0, 0.2);
 
   transform: rotate(90deg);
   transform-origin: -100px bottom;
 
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.35s linear 0.15s, left $trans;
+
+  &.nav-open {
+    left: 340px;
+  }
 
   &.show {
     transform: rotate(0);
+    opacity: 1;
 
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.35s linear 0.15s, left $trans;
   }
 
   .bugform {
