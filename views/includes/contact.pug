@@ -5,13 +5,13 @@ section#contact.contact
   p=data.contactForm.mainText
   div.contactForm
     form(class="form-group" action="" id="contactForm")
-      input(id="contact-source" class="hidden" type="text" value="templates/deft" name="source" hidden)
+      input(id="contact-source" class="hidden" type="text" value="project-mam" name="source" hidden)
       div.mainInputs
         div.formSide.left
           input(id="contact-name" class="entry" type="text" placeholder="Name" name="name" required)
           input(id="contact-email" class="entry" type="email" placeholder="Email" name="email" required)
         div.formSide.right
           textarea(id="contact-message" class="entry" type="text" placeholder="Message" name="message" rows="4" required)
-      div.buttonContainer
+      div.buttonContainer.clicky
         button(type="submit" class="btn") Send
         div#contactToast.toast

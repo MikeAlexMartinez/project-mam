@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * To Do...
+ * 
+ * swallow console statements during mocha tests before().
+ * 
+ */
+
 const path = require('path');
 
 const MongoClient = require('mongodb').MongoClient;
@@ -12,6 +19,10 @@ const messages = require('./db/messages');
 const subscribers = require('./db/subscribers');
 
 const args = process.argv;
+
+if (path.parse(args[1]).name === '_mocha') {
+  console.log("Running in test mode...");
+}
 
 if (path.parse(args[1]).name === 'mongodb.init' ) {
   refreshCollections()
@@ -72,7 +83,7 @@ function refreshCollections() {
     });
     
     /**
-     * Creates a new collection in the target db
+     * Creates a new collection or refreshes an existing collection in the target db
      * @param {Object} colToInsert - An object defining the 
      *   collection name and the data to insert
      * @return {Promise}

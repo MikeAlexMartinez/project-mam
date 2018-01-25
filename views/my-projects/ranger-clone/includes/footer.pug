@@ -1,0 +1,17 @@
+include ./mixins.pug
+
+section.footer#footer
+  p 
+    | &copy; 2015 Free Website Template 
+    span  Ranger
+    | . All Rights Reserved.
+  p
+    | Free HTML5 Template by 
+    span 
+      a(href="http://freehtml5.co/") FREEHTML5.co 
+    | | Images by 
+    span 
+      a(href="http://pexels.com/") Pexels
+  div.socialItems
+    each i in data.footer.socialItems
+      +socialItem(i)

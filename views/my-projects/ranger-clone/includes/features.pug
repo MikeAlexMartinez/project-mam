@@ -1,0 +1,8 @@
+include ./mixins
+
+section.features.segment#features
+  div.container
+    +subheader(data.features)
+    div.featuresContainer
+      each f in data.features.textGroups
+        +textGroupThree(f)

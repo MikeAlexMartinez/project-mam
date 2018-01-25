@@ -1,0 +1,20 @@
+mixin project(p)
+  div(class="project animate")
+    a(class="fancybox" href=p.image)
+      img(src=p.image)
+      div(class="overlay")
+        div(class="title")
+          h5= p.title
+        div(class="text")
+          p= p.detail
+
+mixin projectContainer(c, projects)
+  - var start = "projects-container"
+  div(class=start id=`${start}-${c}`)
+    each p in projects
+      +project(p)
+
+mixin socialItem(s)
+  div(class="social-item")
+    a(href=s.link)
+      i(class=`fa ${s.icon}` aria-hidden="true")

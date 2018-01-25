@@ -17,6 +17,9 @@
 
   .grid-sizer,
   .grid-item {
+
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.20);
+
     @media all and (max-width: $screen-sm) {
       width: 100%;
 
@@ -68,7 +71,8 @@
 
       .btn {
         position: absolute;
-        bottom: 20px;
+        top: 12px;
+        bottom: 12px;
         right: 20px;
         transition: background-color 0.1s ease-in-out;
 

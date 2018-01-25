@@ -3,8 +3,7 @@
 
 This is the code for my personal website which will eventually host my personal portfolio, my blog, and will allow people to contact me directly throught the webpage.
 
-The homepage of this website should meet the following criteria or 'user-stories' as defined by
-FreeCodeCamp.
+The homepage of this website should meet the following criteria or 'user-stories' as defined by FreeCodeCamp.
 
 - User Story: I can access all of the portfolio webpage's content just by scrolling.
 
@@ -16,12 +15,14 @@ FreeCodeCamp.
 
 
 To Do List:
-- Create hard-coded front page, to meet user-stories defined above for the time being, while CMS is developed.
-- complete project edit page
-- fix dates, for existing projects, and edit projects
-- wire up projects list page
-- Complete cloudinary - mongodb picture storage integration.
-- Complete image gallery.
-- Add picture management to project edit page.
+- Add login item
+- Add admin pages
+- Add authentication, and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
+- Add tests for all API endpoints
+- Create gulp task and uniform format to bring in projects to home page automatically.
+- Add tests for controller code
+- Add row layout to project page
+- Add project-mam 'back' floating button to be placed on top of projects hosted within the site.
+- Add filtering, sorting and view change functionality to projects viewing page.
+- Use nodemailer (or equivalent) to verify subscriptions and messages
 
-Favicons were generated with https://realfavicongenerator.net/.

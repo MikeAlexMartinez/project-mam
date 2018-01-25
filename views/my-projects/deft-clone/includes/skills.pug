@@ -1,0 +1,9 @@
+include ./_mixins
+
+section#skills.skills
+  h2=data.skills.sectionHeaderText
+  p=data.skills.mainText[0]
+  p=data.skills.mainText[1]
+  div.skillList
+    for sk in data.skills.skillList
+      +skill(sk)

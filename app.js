@@ -8,6 +8,10 @@ const express = require('express');
 const expressWinston = require('express-winston');
 const winston = require('winston');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
+
+const secret = process.env.SECRET || '53c3t';
 
 // Helpers
 const { fileDate } = require('./helpers/dates');
@@ -21,6 +25,12 @@ const routes = require('./routes');
 
 // initiate express app
 const app = express();
+
+// instantiate helmet headers and protections
+app.use(helmet());
+
+// Cookie Parsing
+app.use(cookieParser(secret, {}));
 
 // tell express where templates are kept.
 app.set('views', './views');

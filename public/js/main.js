@@ -11027,6 +11027,8 @@ return jQuery;
 
 $(document).ready(() => {
   
+  const errorMessage = 'Oops! We encountered an error. Please retry later...  ( -_-)';
+
   /**
    * Set up owl carousel with skills
    */
@@ -11102,39 +11104,6 @@ $(document).ready(() => {
   });
 
   /**
-   * Slide in Project detail
-   * 
-   **/
-  $('.imgInfo .btn').click((evt) => {
-
-    // get width of viewport
-    const width = $( window ).width();
-    const node = $(evt.target);
-    const target = $(`#${node.attr('target')}`);
-    let scrollTo = $('#rightSide');
-
-    if(width < 1025) {
-      // change targets for smaller screens
-      scrollTo = $('#title');
-    }
-
-    // scroll to top when not at the top.
-    scrollToTop(scrollTo, $('html, body'), 300);
-
-    // Slide in project detail
-    target.addClass('show');  
-
-    // hide main content to prevent excessive overflow-y
-    $('#rightSide').addClass('hide');
-
-  });
-
-  $('.close-project').click(() => {
-    $('.out-right.show').removeClass('show');
-    $('#rightSide').removeClass('hide');
-  });
-
-  /**
    * Navigation menu control
    * 
    */
@@ -11150,18 +11119,71 @@ $(document).ready(() => {
       navSlide.toggleClass('open');
     }
     
+    // adjust bug-reporting entry point
+    $('.bug-reporter').toggleClass('nav-open');
+
+  });
+
+  /**
+   * Login form visibility control
+   */
+  $('.brandLogo').click(() => {
+    $('#adminForm').toggleClass('show');
+  });
+
+  $('#closeLogin').click(() => {
+    $('#adminForm').toggleClass('show');
+  });
+
+  /**
+   * Login form handling
+   */
+
+  /**
+   * Bug reporting Transitions 
+   */
+  $('#bug-report').click(() => {
+
+    // change bug-reporter colour to red
+    $('#bug-report .imgContainer').toggleClass('red');
+    // rotate and fadin in bug-reporter
+    $('.bug-reporter').toggleClass('show');;
+    
+  });
+  
+  /**
+   * Bug reporting form handling
+   */
+  $('#bugReporter').submit(function(evt) {
+    evt.preventDefault();
+    console.log('new Bug Submitted!');
+
+    const data = {
+      source: $('#bug-source').val(),
+      sender: $('#bug-name').val(),
+      email: $('#bug-email').val(),
+      bugDescription: $('#bug-message').val(),
+    };
+    
+    const successMessage = 'Bug Report received! Exterminator en-route!';
+    
+    const posting = $.post('/api/bug', data, 'json');
+    
+    posting.done(function() { 
+      showToast('bug','success', successMessage);
+    }).fail(function() {
+      showToast('bug','error', errorMessage);
+    });
+
   });
 
   /**
    * contact form handling
-   * 
    **/
-  const errorMessage = 'Oops! We encountered an error. Please retry later...  ( -_-)';
-  
   $('#contactForm').submit(function(evt) {
     evt.preventDefault();
-    console.log('New message Submited!');
-    
+    console.log('New message Submitted!');
+
     const data = {
       source: $('#contact-source').val(),
       sender: $('#contact-name').val(),
@@ -11169,7 +11191,7 @@ $(document).ready(() => {
       message: $('#contact-message').val(),
     };
     
-    const successMessage = 'Message received! Please check your inbox ( ^_^) ';
+    const successMessage = 'Message received! ( ^_^) ';
     
     const posting = $.post('/api/message', data, 'json');
     
@@ -11183,11 +11205,11 @@ $(document).ready(() => {
   
   /**
    * subscribe form handling
-   * 
    **/
   $('#subscribeForm').submit(function(evt) {
     evt.preventDefault();
-    
+    console.log('New Subscription Submitted!');
+
     const data = {
       source: $('#subscribe-source').val(),
       email: $('#subscribe-email').val(),
@@ -11196,15 +11218,13 @@ $(document).ready(() => {
     
     const posting = $.post('/api/subscriber', data, 'json');
     
-    const successMessage = 'Thanks for subscribing! Please check your inbox. ( ^_^) ';
+    const successMessage = 'Thanks for subscribing! ( ^_^) ';
     
     posting.done(function() {
       
       showToast('subscribe', 'success', successMessage);
       
     }).fail(function(err) {
-      
-      console.log(err);
       
       if(err.status === 409) {
         showToast('subscribe', 'success', successMessage);

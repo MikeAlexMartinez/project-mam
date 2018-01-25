@@ -1,0 +1,7 @@
+include ./mixins.pug
+
+section#screenshots.screenshots.segment
+  +subheader(data.screenshots)
+  div#carouselTwo.owl-carousel.owl-theme
+    for img in data.screenshots.images
+      +carouselImages(img)

@@ -9,6 +9,7 @@ const message = require('../models/message');
 const subscriber = require('../models/subscriber');
 const projectType = require('../models/projectType');
 const project = require('../models/project');
+const bug = require('../models/bug');
 
 const collections = [
   {
@@ -30,6 +31,11 @@ const collections = [
     name: 'projects',
     singular: 'project',
     model: new DbComm(project)
+  },
+  {
+    name: 'bugs',
+    singular: 'bug',
+    model: new DbComm(bug)
   },
 ];
 

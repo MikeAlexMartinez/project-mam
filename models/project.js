@@ -10,6 +10,7 @@ const projectSchema = new Schema({
   _id: {type: String, default: uuidv4 },
   title: { type: String, default: null },
   link: String,
+  devlink: String,
   miniDetail: String,
   associatedBlogPosts: { type: Array, default: [] },
   detail: { type: Array, default: [] },

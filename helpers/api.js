@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const logger = require('../winston');
+const createArray = require('../helpers/filter.js').createArray;
 
 const conStates = {
   0: 'disconnected',
@@ -38,8 +39,6 @@ function DbCommunicator(Model) {
       logger('info',`${name} request received`);
 
       const newModel = req.body;
-
-      console.log(newModel);
         
       newModel.createdDate = new Date();
       
@@ -93,7 +92,7 @@ function DbCommunicator(Model) {
 
       const id = req.params.id;
       const updatedItem = req.body;
-      
+
       const updated = (m) => {
         const message = `${name} item updated successfully`;
         
@@ -104,11 +103,11 @@ function DbCommunicator(Model) {
           type: 'success',
           data: m
         };
-        
+
         res.status(200).send(response);
       };
         
-      Model.findByIdAndUpdate(id, updatedItem)
+      Model.findByIdAndUpdate(id, updatedItem, {'new': true })
         .then(updated)
         .catch((err) => {
           error(err, res);
@@ -129,7 +128,7 @@ function DbCommunicator(Model) {
           type: 'success',
           data: m
         };
-        
+
         res.status(200).send(response);
       };
       
@@ -151,9 +150,15 @@ function DbCommunicator(Model) {
         let startDate, 
             endDate,
             sortDirection = 1,
-            sort = {};
+            sort = {},
+            tags = {};
 
         let filter = req.query;
+
+        // parse tags provided (if any)
+        if (filter.hasOwnProperty('tags')) {
+          filter.tags = createArray(filter.tags);
+        }
 
         // Check if filter contains start date in query
         if (filter.hasOwnProperty('startdate')) {

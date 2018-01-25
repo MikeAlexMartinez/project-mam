@@ -41,6 +41,44 @@
     position: relative;
     top: -20px;
     object-fit: contain;
+    overflow: hidden;
+    padding-bottom: 15px;
+
+    #adminForm {
+      margin-top: 15px;
+      width: 80%;
+      position: relative;
+      left: 100%;
+      opacity: 0;
+      background-color: #e8eaed;
+      border-radius: 10px;
+      box-shadow: 6px 7px 10px 6px rgba(0, 0, 0, 0.2);
+
+      transition: left $trans, opacity $trans;
+
+      &.show {
+        left: 10%;
+        opacity: 1;
+      }
+
+      .loginInputs {
+        text-align: left;
+      }
+
+      input {
+        margin: 2%;
+        border-radius: 5px;
+        width: 33%;
+        padding: 9px;
+      }
+
+      .clicky {
+        position: absolute;
+
+        top: 12px;
+        right: 45px;
+      }
+    }
 
     img {
       max-width: 100%;

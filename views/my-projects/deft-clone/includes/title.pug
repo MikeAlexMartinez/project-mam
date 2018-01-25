@@ -1,0 +1,12 @@
+include ./_mixins
+
+section#title.title
+  div.brandLogo
+    img(src=data.header.image)
+  div.titleText
+    h1= data.header.title
+    h1= data.header.subheader
+    p= data.header.text
+  div.socialItems
+    for sI in data.header.socialItems
+      +socialItem(sI)

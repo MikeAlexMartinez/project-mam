@@ -30,5 +30,22 @@ section(id="navigation" class=`navigation ${location === 'home' ? 'home' : ''}`)
         h3.itemTitle Report Bug
         div.imgContainer
           i.ion-ios-bug
-    
+
+section.bug-reporter
+  div.br-container
+    h1 Call the #[span Exterminator!]
+    p Please let me know if you experience any issues with my site 
+    div.bugform.contact
+      form(class="form-group" action="" id="bugReporter")
+        input(id="bug-source" class="hidden" type="text" value="project-mam" name="source" hidden)
+        div.mainInputs
+          div.formSide.left
+            input(id="bug-name" class="entry" type="text" placeholder="Name" name="name" required)
+            input(id="bug-email" class="entry" type="email" placeholder="Email" name="email" required)
+          div.formSide.right
+            textarea(id="bug-message" class="entry" type="text" placeholder="Bug description" name="message" rows="4" required)
+        div.clicky
+          button(type="submit" class="btn") Send
+          div#bugToast.toast
+      
     

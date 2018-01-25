@@ -20,7 +20,41 @@
   }
 }
 
-.buttonContainer {
+.clicky {
   position: relative;
   overflow: hidden;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+
+  /** 3D Block Effect **/
+  box-shadow: 0 5px 0 0 $bg-btn-shadow;
+  
+  /** Make it look pretty **/
+  display: block;
+  background: $bg-btn;
+  color: #eee;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 5px;
+
+  &:active {
+    /** Remove 3D Block Effect on Click **/
+    box-shadow: none;
+    top: 5px;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+    
+  &:hover {
+    opacity: 1;
+  }
+    
+  .clicky:active,
+  .clicky:focus {
+    /** Remove Chrome's Ugly Yellow Outline **/
+    outline: 0;
+  } 
 }
+
