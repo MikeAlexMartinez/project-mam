@@ -11102,39 +11102,6 @@ $(document).ready(() => {
   });
 
   /**
-   * Slide in Project detail
-   * 
-   **/
-  $('.imgInfo .btn').click((evt) => {
-
-    // get width of viewport
-    const width = $( window ).width();
-    const node = $(evt.target);
-    const target = $(`#${node.attr('target')}`);
-    let scrollTo = $('#rightSide');
-
-    if(width < 1025) {
-      // change targets for smaller screens
-      scrollTo = $('#title');
-    }
-
-    // scroll to top when not at the top.
-    scrollToTop(scrollTo, $('html, body'), 300);
-
-    // Slide in project detail
-    target.addClass('show');  
-
-    // hide main content to prevent excessive overflow-y
-    $('#rightSide').addClass('hide');
-
-  });
-
-  $('.close-project').click(() => {
-    $('.out-right.show').removeClass('show');
-    $('#rightSide').removeClass('hide');
-  });
-
-  /**
    * Navigation menu control
    * 
    */
@@ -11169,7 +11136,7 @@ $(document).ready(() => {
       message: $('#contact-message').val(),
     };
     
-    const successMessage = 'Message received! Please check your inbox ( ^_^) ';
+    const successMessage = 'Message received! ( ^_^) ';
     
     const posting = $.post('/api/message', data, 'json');
     
@@ -11196,7 +11163,7 @@ $(document).ready(() => {
     
     const posting = $.post('/api/subscriber', data, 'json');
     
-    const successMessage = 'Thanks for subscribing! Please check your inbox. ( ^_^) ';
+    const successMessage = 'Thanks for subscribing! ( ^_^) ';
     
     posting.done(function() {
       

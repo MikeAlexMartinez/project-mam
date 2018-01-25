@@ -35,6 +35,7 @@ const sections = {
         image: '/myImages/projects/ranger-clone/ranger-long.png',
         heading: 'Ranger Clone',
         author: 'Michael Martinez',
+        link: '/view/ranger-clone',
         detail: [
           'This is the second website \'clone\' that I\'ve created. It is inspired by the \'Ranger\' templace found at free-css.com.'
         ],
@@ -43,6 +44,7 @@ const sections = {
         image: '/myImages/projects/resume-clone/resume-resume.png',
         heading: 'Resume Clone',
         author: 'Michael Martinez',
+        link: '/view/resume-clone',
         detail: [
           'This is the first project I completed which was set by P1xt in his comprehensive web development curriculum. It involved replicating the resume found here: https://creativemarket.com/ikonome/686585-Material-Resume-Blue/screenshots/#screenshot1'
         ],
@@ -51,6 +53,7 @@ const sections = {
         image: '/myImages/projects/deft-clone/deft-long.png',
         heading: 'Deft Clone',
         author: 'Michael Martinez',
+        link: '/view/deft-clone',
         detail: [
           'This is the third website \'clone\' that I\'ve created. It is inspired by the \'Deft\' templace found at free-css.com.'
         ],
@@ -59,6 +62,7 @@ const sections = {
         image: '/myImages/projects/minifolio-clone/minifolio-home.png',
         heading: 'Minifolio Clone',
         author: 'Michael Martinez',
+        link: '/view/minifolio-clone',
         detail: [
           'This is the first website \'clone\' that I\'ve created. It is inspired by the Minifolio template found at free-css.com. I didn\'t use any of the source code to create it but did research the libraries used so that I could discover, and learn how to use the libraries that the original developer used when creating the template.'
         ],
@@ -67,6 +71,7 @@ const sections = {
         image: '/myImages/projects/project-mam/project-mam-home.png',
         heading: 'Project MaM',
         author: 'Michael Martinez',
+        link: '/',
         detail: [
           'This is the website for my project portfolio... You are on it right now! But you knew that right!?'
         ],
@@ -97,7 +102,7 @@ const sections = {
     mainText: ['Whether it\'s to give me feedback, offer me work, or just to say hello, I\'d love to hear from you.'],
   },
   footer: {
-    copyright: ' MikeAlexMartinez - made with love',
+    copyright: ' MikeAlexMartinez - made with',
   }
 };
 

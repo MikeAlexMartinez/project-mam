@@ -15,6 +15,8 @@ The homepage of this website should meet the following criteria or 'user-stories
 
 
 To Do List:
+- Add bug reporting
+- Add admin pages
 - Add tests for all API endpoints
 - Create gulp task and uniform format to bring in projects to home page automatically.
 - Add row layout to project page

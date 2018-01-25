@@ -24,7 +24,8 @@ mixin projectOverlay(p)
     div.text
       h4=p.heading
       p=p.author
-    button.btn(target=p.heading.toLowerCase().replace(' ','')) View
+    a(href=p.link)
+      button.btn.clicky View
 
 mixin projectDetail(p)
   div(id=p.heading.toLowerCase().replace(' ','') class="gallerySlide out-right")
@@ -40,7 +41,7 @@ mixin subpageHeader()
   div.sc-header
     div.sc-header-content
       h2=location
-      //-
+      //- This functinoality is yet to be completed -//
         i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
         i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)
         i(class=`${block ? 'ion-ios-grid' : 'ion-ios-grid-outline'}`)
@@ -66,16 +67,17 @@ mixin subpageItem(p)
           p= p.miniDetail
         div.sc-item-controls
           div.left-controls
-            a(class=`${p.devlink}` href=`${prod ? p.link : p.devlink}`)
+            a(href=`${prod ? p.link : p.devlink}`)
               span(data-tooltip="View Project" data-tooltip-position="top")
                 i.ion-md-eye
           div.right-controls
             a(href=p.git)
               span(data-tooltip="View Source Code" data-tooltip-position="top")
                 i.ion-logo-octocat
-            a(href=`#gallery-${p._id}`)
-              span(data-tooltip="More Information" data-tooltip-position="top")
-                i.ion-md-information
+            //-
+              a(href=`#gallery-${p._id}`)
+                span(data-tooltip="More Information" data-tooltip-position="top")
+                  i.ion-md-information
 
 mixin projectFloat()
   div.project-mam-float
