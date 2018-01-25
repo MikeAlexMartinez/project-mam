@@ -1,8 +1,10 @@
-doctype html
-html
-  head
+extends layout.pug
 
-  body
-    div
-      h1 Admin
-      p this is my admin page
+include includes/_mixins.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()

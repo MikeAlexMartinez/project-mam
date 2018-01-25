@@ -8,6 +8,8 @@ const logger = require('../winston');
 
 // Controllers
 const fetchProjects = require('../controllers/fetchProjects').fetchProjects;
+const auth = require('../controllers/authentication/auth');
+
 
 // Application data
 const appData = require('../scripts/project-mam-data');
@@ -51,8 +53,16 @@ router.get('/blog', function projects(req, res) {
 });
 
 // admin page
-router.get('/admin', function projects(req, res) {
+router.get('/admin', auth.isLoggedIn, function projects(req, res) {
   
+  // if logged in...
+
+  // fetch all data...
+
+  // respond
+
+  // if not logged in reroute to admin-login
+
   res.render('admin', {location: 'admin'});
 });
 

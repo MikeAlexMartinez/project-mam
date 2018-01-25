@@ -116,6 +116,7 @@ $(document).ready(() => {
   /**
    * Login form handling
    */
+  
 
   /**
    * Bug reporting Transitions 
