@@ -11,6 +11,13 @@ const projectType = require('../models/projectType');
 const project = require('../models/project');
 const bug = require('../models/bug');
 
+router.use(function(req, res, next) {
+  
+
+  // .. some logic here .. like any other middleware
+  next();
+});
+
 const collections = [
   {
     name: 'messages',

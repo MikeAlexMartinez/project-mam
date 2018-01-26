@@ -1,0 +1,33 @@
+#adminForm {
+  position: absolute;
+  top: 30%;
+  left: 30%; 
+  border-radius: 10px;
+  box-shadow: 6px 7px 10px 6px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  background-color: #D32F2F;
+
+  .loginInputs {
+    text-align: left;
+    padding: 10px;
+    vertical-align: center;
+  }
+  
+  input {
+    background-color: $bg-black;
+    margin: 2%;
+    border-radius: 5px;
+    width: 30%;
+    padding: 10px;
+    background-color: $bg-black;
+    border: none;
+    color: #fff;
+    
+  }
+  
+  .clicky {
+    top: 13px;
+    right: -50px;
+    display: inline-block;
+  }
+}

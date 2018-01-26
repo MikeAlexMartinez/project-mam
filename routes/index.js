@@ -16,7 +16,7 @@ const User = require('../models/user');
 const appData = require('../scripts/project-mam-data');
 
 // api routes
-router.use('/api', require('./api'));
+// router.use('/api', require('./api'));
 
 // project routes
 router.use('/view', require('./projects'));
@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
 // logout route
 router.get('/logout', (req, res, next) => {
   logger('info', 'Logout request received');
-  if (req.session) {
+  if (req.session) {  
     req.session.destroy( function(err) {
       if (err) {
         logger('error', 'Error Destroying session');
@@ -72,6 +72,8 @@ router.get('/projects', function projects(req, res) {
   fetchProjects(req, res)
     .then((data) => {
       
+      console.log(data);
+
       if (process.env.NODE_ENV === 'development') {
         data.dev = true;
       } else {

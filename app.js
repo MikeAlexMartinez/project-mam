@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const requestIp = require('request-ip');
 
 const secret = process.env.SECRET || '53cr3t';
 
@@ -27,6 +28,9 @@ const { fileDate } = require('./helpers/dates');
 const logger = require('./winston');
 logger('info','Started Logging module!');
 
+// Bring in mu auth items
+const auth = require('./controllers/authentication/auth');
+
 // Load my routes
 const routes = require('./routes');
 
@@ -35,6 +39,11 @@ const app = express();
 
 // instantiate helmet headers and protections
 app.use(helmet());
+
+// capture ip address
+app.use(requestIp.mw());
+
+app.use(auth.captureIp);
 
 // Cookie Parsing
 app.use(cookieParser(secret, {}));

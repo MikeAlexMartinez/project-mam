@@ -11196,7 +11196,7 @@ $(document).ready(() => {
         target.removeClass('active');
       }, 3000);
 
-    }, 1000)
+    }, 200)
   }
 
   /**

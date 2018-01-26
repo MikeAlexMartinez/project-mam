@@ -15,14 +15,11 @@ The homepage of this website should meet the following criteria or 'user-stories
 
 
 To Do List:
-- Add login item
-- Add admin pages
-- Add authentication, and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
+- Add admin pages and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
 - Add tests for all API endpoints
 - Create gulp task and uniform format to bring in projects to home page automatically.
 - Add tests for controller code
 - Add row layout to project page
-- Add project-mam 'back' floating button to be placed on top of projects hosted within the site.
 - Add filtering, sorting and view change functionality to projects viewing page.
 - Use nodemailer (or equivalent) to verify subscriptions and messages
 

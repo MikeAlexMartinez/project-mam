@@ -14,36 +14,11 @@ const User = require('../models/user');
 const auth = require('../controllers/authentication/auth');
 
 // admin page
-router.get('', function projects(req, res, next) {
+router.get('', auth.isLoggedIn, function projects(req, res, next) {
   
-  if( !req.session.userId ) {
-    logger('info', 'admin access DENIED. No session present');
+  const user = req.user;
 
-    const message = encodeURIComponent('You must login to view this page...');
-    const type = encodeURIComponent('warning');
-
-    res.redirect('/admin/login?message=' + message + '&type=' + type);
-
-  } else {
-    
-    User.findById(req.session.userId)
-      .exec((err, user) => {
-        
-        if ( err || !user ) {
-          logger('info','user session not found');
-          
-          const message = encodeURIComponent('You must login to view this page...');
-          const type = encodeURIComponent('warning');
-    
-          res.redirect('/admin/login?message=' + message + '&type=' + type);
-          
-        } else {
-          
-          // fetch all data...
-          res.render('admin', { location: 'admin', user: user });
-        }
-      });
-  }
+  res.render('admin', { location: 'admin', user: user });
     
 });
 
