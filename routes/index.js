@@ -47,6 +47,7 @@ router.get('/logout', (req, res, next) => {
         logger('error', 'Error Destroying session');
         return next(err);
       } else {
+        logger('info', 'Session Destoyed');
         res.redirect('/');
       }
     });

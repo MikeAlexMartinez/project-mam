@@ -27,13 +27,10 @@ router.get('', auth.isLoggedIn, function projects(req, res, next) {
       if (err) return next(err);
       if (!user) {
         logger('error','user session not found');
-        const err = new Error('User session not found');
-        err.status = 400;
         res.redirect('/admin/login');
       } else {
         
         // fetch all data...
-        
         res.render('admin', { location: 'admin', user: user });
       }
     });
