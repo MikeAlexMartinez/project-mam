@@ -105,23 +105,27 @@ $(document).ready(() => {
   /**
    * Login form visibility control
    */
-  $('.brandLogo').click(() => {
-    $('#adminForm').toggleClass('show');
+  $('.brandLogo').click((evt) => {
+    const target = $(evt.target).attr('class');
+    
+    $('#adminForm').addClass('show');
   });
-
-  $('#closeLogin').click(() => {
-    $('#adminForm').toggleClass('show');
+  $('#closeLogin').click((evt) => {
+    
+    $('#adminForm').removeClass('show');
   });
-
-  /**
-   * Login form handling
-   */
-  
+  $('.ion-md-close-circle').click((evt) => {
+    evt.stopPropagation();
+    
+    $('#adminForm').removeClass('show');
+  });
 
   /**
    * Bug reporting Transitions 
    */
-  $('#bug-report').click(() => {
+  $('#bug-report').click((evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
 
     // change bug-reporter colour to red
     $('#bug-report .imgContainer').toggleClass('red');

@@ -46,37 +46,60 @@
 
     #adminForm {
       margin-top: 15px;
-      width: 80%;
       position: relative;
       left: 100%;
       opacity: 0;
       background-color: #e8eaed;
       border-radius: 10px;
       box-shadow: 6px 7px 10px 6px rgba(0, 0, 0, 0.2);
-
+      
+      @media all and (max-width: 850px) {
+        width: 97%;
+      }
+      @media all and (min-width: 850px) and (max-width: 1100px) {
+        width: 90%;
+      }
+      @media all and (min-width: 1100px) and (max-width: 1300px) {
+        width: 90%;
+      }
+      @media all and (min-width: 1300px) {
+        width: 90%;
+      }
+      
       transition: left $trans, opacity $trans;
 
       &.show {
-        left: 10%;
+        left: 2%;
         opacity: 1;
       }
 
       .loginInputs {
         text-align: left;
+        padding: 10px;
+        vertical-align: center;
       }
-
+      
       input {
         margin: 2%;
         border-radius: 5px;
-        width: 33%;
-        padding: 9px;
+        width: 30%;
+        padding: 10px;
+      }
+      
+      .clicky {
+        left: 5px;
+        top: 10px;
+        display: inline-block;
       }
 
-      .clicky {
-        position: absolute;
+      #closeLogin {
+        float: right;
+        color: $bg-btn;
+        font-size: 30px;
 
-        top: 12px;
-        right: 45px;
+        &:hover {
+          color: $bg-btn-shadow;
+        }
       }
     }
 

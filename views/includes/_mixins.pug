@@ -40,7 +40,12 @@ mixin projectDetail(p)
 mixin subpageHeader()
   div.sc-header
     div.sc-header-content
-      h2=location
+      if location === 'admin-login'
+        h2 Administration - Login
+      else if location === 'admin'
+        h2 Administration
+      else
+        h2=location
       //- This functinoality is yet to be completed -//
         i(class=`${filtered ? 'ion-md-funnel' : 'ion-ios-funnel-outline' }`)
         i(class=`${list ? 'ion-ios-menu' : 'ion-ios-menu-outline'}`)

@@ -1,8 +1,16 @@
-doctype html
-html
-  head
+extends layout.pug
 
-  body
-    div
-      h1 Whoops!
-      p Page not found
+include includes/_mixins.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()
+    if nothing
+      div.no-projects-container  
+        h2 Bad directions perhaps?
+        p There's nothing to see here
+        img(src="/myImages/nothing-to-see-here.png")
+        p ...Just a boring pile of shells...

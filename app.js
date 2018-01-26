@@ -4,14 +4,21 @@
 const path = require('path');
 
 // Third party libs
+require('dotenv').config()
 const express = require('express');
 const expressWinston = require('express-winston');
 const winston = require('winston');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
-const secret = process.env.SECRET || '53c3t';
+const secret = process.env.SECRET || '53cr3t';
+
+// bring in connection
+const mongoose = require('./controllers/db');
+const db = mongoose.connection;
 
 // Helpers
 const { fileDate } = require('./helpers/dates');
@@ -36,6 +43,17 @@ app.use(cookieParser(secret, {}));
 app.set('views', './views');
 // set template engine to pug
 app.set('view engine', 'pug');
+
+// Set up session management with MongoDB and express-session
+app.use(session({
+  secret: secret,
+  resave: true,
+  saveUninitialized: false,
+  // move storage out of RAM and into Mongo
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
 
 // This is where static files are served from
 app.use(express.static(path.resolve(__dirname, 'public')));
@@ -74,6 +92,18 @@ app.use(expressWinston.errorLogger({
     })
   ]
 }));
+
+// error handler
+// define as the last app.use callback
+app.use((err, req, res, next) => {
+  console.log("Error");
+  console.log(err);
+  res.status(err.status || 500)
+    .json({
+      message: err.message,
+      error: {}
+    });
+});
 
 // start app
 app.listen(3030, () => {
