@@ -161,6 +161,23 @@ $(document).ready(() => {
   });
 
   /**
+   * Show general toast message if message exists
+   */
+  if ($('.toastContainer').hasClass('show')) {
+    const target =  $('.toastGeneral');
+    
+    setTimeout(() => {
+      target.addClass('active');
+
+      // show message for 3 seconds
+      setTimeout(() => {
+        target.removeClass('active');
+      }, 3000);
+
+    }, 1000)
+  }
+
+  /**
    * contact form handling
    **/
   $('#contactForm').submit(function(evt) {

@@ -14,35 +14,54 @@ const User = require('../models/user');
 const auth = require('../controllers/authentication/auth');
 
 // admin page
-router.get('', auth.isLoggedIn, function projects(req, res, next) {
+router.get('', function projects(req, res, next) {
   
   if( !req.session.userId ) {
     logger('info', 'admin access DENIED. No session present');
-    res.redirect('/admin/login');
-  }
 
-  // if logged in...
-  User.findById(req.session.userId)
-    .exec((err, user) => {
-      if (err) return next(err);
-      if (!user) {
-        logger('error','user session not found');
-        res.redirect('/admin/login');
-      } else {
+    const message = encodeURIComponent('You must login to view this page...');
+    const type = encodeURIComponent('warning');
+
+    res.redirect('/admin/login?message=' + message + '&type=' + type);
+
+  } else {
+    
+    User.findById(req.session.userId)
+      .exec((err, user) => {
         
-        // fetch all data...
-        res.render('admin', { location: 'admin', user: user });
-      }
-    });
-
+        if ( err || !user ) {
+          logger('info','user session not found');
+          
+          const message = encodeURIComponent('You must login to view this page...');
+          const type = encodeURIComponent('warning');
+    
+          res.redirect('/admin/login?message=' + message + '&type=' + type);
+          
+        } else {
+          
+          // fetch all data...
+          res.render('admin', { location: 'admin', user: user });
+        }
+      });
+  }
+    
 });
 
 // admin-login page
 router.get('/login', function projects(req, res) {
-  
-  res.render('adminLogin', {location: 'admin-login'});
+  // Should make toast into middleware
+  const message = req.query.message || '';
+  const status = message !== '';
+  const type = req.query.type;
+
+  const data = {
+    location: 'admin-login',
+    status: status,
+    message: message,
+    type: `${status ? type : 'hide'}`
+  };
+
+  res.render('adminLogin', data);
 });
-
-
 
 module.exports = router;

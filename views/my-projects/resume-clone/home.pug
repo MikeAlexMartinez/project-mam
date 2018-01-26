@@ -4,8 +4,14 @@ html
     title Material Resume Clone
     link(href='/my-projects/resume-clone/css/application.css' rel='stylesheet' type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700' rel='stylesheet')
-  
+    //- this file is added to allow easier routing back to projectmam
+    //- from within project
+    include ../../projectcss.pug
+
   body
+    //- this file is added to allow easier routing back to projectmam
+    //- from within project
+    include ../../overlay.pug
     section.paper
       header.header.grid
         div.container.group.top-nav

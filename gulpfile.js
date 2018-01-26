@@ -51,12 +51,26 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./public/css'));
 });
 
+/**
+ * Additional sass compiling for adding additional css
+ * to view/project pages
+ */
+gulp.task('project-sass', function() {
+  return gulp.src('./src/sass/projects/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: ['node_modules']
+    }).on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./public/css'))
+});
+
 gulp.task('watch', function() {
   gulp.start('copyfonts');
   gulp.watch(['./src/sass/*.scss',
               './src/sass/**/*.scss'
-            ], ['sass']);
+            ], ['sass', 'project-sass']);
   gulp.watch(['./src/js/*.js'], ['js']);
 });
 
-gulp.task('default', ['copyfonts','sass','js']);
+gulp.task('default', ['copyfonts','sass','js','project-sass']);

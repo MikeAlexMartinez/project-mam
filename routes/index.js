@@ -28,10 +28,13 @@ router.use('/admin', require('./admin'));
 router.post('/login', (req, res, next) => {
   User.authenticate(req.body.name, req.body.password, (err, user) => {
     if (err || !user) {
-      const err = new Error('Wrong username or password');
-      err.status = 401;
-      res.send({error: 'Incorrect Credentials!'});
+      const message = encodeURIComponent('Incorrect credentials were provided...');
+      const type = encodeURIComponent('warning');
+
+      res.redirect('/?message=' + message + '&type=' + type);
+    
     } else {
+      
       req.session.userId = user._id;
       res.redirect('/admin');
     }
@@ -48,7 +51,11 @@ router.get('/logout', (req, res, next) => {
         return next(err);
       } else {
         logger('info', 'Session Destoyed');
-        res.redirect('/');
+        
+        const message = encodeURIComponent('Logged out succesfully');
+        const type = encodeURIComponent('success');
+  
+        res.redirect('/?message=' + message + '&type=' + type);
       }
     });
   } else {
@@ -94,7 +101,20 @@ router.get('/blog', function projects(req, res) {
 // home route
 router.get(/^\/(home)?$/, function homePage(req, res) {
 
-  res.render('home', {location: 'home', data: appData.data });
+  // Should make toast into middleware
+  const message = req.query.message || '';
+  const status = message !== '';
+  const type = req.query.type;
+
+  const data = {
+    location: 'home', 
+    data: appData.data,
+    status: status,
+    message: message,
+    type: `${status ? type : 'hide'}`
+  };
+
+  res.render('home', data);
 });
 
 // fallback route
