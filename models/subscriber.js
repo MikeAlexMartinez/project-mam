@@ -11,7 +11,8 @@ const subscriberSchema = new Schema({
   email: {type: String, index: { unique: true }},
   createdDate: { type: Date, default: Date.now },
   validated: { type: Boolean, default: false },
-  active: { type: Boolean, default: true }
+  active: { type: Boolean, default: true },
+  ip: {type: String, required: true}
 });
 
 const Subscriber = db.model('Subscriber', subscriberSchema);
