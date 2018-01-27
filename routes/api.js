@@ -1,65 +1,57 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); 
 
-const DbComm = require('../helpers/api').DbCommunicator; 
+const Message = require('../models/message');
+const Subscriber = require('../models/subscriber');
+const Bug = require('../models/bug');
+const Ip = require('../models/ip');
 
-const message = require('../models/message');
-const subscriber = require('../models/subscriber');
-const projectType = require('../models/projectType');
-const project = require('../models/project');
-const bug = require('../models/bug');
+const logger = require('../winston');
+const auth = require('../controllers/authentication/auth');
 
-router.use(function(req, res, next) {
-  
+router.use(auth.captureIp);
 
-  // .. some logic here .. like any other middleware
-  next();
-});
+router
+  .route('/message')
+  .post((req, res) => {
+    
+    // check number of requests today 
+    const requestsToday = req.requestsToday;
+    const ip = req.clientIp;
 
-const collections = [
-  {
-    name: 'messages',
-    singular: 'message',
-    model: new DbComm(message)
-  },
-  {
-    name: 'subscribers',
-    singular: 'subscriber',
-    model: new DbComm(subscriber)
-  },
-  {
-    name: 'projecttypes',
-    singular: 'projecttype',
-    model: new DbComm(projectType)
-  },
-  {
-    name: 'projects',
-    singular: 'project',
-    model: new DbComm(project)
-  },
-  {
-    name: 'bugs',
-    singular: 'bug',
-    model: new DbComm(bug)
-  },
-];
+    // check number of messages from IP address
+    
+    
+    // check number of messages from email
+    
+    logger('info', `message: New Message received; ip: ${ip}; requestsToday: ${requestsToday}`)
 
-collections.forEach((v) => {
-  router
-    .route(`/${v.singular}/:id`)
-    .get(v.model.fetch)
-    .put(v.model.edit)
-    .delete(v.model.delete);
-  
-  router
-    .route(`/${v.singular}`)
-    .post(v.model.submit);
-  
-  router
-    .route(`/${v.name}`)
-    .get(v.model.fetchAll);
-});
+    // Same applies to bugs
+    // Validate message input 
+    // check and cleanse sender - should be a name
+
+    // check and cleanse email - is valid email address
+
+    // check and cleanse message - 
+    const newMessage = req.body;
+    newMessage.createdDate = new Date();
+    newMessage.source = '';
+
+  });
+
+router
+  .route('/subscribe')
+  .post((req, res) => {
+
+  });
+
+router
+  .route('/bug')
+  .post((req, res) => {
+
+  });
+
 
 module.exports = router;

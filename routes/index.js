@@ -25,7 +25,7 @@ router.use('/view', require('./projects'));
 router.use('/admin', require('./admin'));
 
 // login route - handles calls from home and admin-login
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   User.authenticate(req.body.name, req.body.password, (err, user) => {
     if (err || !user) {
       const message = encodeURIComponent('Incorrect credentials were provided...');
@@ -59,7 +59,7 @@ router.get('/logout', (req, res, next) => {
       }
     });
   } else {
-    console.log("no session");
+    console.log('no session');
     const err = new Error('no session to logout from');
     err.status = 401;
     return next(err);
@@ -80,11 +80,13 @@ router.get('/projects', function projects(req, res) {
         data.prod = true;
       }
 
+      data.location = 'projects';
+
       res.render('projects', data);
     
     })
     .catch((err) => {
-      logger.err(err);
+      logger('error', err);
       res.render('projects', 
         {
             location: 'projects',

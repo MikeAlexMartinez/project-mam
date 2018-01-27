@@ -11,7 +11,8 @@ const messages = [
     validated: false,
     important: false,
     replied: false,
-    source: 'templates/deft'
+    source: 'templates/deft',
+    ip: '150:200:200:255'
   },
   {
     _id: 'sender02-3c83-4b4b-9089-69362f729ae7',

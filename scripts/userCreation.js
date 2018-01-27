@@ -1,15 +1,13 @@
 'use strict';
 
-const path = require('path')
 
 const dotenv = require('dotenv');
+dotenv.config();
 
 const mongoose = require('../controllers/db'); 
 const db = mongoose.connection;
 
 const User = require('../models/user');
-
-const res = dotenv.config();
 
 const admin = {
   username: process.env.NAME,

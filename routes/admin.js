@@ -14,7 +14,7 @@ const User = require('../models/user');
 const auth = require('../controllers/authentication/auth');
 
 // admin page
-router.get('', auth.isLoggedIn, function projects(req, res, next) {
+router.get('', auth.isLoggedIn, function projects(req, res) {
   
   const user = req.user;
 

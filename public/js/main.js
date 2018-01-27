@@ -11164,7 +11164,6 @@ $(document).ready(() => {
     console.log('new Bug Submitted!');
 
     const data = {
-      source: $('#bug-source').val(),
       sender: $('#bug-name').val(),
       email: $('#bug-email').val(),
       bugDescription: $('#bug-message').val(),
@@ -11174,7 +11173,9 @@ $(document).ready(() => {
     
     const posting = $.post('/api/bug', data, 'json');
     
-    posting.done(function() { 
+    posting.done(function() {
+      // Need to clear fields if message was successful
+
       showToast('bug','success', successMessage);
     }).fail(function() {
       showToast('bug','error', errorMessage);
@@ -11207,7 +11208,6 @@ $(document).ready(() => {
     console.log('New message Submitted!');
 
     const data = {
-      source: $('#contact-source').val(),
       sender: $('#contact-name').val(),
       email: $('#contact-email').val(),
       message: $('#contact-message').val(),
@@ -11217,7 +11217,9 @@ $(document).ready(() => {
     
     const posting = $.post('/api/message', data, 'json');
     
-    posting.done(function() { 
+    posting.done(function() {
+      // Need to clear fields if message was successful
+
       showToast('contact','success', successMessage);
     }).fail(function() {
       showToast('contact','error', errorMessage);
@@ -11233,7 +11235,6 @@ $(document).ready(() => {
     console.log('New Subscription Submitted!');
 
     const data = {
-      source: $('#subscribe-source').val(),
       email: $('#subscribe-email').val(),
       active: true,
     };
@@ -11249,6 +11250,8 @@ $(document).ready(() => {
     }).fail(function(err) {
       
       if(err.status === 409) {
+        // Need to clear fields if message was successful
+
         showToast('subscribe', 'success', successMessage);
       } else {
         showToast('subscribe', 'error', errorMessage);

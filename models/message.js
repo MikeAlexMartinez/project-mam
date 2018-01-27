@@ -7,15 +7,16 @@ const Schema = db.Schema;
 
 const messageSchema = new Schema({
   _id: {type: String, default: uuidv4 },
-  sender: String,
+  sender: { type: String, required: true},
   subject: { type: String, default: '' },
-  email: String,
-  message: String,
+  email: { type: String, required: true},
+  message: { type: String, required: true},
   createdDate: { type: Date, default: Date.now },
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
   replied: { type: Boolean, default: false },
-  source: String
+  source: String,
+  ip: { type: String, required: true},
 });
 
 const Message = db.model('Message', messageSchema);

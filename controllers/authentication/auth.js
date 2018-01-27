@@ -22,11 +22,14 @@ function captureIp(req, res, next) {
   const ipAddress = req.clientIp;
   const type = net.isIP(ipAddress);
 
+  console.log(req.clientIp);
+
   // find One and Update create if doesn't exist
   Ip.findOne({ip: ipAddress}, (err, ip) => {
     if (err) {
       logger('error', 'Error retrieving IP from database');
 
+      req.requestsToday = 1;
       next();
     }
 
@@ -39,12 +42,13 @@ function captureIp(req, res, next) {
         requestCount: 1
       });
 
-      newIp.save((err, newIp, numAffected) => {
+      newIp.save((err) => {
         if (err) {
           logger('error', 'Error saving IP address');
           next();
         }
 
+        req.requestsToday = 1;
         next();
       });
 
@@ -57,11 +61,11 @@ function captureIp(req, res, next) {
       let lastRequest = ip.lastRequest;
 
       // if last request was today then increment requests today
-      if (dates.match(lastRequest, new Date)) {
+      if (dates.match(lastRequest, new Date())) {
         requestsToday = ip.requestsToday + 1;
       } else {
         // else set to 1 
-        lastRequest = new Date;
+        lastRequest = new Date();
         requestsToday = 1;
       }
 
@@ -72,14 +76,15 @@ function captureIp(req, res, next) {
         requestCount: count,
       }, (err, data) => {
         if (err || !data) logger('error', 'Error updating IP address');
-        
+
+        req.requestsToday = requestsToday;
         next();
       });
     }
 
   });
 
-};
+}
 
 function isLoggedIn(req, res, next) {
   
@@ -105,18 +110,19 @@ function isLoggedIn(req, res, next) {
           res.redirect('/admin/login?message=' + message + '&type=' + type);
           
         }
-        const { username, numLogins, lastLogin } = user
+
+        const { username, numLogins, lastLogin } = user;
         
         req.user = {
           username,
           numLogins,
           lastLogin
-        }
+        };
 
         next();
       });
   }
-};
+}
 
 
 module.exports.captureIp = captureIp;

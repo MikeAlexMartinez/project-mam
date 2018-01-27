@@ -10,8 +10,6 @@ const logger = require('../winston');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const IpSchema = new Schema({ address: String });
-
 const salt = process.env.SALT;
 const addSalt = (str) => str + '' + salt;
 
@@ -37,11 +35,11 @@ const UserSchema = new Schema({
   },
   lastLogin: {
     type: Date,
-    default: new Date
+    default: new Date()
   },
   createdDate: {
     type: Date,
-    default: new Date
+    default: new Date()
   }
 });
 
@@ -55,6 +53,8 @@ UserSchema.statics.authenticate = (username, password, cb) => {
         err.status = 401;
         return cb(err);
       }
+
+      console.log(addSalt(password));
 
       // bcrypt compare with added salty goodness
       bcrypt.compare(addSalt(password), user.password, (err, result) => {

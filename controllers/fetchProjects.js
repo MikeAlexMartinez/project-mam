@@ -4,7 +4,7 @@ const logger = require('../winston');
 const Project = require('../models/project');
 const createArray = require('../helpers/filter.js').createArray;
 
-module.exports.fetchProjects = (req, res) => {
+module.exports.fetchProjects = (request, response) => {
   return new Promise((res, rej) => {
     
     let { startDate, 
@@ -14,8 +14,8 @@ module.exports.fetchProjects = (req, res) => {
           sortDirection=1,
           limit=20, 
           skip,
-          page=1
-        } = req.query;
+          page=0
+        } = request.query;
     
     const sortBy = {};
     sortBy[sort] = sortDirection;
@@ -47,26 +47,38 @@ module.exports.fetchProjects = (req, res) => {
       .limit(limit)
       .sort(sortBy)
       .exec((err, projects) => {
+        let data = {};
+        
         if (err) {
           logger('error', 'error retrieving projects from db');
-          rej(err);
+          
+          data.message = 'error retrieving projects from db';
+          data.type = 'error';
+          data.projects = [];
+
+          rej(data);
+        } else {
+ 
+          if (!projects || projects.length === 0) {
+            logger('info', 'no projects returned');
+            
+            data.message = 'No projects returned';
+            data.type = 'error';
+            data.projects = [];
+            
+            rej(data);
+          } else {
+            const message = `Project item(s) fetched successfully`;
+            logger('info', message);
+            
+            data.message = message;
+            data.type = 'success';
+            data.projects = projects;
+    
+            res(data);
+          }
         }
-
-        if (!projects || projects.length === 0) {
-          logger('info', 'no projects returned');
-          rej(err);
-        }
-
-        const message = `Project item(s) fetched successfully`;
-        logger('info', message);
-        
-        const response = {
-          message: message,
-          type: 'success',
-          projects: projects
-        };
-
-        res(response);
+          
       });
   });
 };
