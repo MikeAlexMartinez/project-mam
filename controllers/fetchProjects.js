@@ -2,6 +2,7 @@
 
 const logger = require('../winston');
 const Project = require('../models/project');
+const createArray = require('../helpers/filter.js').createArray;
 
 module.exports.fetchProjects = (req, res) => {
   return new Promise((res, rej) => {
@@ -12,7 +13,8 @@ module.exports.fetchProjects = (req, res) => {
           sort='createdDate',
           sortDirection=1,
           limit=20, 
-          skip
+          skip,
+          page=1
         } = req.query;
     
     const sortBy = {};
@@ -32,6 +34,8 @@ module.exports.fetchProjects = (req, res) => {
       }
     }
 
+    skip = page * limit;
+
     // parse tags provided (if any)
     if (tags) {
       filter.tags = createArray(tags);
@@ -39,11 +43,12 @@ module.exports.fetchProjects = (req, res) => {
 
     Project
       .find(filter)
+      .skip(skip)
       .limit(limit)
       .sort(sortBy)
       .exec((err, projects) => {
         if (err) {
-          logger('error', 'error retrieving projects form db');
+          logger('error', 'error retrieving projects from db');
           rej(err);
         }
 
