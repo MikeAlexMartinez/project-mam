@@ -33,6 +33,18 @@ gulp.task("js", function() {
 });
 
 /**
+ * Project specific JS to embed overlay in projects
+ */
+gulp.task("project-js", function() {
+  gulp.src("./src/js/project.js")
+    .pipe(include({
+      includePaths: [
+        __dirname + "/node_modules/jquery/dist",
+      ]
+    })).on('error', console.log)
+    .pipe(gulp.dest("./public/js"));
+});
+/**
  * copy view files from templates into relevant directories.
  */
 
@@ -70,7 +82,8 @@ gulp.task('watch', function() {
   gulp.watch(['./src/sass/*.scss',
               './src/sass/**/*.scss'
             ], ['sass', 'project-sass']);
-  gulp.watch(['./src/js/*.js'], ['js']);
+  gulp.watch(['./src/js/main.js'], ['js']);
+  gulp.watch(['./src/js/project.js'], ['project-js']);
 });
 
-gulp.task('default', ['copyfonts','sass','js','project-sass']);
+gulp.task('default', ['copyfonts','sass','js','project-sass', 'project-js']);

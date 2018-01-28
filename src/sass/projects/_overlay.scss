@@ -92,3 +92,137 @@
     background-color: $bg-black;
   }
 }
+
+.ov-bugReporterContainer {
+  z-index: 20;
+  position: fixed;
+  height: 80%;
+  top: 10%;
+  left: 0;
+  text-align: left;
+
+  @media all and (max-width: 750px) {
+    width: 90%;
+  }
+  @media all and (min-width: 750px) and (max-width: 1000px) {
+    width: 90%;
+  }
+  @media all and (min-width: 1000px) {
+    width: 50%;
+  }
+
+  overflow: hidden;
+  
+  .ov-bugReporterRelative {
+    position: relative;
+    height: 100%;
+    width: 90%;
+  }
+
+  .ov-bugReporter {
+    position: absolute;
+    left: -105%;
+    opacity: 0;
+    top: 5%;
+    width: 100%;
+
+    border-radius: 15px;
+    background-color: $bg-black;
+
+    box-shadow: 10px 10px 15px 3px rgba(0, 0, 0, 0.3);
+    
+    color: #fff;
+    
+    transition: left 0.5s ease-in-out, opacity 0.35s linear 0.15s;
+
+    &.show {
+
+      @media all and (max-width: 750px) {
+        left: 10%;
+      }
+      @media all and (min-width: 750px) and (max-width: 1000px) {
+        left: 10%;
+      }
+      @media all and (min-width: 1000px) {
+        left: 10%;
+      }
+      
+      opacity: 1;
+    }
+
+    .ov-form-group {
+      padding: 7.5%;
+    }
+    .ov-bug-entry {
+      display: block;
+      margin-bottom: 20px;
+      padding: 1em;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+    }
+
+    p {
+      margin-left: 7.5%;
+    }
+  
+    h1 {
+      margin: 5% 0 0 7.5%;
+      font-weight: 400;
+    }
+  
+    h1 > span {
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+}
+
+.ov-bug-btn {
+  padding: $entry-padding;
+  color: #fff;
+  background-color: $bg-btn;
+  border-radius: 5px;
+  border: none;
+}
+
+.bug-clicky {
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+
+  text-align: center;
+  font-size: 1.3em; 
+
+  /** 3D Block Effect **/
+  box-shadow: 0 5px 0 0 $bg-btn-shadow;
+  
+  /** Make it look pretty **/
+  display: block;
+  background: $bg-btn;
+  color: #eee;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 5px;
+
+  &:active {
+    /** Remove 3D Block Effect on Click **/
+    box-shadow: none;
+    top: 5px;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+    
+  &:hover {
+    opacity: 1;
+  }
+    
+  .clicky:active,
+  .clicky:focus {
+    /** Remove Chrome's Ugly Yellow Outline **/
+    outline: 0;
+  } 
+}

@@ -8,7 +8,8 @@ const routes = [
 
       const data = {
         title: 'Resume',
-        scriptNonce: res.locals.nonce
+        scriptNonce: res.locals.nonce,
+        csrfToken: req.csrfToken()
       };
       
       console.log(data.scriptNonce);

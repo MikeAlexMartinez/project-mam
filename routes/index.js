@@ -24,12 +24,14 @@ const User = require('../models/user');
 // Application data
 const appData = require('../scripts/project-mam-data');
 
-// Create brute force protections
+// Create brute force protections in production
 const bruteModel = mongoose.model('bruteforce', BruteForceSchema);
 const store = new MongooseStore(bruteModel);
 const bruteforce = new ExpressBrute(store);
 
-router.use(bruteforce.prevent);
+if (process.env.NODE_ENV === 'production') {
+  router.use(bruteforce.prevent);
+}
 
 // api routes
 router.use('/api', require('./api'));

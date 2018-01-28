@@ -10,7 +10,14 @@ const allRoutes = [
     method: 'get',
     route: '/deft-clone',
     fn: function homePage(req, res) {
-        res.render(`${views}home`, {title: 'Deft - Home', data: appData.data });
+
+      const data = {
+        title: 'Deft - Home', 
+        data: appData.data,
+        csrfToken: req.csrfToken()
+      };
+
+      res.render(`${views}home`, data);
     }
   }
 ];

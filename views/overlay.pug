@@ -25,3 +25,20 @@ section.projectOverlay.slide
         div.imgContainer
           i.ion-ios-bug
 
+div.ov-bugReporterContainer
+  div.ov-bugReporterRelative
+    div.ov-bugReporter#bug-report
+      h1 Call the #[span Exterminator!]
+      p Please let me know if you experience any issues with my site 
+      div.ov-bugform.ov-contact
+        form(class="ov-form-group" action="" id="bugReporter")
+          div.ov-mainInputs
+            input(id="ov-bug-name" class="ov-bug-entry" type="text" placeholder="Name" name="name" required)
+            input(id="ov-bug-email" class="ov-bug-entry" type="email" placeholder="Email" name="email" required)
+            textarea(id="ov-bug-message" class="ov-bug-entry" type="text" placeholder="Bug description" name="message" rows="4" maxlength="600" required)
+          div.bug-clicky
+            button(type="submit" class="ov-bug-btn") Send
+            div#ov-bugToast.toast
+      
+
+

@@ -10,7 +10,12 @@ const allRoutes = [
     method: 'get',
     route: '/ranger-clone',
     fn: function homePage(req, res) {
-        res.render(`${views}home`, {title: 'RangerClone - Home', data: appData.data });
+      const data = {
+        title: 'RangerClone - Home', 
+        data: appData.data,
+        csrfToken: req.csrfToken()
+      }
+      res.render(`${views}home`, data);
     }
   }
 ];
