@@ -59,10 +59,22 @@ app.use(auth.captureIp);
 app.use(cookieParser(secret, {}));
 
 // Set up session management with MongoDB and express-session
+// needs to be set as using proxy
+let secureCookies = false;
+if (process.env.NODE_ENV === 'production') {
+  secureCookies = true;
+  app.set('trust proxy', 1);
+}
 app.use(session({
   secret: secret,
   resave: true,
   saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24,
+    secure: secureCookies,
+  },
+  SameSite: 'strict',
   // move storage out of RAM and into Mongo
   store: new MongoStore({
     mongooseConnection: db
