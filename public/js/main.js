@@ -11175,7 +11175,6 @@ $(document).ready(() => {
     
     posting.done(function() {
       // Need to clear fields if message was successful
-
       showToast('bug','success', successMessage);
     }).fail(function() {
       showToast('bug','error', errorMessage);

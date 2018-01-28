@@ -16,7 +16,7 @@ const User = require('../models/user');
 const appData = require('../scripts/project-mam-data');
 
 // api routes
-// router.use('/api', require('./api'));
+router.use('/api', require('./api'));
 
 // project routes
 router.use('/view', require('./projects'));

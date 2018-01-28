@@ -6,7 +6,6 @@ const router = express.Router();
 const Message = require('../models/message');
 const Subscriber = require('../models/subscriber');
 const Bug = require('../models/bug');
-const Ip = require('../models/ip');
 
 const logger = require('../winston');
 const valid = require('../helpers/validators');
@@ -36,9 +35,9 @@ const error = (err, res) => {
   if (err.code === 11000) {
     logger('error', 'Indexed item already exists!');
 
-    res.status(409).send(response);
+    return res.status(409).send(response);
   } else {
-    res.status(500).send(response);
+    return res.status(500).send(response);
   }
 
 };
@@ -66,45 +65,45 @@ router
     // check and cleanse name
     const name = valid.cleanString(newMessage.sender);
     if (!name) {
-      logger('warning', `Invalid name submitted from ip: ${req.ip}`);
+      logger('error', `Invalid name submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a name',
         type: 'warning',
         data: ''
       };
 
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newMessage.sender = name;
 
     // check and cleanse email - is valid email address
     const email = valid.cleanseEmail(newMessage.email);
     if (!email) {
-      logger('warning', `Invalid email submitted from ip: ${req.ip}`);
+      logger('error', `Invalid email submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a valid email',
         type: 'warning',
         data: ''
       };
 
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newMessage.email = email;
 
     // check and cleanse message - clean and check length
     const message = valid.cleanString(newMessage.message);
     if(!valid.messageLength(message)) {
-      logger('warning', `Message that was too long from ip: ${req.ip}`);
+      logger('error', `Message that was too long from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a message shorter than 600 characters',
         type: 'warning',
         data: ''
       };
 
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     if (!message) {
-      logger('warning', `Invalid message from ip: ${req.ip}`);
+      logger('error', `Invalid message from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a suitable message shorter ' + 
                  'than 600 characters and greater than 0',
@@ -112,7 +111,7 @@ router
         data: ''
       };
 
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newMessage.message = message;
 
@@ -128,32 +127,32 @@ router
           data: m
         };
         
-        res.status(201).send(response);
+        return res.status(201).send(response);
       })
       .catch((err) => {
-        logger('error',"Error encountered");
+        logger('error', 'Error encountered');
         error(err, res);
       });
     
   });
 
 router
-  .route('/subscribe')
+  .route('/subscriber')
   .post((req, res) => {
 
     const newSubscriber = req.body;
     
     // check email
-    const email = valid.cleanseEmail(newSubscriber);
+    const email = valid.cleanseEmail(newSubscriber.email);
     if (!email) {
-      logger('warning', `Invalid email submitted from ip: ${req.ip}`);
+      logger('error', `Invalid email submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a valid email',
         type: 'warning',
         data: ''
       };
 
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newSubscriber.email = email;
     newSubscriber.source = req.source;
@@ -172,7 +171,7 @@ router
           data: m
         };
         
-        res.status(201).send(response);
+        return res.status(201).send(response);
       })
       .catch((err) => {
         logger('error',"Error encountered");
@@ -191,45 +190,45 @@ router
     // check and cleanse name
     const name = valid.cleanString(newBug.sender);
     if (!name) {
-      logger('warning', `Invalid name submitted from ip: ${req.ip}`);
+      logger('error', `Invalid name submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a valid name',
         type: 'warning',
         data: ''
       };
       
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newBug.sender = name;
     
     // check and cleanse email - is valid email address
     const email = valid.cleanseEmail(newBug.email);
     if (!email) {
-      logger('warning', `Invalid email submitted from ip: ${req.ip}`);
+      logger('error', `Invalid email submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a valid email',
         type: 'warning',
         data: ''
       };
       
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
     newBug.email = email;
     
     // check and cleanse message - clean and check length
-    const message = valid.cleanString(newBug.message);
-    if(!valid.messageLength(message)) {
-      logger('warning', `Bug description too long from ip: ${req.ip}`);
+    const bugDescription = valid.cleanString(newBug.bugDescription);
+    if(!valid.messageLength(bugDescription)) {
+      logger('error', `Bug description too long from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a message shorter than 600 characters',
         type: 'warning',
         data: ''
       };
       
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
-    if (!message) {
-      logger('warning', `Invalid message from ip: ${req.ip}`);
+    if (!bugDescription) {
+      logger('error', `Invalid Bug Description from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a suitable message shorter ' + 
         'than 600 characters and greater than 0',
@@ -237,9 +236,9 @@ router
         data: ''
       };
       
-      res.status(409).send(response);
+      return res.status(409).send(response);
     }
-    newBug.bugDescription = message;
+    newBug.bugDescription = bugDescription;
     
     newBug.createdDate = new Date();
     newBug.source = req.source;
@@ -257,7 +256,7 @@ router
           data: m
         };
           
-        res.status(201).send(response);
+        return res.status(201).send(response);
       })
       .catch((err) => {
         logger('error',"Error encountered");

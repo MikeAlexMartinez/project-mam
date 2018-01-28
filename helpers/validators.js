@@ -8,7 +8,6 @@ const v = require('validator');
  * @return {Object.{}}
  */
 module.exports.cleanseEmail = function(email) {
-
   if ( typeof email !== 'string' || !(v.isEmail(email)) ) {
     return '';
   }
