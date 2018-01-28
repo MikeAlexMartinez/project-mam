@@ -22,4 +22,5 @@ To Do List:
 - Add row layout to project page
 - Add filtering, sorting and view change functionality to projects viewing page.
 - Use nodemailer (or equivalent) to verify subscriptions and messages
+- Add 2FA to admin login and saves
 
