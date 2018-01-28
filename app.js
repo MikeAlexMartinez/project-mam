@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const csurf = require('csurf');
 const session = require('express-session');
+const uuidv4 = require('uuid/v4');
 const MongoStore = require('connect-mongo')(session);
 const requestIp = require('request-ip');
 
@@ -42,17 +43,39 @@ const app = express();
 app.use(helmet());
 
 // Set Content Security policy to my server only
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-    fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:']
+app.use(function (req, res, next) {
+  res.locals.nonce = uuidv4();
+  next();
+});
+
+app.use((req, res, next) => {
+  // disable for resume clone
+  if (req.url !== "'/view/resume-clone") {
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: [`'self'`],
+        scriptSrc: [
+          "'self'",
+          function(req, res) {
+            return "'nonce-" + res.locals.nonce + "'";
+          }  
+        ],
+        styleSrc: [
+          `'self'`, 
+          '*.googleapis.com',
+          function(req, res) {
+            return "'nonce-" + res.locals.nonce + "'";
+          }
+        ],
+        fontSrc: [`'self'`, '*.gstatic.com', 'data:']
+      }
+    })
   }
-}));
+  next();
+});
 
 // capture ip address
 app.use(requestIp.mw());
-
 app.use(auth.captureIp);
 
 // Cookie Parsing

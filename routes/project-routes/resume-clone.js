@@ -5,7 +5,15 @@ const routes = [
     method: 'get',
     route: '/resume-clone',
     fn: function homePage(req, res) {
-      res.render('my-projects/resume-clone/home', {title: 'Resume'});
+
+      const data = {
+        title: 'Resume',
+        scriptNonce: res.locals.nonce
+      };
+      
+      console.log(data.scriptNonce);
+
+      res.render('my-projects/resume-clone/home', data);
     }
   },
 ];

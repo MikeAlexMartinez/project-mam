@@ -49,10 +49,6 @@ router
     // check number of requests today 
     const requestsToday = req.requestsToday;
     const ip = req.clientIp;
-
-    // check number of messages from IP address
-    
-    // check number of messages from email
     
     logger('info', `message: New Message received; ip: ${ip}; requestsToday: ${requestsToday}`);
 

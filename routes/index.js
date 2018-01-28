@@ -4,7 +4,12 @@
 const express = require('express');
 const router = express.Router();
 const csurf = require('csurf');
+const ExpressBrute = require('express-brute');
+const MongooseStore = require('express-brute-mongoose');
+const BruteForceSchema = require('express-brute-mongoose/dist/schema');
+const mongoose = require('mongoose');
 
+const { noCache } = require('../helpers/middlewares');
 const logger = require('../winston');
 
 // enable csurf
@@ -19,6 +24,13 @@ const User = require('../models/user');
 // Application data
 const appData = require('../scripts/project-mam-data');
 
+// Create brute force protections
+const bruteModel = mongoose.model('bruteforce', BruteForceSchema);
+const store = new MongooseStore(bruteModel);
+const bruteforce = new ExpressBrute(store);
+
+router.use(bruteforce.prevent);
+
 // api routes
 router.use('/api', require('./api'));
 
@@ -28,8 +40,12 @@ router.use('/view', require('./projects'));
 // admin routes
 router.use('/admin', require('./admin'));
 
+// disable cookie cache
+router.use(noCache);
+
 // login route - handles calls from home and admin-login
-router.post('/login', (req, res) => {
+router.post('/login', bruteforce.prevent, (req, res) => {
+
   User.authenticate(req.body.name, req.body.password, (err, user) => {
     if (err || !user) {
       const message = encodeURIComponent('Incorrect credentials were provided...');
