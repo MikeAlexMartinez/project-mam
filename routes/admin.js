@@ -18,7 +18,7 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
   
   const user = req.user;
 
-  res.render('admin', { location: 'admin', user: user });
+  res.render('admin', { location: 'admin', user: user, csrfToken: req.csrfToken() });
     
 });
 
@@ -33,7 +33,8 @@ router.get('/login', function projects(req, res) {
     location: 'admin-login',
     status: status,
     message: message,
-    type: `${status ? type : 'hide'}`
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken()
   };
 
   res.render('adminLogin', data);

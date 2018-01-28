@@ -4,8 +4,8 @@ section.subscribe
   div.header-text 
     h2 Stay tuned, more projects are on the way!
   div#contact-form.contact-form
-    form(class="form-group" action="" id="subscribeForm")
-      input(id="subscribe-source" class="hidden" type="text" value="templates/deft" name="source" hidden)
+    form(class="form-group" action="" id="subscribeForm")      
+      input(type="hidden" value=`${csrfToken}` name="_csrf" hidden)
       input(id="subscribe-email" class="entry" type="email" placeholder="Email address *" name="email" required)
       button(type="submit" class="btn clear") Subscribe
       div#subscribeToast.toast

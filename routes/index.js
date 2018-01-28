@@ -3,8 +3,12 @@
 // Third party modules
 const express = require('express');
 const router = express.Router();
+const csurf = require('csurf');
 
 const logger = require('../winston');
+
+// enable csurf
+const csrfProtection = csurf({ cookie: true });
 
 // Controllers
 const fetchProjects = require('../controllers/fetchProjects').fetchProjects;
@@ -59,7 +63,7 @@ router.get('/logout', (req, res, next) => {
       }
     });
   } else {
-    console.log('no session');
+    logger('info','no current session to logout from');
     const err = new Error('no session to logout from');
     err.status = 401;
     return next(err);
@@ -81,6 +85,7 @@ router.get('/projects', function projects(req, res) {
       }
 
       data.location = 'projects';
+      data.csrfToken = req.csrfToken();
 
       res.render('projects', data);
     
@@ -90,7 +95,8 @@ router.get('/projects', function projects(req, res) {
       res.render('projects', 
         {
             location: 'projects',
-            error: 'Error encountered'
+            error: 'Error encountered',
+            csrfToken: req.csrfToken()
         });
     });
 
@@ -99,7 +105,13 @@ router.get('/projects', function projects(req, res) {
 // Blog page
 router.get('/blog', function projects(req, res) {
 
-  res.render('blog', { location: 'blog', filtered: false, posts: [] });
+  res.render('blog', { 
+    location: 'blog', 
+    filtered: false, 
+    posts: [],
+    csrfToken: req.csrfToken() 
+  });
+
 });
 
 // home route
@@ -115,7 +127,8 @@ router.get(/^\/(home)?$/, function homePage(req, res) {
     data: appData.data,
     status: status,
     message: message,
-    type: `${status ? type : 'hide'}`
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken()
   };
 
   res.render('home', data);
@@ -123,7 +136,11 @@ router.get(/^\/(home)?$/, function homePage(req, res) {
 
 // fallback route
 router.all('*', function notFound(req, res) {
-  res.render('notfound', { location: 'Whoops! Did someone take a wrong turn?', nothing: true });
+  res.render('notfound', { 
+    location: 'Whoops! Did someone take a wrong turn?', 
+    nothing: true,
+    csrfToken: req.csrfToken() 
+  });
 });
 
 module.exports = router;

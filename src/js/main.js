@@ -141,6 +141,9 @@ $(document).ready(() => {
     evt.preventDefault();
     console.log('new Bug Submitted!');
 
+    // do validations here....
+
+
     const data = {
       sender: $('#bug-name').val(),
       email: $('#bug-email').val(),
@@ -149,10 +152,21 @@ $(document).ready(() => {
     
     const successMessage = 'Bug Report received! Exterminator en-route!';
     
-    const posting = $.post('/api/bug', data, 'json');
+    const posting = $.post({
+      url: '/api/bug', 
+      data: data, 
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     
     posting.done(function() {
       // Need to clear fields if message was successful
+      $('#bug-name').val('');
+      $('#bug-email').val('');
+      $('#bug-message').val('');
+      
       showToast('bug','success', successMessage);
     }).fail(function() {
       showToast('bug','error', errorMessage);
@@ -184,21 +198,33 @@ $(document).ready(() => {
     evt.preventDefault();
     console.log('New message Submitted!');
 
+    // Need to validate data...
+
     const data = {
       sender: $('#contact-name').val(),
       email: $('#contact-email').val(),
       message: $('#contact-message').val(),
     };
-    
+
     const successMessage = 'Message received! ( ^_^) ';
     
-    const posting = $.post('/api/message', data, 'json');
+    const posting = $.post({
+      url: '/api/message', 
+      data: data, 
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     
     posting.done(function() {
-      // Need to clear fields if message was successful
-
+      $('#contact-name').val(''),
+      $('#contact-email').val(''),
+      $('#contact-message').val(''),
+      
       showToast('contact','success', successMessage);
     }).fail(function() {
+
       showToast('contact','error', errorMessage);
     });
     
@@ -215,13 +241,21 @@ $(document).ready(() => {
       email: $('#subscribe-email').val(),
       active: true,
     };
-    
-    const posting = $.post('/api/subscriber', data, 'json');
+
+    const posting = $.post({
+      url: '/api/subscriber', 
+      data: data, 
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     
     const successMessage = 'Thanks for subscribing! ( ^_^) ';
     
     posting.done(function() {
-      
+      $('#subscribe-email').val(''),
+
       showToast('subscribe', 'success', successMessage);
       
     }).fail(function(err) {

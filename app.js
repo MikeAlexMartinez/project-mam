@@ -11,6 +11,7 @@ const winston = require('winston');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const csurf = require('csurf');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const requestIp = require('request-ip');
@@ -40,6 +41,15 @@ const app = express();
 // instantiate helmet headers and protections
 app.use(helmet());
 
+// Set Content Security policy to my server only
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+    fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:']
+  }
+}));
+
 // capture ip address
 app.use(requestIp.mw());
 
@@ -47,11 +57,6 @@ app.use(auth.captureIp);
 
 // Cookie Parsing
 app.use(cookieParser(secret, {}));
-
-// tell express where templates are kept.
-app.set('views', './views');
-// set template engine to pug
-app.set('view engine', 'pug');
 
 // Set up session management with MongoDB and express-session
 app.use(session({
@@ -64,13 +69,26 @@ app.use(session({
   })
 }));
 
-// This is where static files are served from
-app.use(express.static(path.resolve(__dirname, 'public')));
-
 // supports parsing of application/json type post data
 app.use(bodyParser.json());
 // supports parsing of application/x-www-form-urlendcoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// enable csurf - Needs to be after cookie parser and body parser
+const csrfProtection = csurf({ cookies: true });
+app.use(csrfProtection);
+app.use(function(err, req, res, next) {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
+  res.status(403).json({"error": "session has expired or tampered with"});
+});
+
+// tell express where templates are kept.
+app.set('views', './views');
+// set template engine to pug
+app.set('view engine', 'pug');
+
+// This is where static files are served from
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 // Express winston logger
 app.use(expressWinston.logger({
