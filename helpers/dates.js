@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require('moment');
+
 const prependZero = (val) => val.toString().length < 2 ? `0${val}` : val;
 
 exports.tsFormat = () => (new Date()).toISOString();
@@ -23,4 +25,24 @@ exports.match = (dateA, dateB) => {
   } else {
     return true;
   }
+};
+
+/**
+ * Returns object with startDate and endDate that encompasses
+ * last 7 days including today
+ * @param {Date} [target] - the current date from which to calculate 7 days
+ * @return {{startDate: String, endDate: String}}
+ */
+exports.lastWeek = (target=moment()) => {
+  
+  const endDate = target.add(1, 'days').utc().format();
+  const startDate = target.add(-7, 'days').utc().format();
+
+  console.log(startDate);
+  console.log(endDate);
+
+  return {
+    startDate: startDate,
+    endDate: endDate,
+  };
 };

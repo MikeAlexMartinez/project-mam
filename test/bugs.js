@@ -281,7 +281,7 @@ describe('==== BUGS ====', function () {
   });
   
   /**
-   * countMessage expectations
+   * countBugs expectations
    * 
    * - Can count all bugs
    * - Can cont bugs that meet specific criteria

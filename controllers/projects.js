@@ -4,18 +4,19 @@ const logger = require('../winston');
 const Project = require('../models/project');
 const createArray = require('../helpers/filter.js').createArray;
 
-module.exports.fetchProjects = (request, response) => {
+module.exports.fetchProjects = (query) => {
   return new Promise((res, rej) => {
     
-    let { startDate, 
-          endDate,
+    let { startDate=null, 
+          endDate=null,
           tags,
+          filters={},
           sort='createdDate',
-          sortDirection=1,
-          limit=20, 
+          sortDirection=-1,
+          limit=10, 
           skip,
-          page=0
-        } = request.query;
+          page=1
+        } = query;
     
     const sortBy = {};
     sortBy[sort] = sortDirection;
@@ -34,21 +35,34 @@ module.exports.fetchProjects = (request, response) => {
       }
     }
 
-    skip = page * limit;
+    skip = (page - 1) * limit;
 
     // parse tags provided (if any)
     if (tags) {
-      filter.tags = createArray(tags);
+      if (typeof tags === 'string') {
+        tags = { '$all': createArray(tags)};
+      }
+
+      filter.tags = tags;
+    }
+
+    // parse filters provided (if any)
+    if (filters) {
+      Object.keys(filters).forEach((key) => {
+        if (filters[key]) {
+          filter[key] = filters[key];
+        }
+      });
     }
 
     Project
       .find(filter)
+      .sort(sortBy)
       .skip(skip)
       .limit(limit)
-      .sort(sortBy)
       .exec((err, projects) => {
         let data = {};
-        
+
         if (err) {
           logger('error', 'error retrieving projects from db');
           
@@ -79,6 +93,49 @@ module.exports.fetchProjects = (request, response) => {
           }
         }
           
+      });
+  });
+};
+
+module.exports.countProjects = (query) => {
+  return new Promise((res, rej) => {
+
+    // Check if filter contains start date in query
+    let { startDate, endDate } = query;
+    if (startDate || endDate) {
+      query.createdDate = {};
+    
+      if (startDate) {
+        query.createdDate.$gte = new Date(startDate);
+        delete query.startDate;
+      }
+      if (endDate) {
+        query.createdDate.$lt = new Date(endDate);
+        delete query.endDate;
+      }
+    }
+
+    Project
+      .count(query, (err, count) => {
+        let data = {};
+
+        if (err) {
+          logger('error', 'error counting projects in db');
+
+          data.message = 'error counting projects in db';
+          data.type = 'error';
+          data.count = null;
+
+          rej(data);
+        } else {
+
+          logger('info', `${count} Projects met criteria`);
+
+          data.type = 'success';
+          data.count = count;
+
+          res(data);
+        }
       });
   });
 };

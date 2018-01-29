@@ -186,6 +186,31 @@ const projects = [
     'type': 'P1xt',
     'subtype': 'clone'
   },
+  {
+    '_id' : 'fakeme36-3d7a-40f4-8f06-ae03cc22f045',
+    'title' : 'Fake',
+    'link' : 'https://www.projectmam.com/view/fake',
+    'devlink': 'http://localhost:3030/view/fake',
+    'miniDetail' : 'Fake project for testing.',
+    'associatedBlogPosts' : [],
+    'detail': [
+      {
+        type: 'h2',
+        content: 'Fake - Test'
+      }
+    ],
+    'git' : 'https://github.com/MikeAlexMartinez/fake',
+    'real' : false,
+    'favourite' : true,
+    'lastUpdate' : new Date(2018, 1, 9),
+    'createdDate' : new Date(2018, 1, 29),
+    'public' : false,
+    'tags': ['HTML5', 'CSS3', 'Javascript', 'jQuery', 'chartjs'],
+    'pictures' : [],
+    'mainPicture' : '',
+    'type': 'P1xt',
+    'subtype': 'clone'
+  },
 ];
 
 module.exports = projects;

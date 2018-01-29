@@ -91,10 +91,9 @@ router.get('/logout', (req, res, next) => {
 // projects page
 router.get('/projects', function projects(req, res) {
 
-  fetchProjects(req, res)
+  // Only return public projects
+  fetchProjects({ filters: {public: true }})
     .then((data) => {
-      
-      console.log(data);
 
       if (process.env.NODE_ENV === 'development') {
         data.dev = true;
