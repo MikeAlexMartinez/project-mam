@@ -48,6 +48,8 @@
       
       showToast('bug','success', successMessage);
     }).fail(function() {
+      const errorMessage = `We encontered an error, please try again later!`;
+
       showToast('bug','error', errorMessage);
     });
   });
