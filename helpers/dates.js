@@ -38,9 +38,6 @@ exports.lastWeek = (target=moment()) => {
   const endDate = target.add(1, 'days').utc().format();
   const startDate = target.add(-7, 'days').utc().format();
 
-  console.log(startDate);
-  console.log(endDate);
-
   return {
     startDate: startDate,
     endDate: endDate,

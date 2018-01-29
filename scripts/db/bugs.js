@@ -10,7 +10,7 @@ const bugs = [
     read: false,
     validated: false,
     important: false,
-    open: false,
+    open: true,
     source: 'templates/deft',
     ip: '150:200:200:250'
   },
@@ -23,7 +23,7 @@ const bugs = [
     read: false,
     validated: false,
     important: false,
-    open: false,
+    open: true,
     source: 'templates/minifolio',
     ip: '150:200:200:250'
   },
@@ -36,7 +36,7 @@ const bugs = [
     read: false,
     validated: false,
     important: false,
-    open: false,
+    open: true,
     source: 'templates/resume',
     ip: '150:200:200:250'
   },
