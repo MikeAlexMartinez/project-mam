@@ -1,12 +1,15 @@
 'use strict';
 
+// Third party
 const express = require('express');
 const router = express.Router(); 
 
+// Models
 const Message = require('../models/message');
 const Subscriber = require('../models/subscriber');
 const Bug = require('../models/bug');
 
+// my files
 const logger = require('../winston');
 const valid = require('../helpers/validators');
 const auth = require('../controllers/authentication/auth');

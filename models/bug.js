@@ -13,7 +13,8 @@ const bugSchema = new Schema({
   createdDate: { type: Date, default: Date.now },
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
-  replied: { type: Boolean, default: false },
+  open: { type: Boolean, default: false },
+  read: { type: Boolean, default: false },
   source: String,
   ip: { type: String, required: true}
 });

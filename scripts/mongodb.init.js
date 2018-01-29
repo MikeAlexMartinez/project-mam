@@ -17,6 +17,7 @@ const projectTypes = require('./db/projectTypes');
 const projects = require('./db/projects');
 const messages = require('./db/messages');
 const subscribers = require('./db/subscribers');
+const bugs = require('./db/bugs');
 
 const args = process.argv;
 
@@ -53,6 +54,10 @@ function refreshCollections() {
       {
         name: 'subscribers',
         data: subscribers
+      },
+      {
+        name: 'bugs',
+        data: bugs
       }
     ];
 

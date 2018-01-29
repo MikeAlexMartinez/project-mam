@@ -16,7 +16,7 @@ const logger = require('../winston');
 const csrfProtection = csurf({ cookie: true });
 
 // Controllers
-const fetchProjects = require('../controllers/fetchProjects').fetchProjects;
+const { fetchProjects } = require('../controllers/projects');
 
 // Models
 const User = require('../models/user');

@@ -12,6 +12,7 @@ const messageSchema = new Schema({
   email: { type: String, required: true},
   message: { type: String, required: true},
   createdDate: { type: Date, default: Date.now },
+  read: { type: Boolean, default: false },
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
   replied: { type: Boolean, default: false },

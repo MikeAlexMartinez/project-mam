@@ -2,12 +2,12 @@
 
 const assert = require('chai').assert;
 
-const fetchMessages = require('../controllers/fetchMessages').fetchMessages;
+const { fetchMessages, countMessages } = require('../controllers/messages');
 
 describe('==== MESSAGES ====', function () {
   
   /**
-   * FETCHALL expectations
+   * fetchMessage expectations
    * 
    * - BASIC
    *    - returns array
@@ -23,6 +23,7 @@ describe('==== MESSAGES ====', function () {
    *  - Paging
    *    - fetches 5 items from page 1
    *    - fetches 5 items from page 2
+   * 
    */
   describe('fetchMessages', function() {
     it('should return an array', function(done) {
@@ -198,7 +199,7 @@ describe('==== MESSAGES ====', function () {
       });
     });
 
-    describe("Should create page specific data properly", () => {
+    describe('Should create page specific data properly', () => {
 
       it('should return first 5 items (limit: 5, page: 1)', (done) => {
 
@@ -212,8 +213,8 @@ describe('==== MESSAGES ====', function () {
             
             assert.typeOf(messages, 'array');
             assert.lengthOf(messages, 5);
-            assert.equal(messages[0].sender, 'Sender-5');
-            assert.equal(messages[0].email, 'test5@mail.com');
+            assert.equal(messages[0].sender, 'Sender-1');
+            assert.equal(messages[0].email, 'test1@mail.com');
             assert.equal(messages[4].sender, 'Sender-6');
             assert.equal(messages[4].email, 'test6@mail.com');
             
@@ -254,5 +255,74 @@ describe('==== MESSAGES ====', function () {
       });
 
     });
-  }); 
+  });
+  
+  /**
+   * countMessage expectations
+   * 
+   * - Can count all messages
+   * - Can cont messages that meet specific criteria
+   * - Can count messages that fall within a specific date range
+   */
+
+  describe('countMessages', () => {
+
+    it('should return count of total messages', (done) => {
+
+      countMessages({})
+        .then(({count}) => {
+          assert.equal(count, 22, 'should count 22 messages in the DB');
+
+          done();
+        })
+        .catch(err => {
+          console.error(err);
+
+          done(err);
+        });
+        
+    }); 
+
+    it('should return count of total unread messages', (done) => {
+      
+      const query = {
+        read: false
+      };
+
+      countMessages(query)
+        .then(({count}) => {
+          assert.equal(count, 19, 'should find 19 unread messages in the DB');
+
+          done();
+        })
+        .catch(err => {
+          console.error(err);
+
+          done(err);
+        });
+        
+    });
+
+    it('should return count of total messages within data range', (done) => {
+      
+      const query = {
+        startDate: new Date(2017,11,1),
+        endDate: new Date(2017,12,1),
+      };
+
+      countMessages(query)
+        .then(({count}) => {
+          assert.equal(count, 3, 'should find 3 messages within the date range');
+
+          done();
+        })
+        .catch(err => {
+          console.error(err);
+
+          done(err);
+        });
+        
+    });
+
+  });
 });

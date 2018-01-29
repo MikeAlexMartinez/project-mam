@@ -12,7 +12,7 @@ const logger = require('../winston');
 const User = require('../models/user');
 
 // Controllers and helper functions
-const fetchMessages = require('../controllers/fetchMessages').fetchMessages;
+const { fetchMessages } = require('../controllers/messages');
 const auth = require('../controllers/authentication/auth');
 
 // admin page
