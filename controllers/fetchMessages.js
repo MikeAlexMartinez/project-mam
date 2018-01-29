@@ -3,23 +3,22 @@
 const logger = require('../winston');
 const Message = require('../models/message');
 
-module.exports.fetchMessages = (request, response) => {
+module.exports.fetchMessages = (query) => {
   return new Promise((res, rej) => {
     
-    let { startDate, 
-          endDate,
-          replied,
+    let { startDate=null, 
+          endDate=null,
+          filters={},
           sort='createdDate',
-          sortDirection=1,
-          limit=20, 
-          skip,
-          page=0
-        } = request.query;
-    
+          sortDirection=-1,
+          limit=20,
+          page=1
+        } = query;
+    let skip;
+    const filter = {};
     const sortBy = {};
     sortBy[sort] = sortDirection;
     
-    const filter = {};
 
     // Check if filter contains start date in query
     if (startDate || endDate) {
@@ -33,21 +32,26 @@ module.exports.fetchMessages = (request, response) => {
       }
     }
 
-    skip = page * limit;
+    // Set skip to allow for creation of page lists
+    skip = (page-1) * limit;
 
-    // parse tags provided (if any)
-    if (replied) {
-      filter.replied = replied;
+    // parse filters provided (if any)
+    if (filters) {
+      Object.keys(filters).forEach((key) => {
+        if (filters[key]) {
+          filter[key] = filters[key];
+        }
+      });
     }
 
     Message
       .find(filter)
+      .sort(sortBy)
       .skip(skip)
       .limit(limit)
-      .sort(sortBy)
       .exec((err, messages) => {
         let data = {};
-        
+
         if (err) {
           logger('error', 'error retrieving messages from db');
           
@@ -58,12 +62,12 @@ module.exports.fetchMessages = (request, response) => {
           rej(data);
         } else {
  
-          if (!projects || projects.length === 0) {
+          if (!messages || messages.length === 0) {
             logger('info', 'no messages returned');
             
             data.message = 'No messages returned';
             data.type = 'error';
-            data.projects = [];
+            data.messages = [];
             
             rej(data);
           } else {

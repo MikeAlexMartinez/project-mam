@@ -4,7 +4,7 @@ const assert = require('chai').assert;
 
 const dates = require('../helpers/dates');
 
-describe('DATES module', () => {
+describe('==== DATES ====', () => {
 
   describe('match()', () => {
 

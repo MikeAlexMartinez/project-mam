@@ -12,7 +12,7 @@ const logger = require('../winston');
 const User = require('../models/user');
 
 // Controllers and helper functions
-const fetchMessages = require('../controllers/fetchMessages');
+const fetchMessages = require('../controllers/fetchMessages').fetchMessages;
 const auth = require('../controllers/authentication/auth');
 
 // admin page
@@ -24,17 +24,34 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
   async.parallel({
     bugs: () => {},
     ips: () => {},
-    messages: () => {},
+    messages: (cb) => {
+      const query = {};
+
+      fetchMessages(query)
+        .then((messages) => {
+          cb(null, messages);
+        })
+        .catch((err) => {
+          cb(err);
+        });
+
+    },
     projects: () => {},
     subscribers: () => {},
-  }, function processData(err, data){
+  }, function processData(err, items){
 
-
+    const pageData = {
+      location: 'admin', 
+      user: user, 
+      csrfToken: req.csrfToken(),
+      error: err,
+      data: items 
+    };
     
+    res.render('admin', pageData);
 
   });
 
-  res.render('admin', { location: 'admin', user: user, csrfToken: req.csrfToken() });
     
 });
 

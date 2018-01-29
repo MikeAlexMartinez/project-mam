@@ -4,6 +4,7 @@ const refreshDB = require('../scripts/mongodb.init');
 
 process.env.NODE_ENV = 'test';
 
+require('../app');
 require('./common');
 
 describe('Start Testing...', function() {
@@ -19,8 +20,7 @@ describe('Start Testing...', function() {
       });    
   });
   
-  importTest('API Messages', './api/messages');
-  importTest('API Projects', './api/projects');
+  importTest('Messages', './messages');
   
   after(function() {
     process.exit();
