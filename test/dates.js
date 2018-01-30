@@ -50,7 +50,27 @@ describe('==== DATES ====', () => {
       
       assert.equal(newWeek.startDate, '2017-12-26T00:00:00Z', 'date strings should match');
       assert.equal(newWeek.endDate, '2018-01-02T00:00:00Z', 'date strings should match');
-    
+
+      done();
+    });
+
+    it('should create 7 day date range from midnight tonight to midnight 6 days ago', (done) => {
+      
+      const newWeek = lastWeek(moment('2018-01-30','YYYY-MM-DD'));
+      
+      assert.equal(newWeek.startDate, '2018-01-24T00:00:00Z', 'date strings should match');
+      assert.equal(newWeek.endDate, '2018-01-31T00:00:00Z', 'date strings should match');
+
+      done();
+    });
+
+    it('should create 7 day date range from midnight tonight to midnight 6 days ago', (done) => {
+      
+      const newWeek = lastWeek(moment('2018-01-30','YYYY-MM-DD'));
+      
+      assert.equal(newWeek.startDate, '2018-01-24T00:00:00Z', 'date strings should match');
+      assert.equal(newWeek.endDate, '2018-01-31T00:00:00Z', 'date strings should match');
+
       done();
     });
 

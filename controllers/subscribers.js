@@ -12,7 +12,8 @@ module.exports.fetchSubscribers = (query) => {
           sort='createdDate',
           sortDirection=-1,
           limit=20,
-          page=1
+          page=1,
+          select={}
         } = query;
     let skip;
     const filter = {};
@@ -49,6 +50,7 @@ module.exports.fetchSubscribers = (query) => {
       .sort(sortBy)
       .skip(skip)
       .limit(limit)
+      .select(select)
       .exec((err, subscribers) => {
         let data = {};
 
@@ -58,6 +60,7 @@ module.exports.fetchSubscribers = (query) => {
           data.message = 'error retrieving subscribers from db';
           data.type = 'error';
           data.subscribers = [];
+          data.err = err;
 
           rej(data);
         } else {
@@ -69,7 +72,7 @@ module.exports.fetchSubscribers = (query) => {
             data.type = 'error';
             data.subscribers = [];
             
-            rej(data);
+            res(data);
           } else {
             logger('info', `Retrieved ${subscribers.length} Subscribers succesfully`);
             data.type = 'success';

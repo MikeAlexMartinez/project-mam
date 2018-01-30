@@ -82,8 +82,7 @@ describe('==== MESSAGES ====', function () {
             assert.typeOf(messages, 'array');
             assert.lengthOf(messages, 3);
             assert.equal(messages[0].sender, 'Sender-1');
-            assert.equal(messages[0].source, 'templates/deft');
-            assert.equal(messages[1].source, 'project-mam');
+            assert.equal(messages[0].source, 'project-mam');
             
             done();
           })
@@ -108,10 +107,8 @@ describe('==== MESSAGES ====', function () {
             
             assert.typeOf(messages, 'array');
             assert.lengthOf(messages, 5);
-            assert.equal(messages[0].sender, 'Sender-2');
+            assert.equal(messages[0].sender, 'Sender-12');
             assert.equal(messages[0].source, 'templates/minifolio');
-            assert.equal(messages[1].sender, 'Sender-12');
-            assert.equal(messages[1].subject, 'Hello Twelve');
             
             done();
           })
@@ -125,8 +122,8 @@ describe('==== MESSAGES ====', function () {
       it('should filter messages by date in ASC order', function(done) {
         
         const query = {
-          startDate: new Date(2018,1,27).toISOString(),
-          endDate: new Date(2018,1,30).toISOString(),
+          startDate: new Date(2018,0,27).toISOString(),
+          endDate: new Date(2018,0,30).toISOString(),
           sortDirection: 1
         };
         
@@ -134,9 +131,9 @@ describe('==== MESSAGES ====', function () {
           .then(({messages}) => {
             
             assert.typeOf(messages, 'array');
-            assert.lengthOf(messages, 2);
-            assert.equal(messages[0].sender, 'Sender-7');
-            assert.equal(messages[0].source, 'templates/minifolio');
+            assert.lengthOf(messages, 3);
+            assert.equal(messages[0].sender, 'Sender-3');
+            assert.equal(messages[0].source, 'project-mam');
             
             done();
           })
@@ -151,17 +148,17 @@ describe('==== MESSAGES ====', function () {
       it('should filter messages by date and sort in DESC order', function(done) {
         
         const query = {
-          startDate: new Date(2018,1,27).toISOString(),
-          endDate: new Date(2018,1,30).toISOString()
+          startDate: new Date(2018,0,27).toISOString(),
+          endDate: new Date(2018,0,30).toISOString()
         };
         
         fetchMessages(query)
           .then(({messages}) => {
             
             assert.typeOf(messages, 'array');
-            assert.lengthOf(messages, 2);
-            assert.equal(messages[1].sender, 'Sender-7');
-            assert.equal(messages[1].source, 'templates/minifolio');
+            assert.lengthOf(messages, 3);
+            assert.equal(messages[2].sender, 'Sender-3');
+            assert.equal(messages[2].source, 'project-mam');
             
             done();
           })
@@ -215,8 +212,8 @@ describe('==== MESSAGES ====', function () {
             assert.lengthOf(messages, 5);
             assert.equal(messages[0].sender, 'Sender-1');
             assert.equal(messages[0].email, 'test1@mail.com');
-            assert.equal(messages[4].sender, 'Sender-6');
-            assert.equal(messages[4].email, 'test6@mail.com');
+            assert.equal(messages[4].sender, 'Sender-7');
+            assert.equal(messages[4].email, 'test7@mail.com');
             
             done();
           })
@@ -239,11 +236,10 @@ describe('==== MESSAGES ====', function () {
             
             assert.typeOf(messages, 'array');
             assert.lengthOf(messages, 5);
-            assert.equal(messages[0].sender, 'Sender-7');
-            assert.equal(messages[0].email, 'test7@mail.com');
-            assert.equal(messages[4].sender, 'Sender-1');
-            assert.equal(messages[4].email, 'test1@mail.com');
-            assert.equal(messages[4].subject, 'Hello One again');
+            assert.equal(messages[0].sender, 'Sender-9');
+            assert.equal(messages[0].email, 'test9@mail.com');
+            assert.equal(messages[4].sender, 'Sender-4');
+            assert.equal(messages[4].email, 'test4@mail.com');
             
             done();
           })
@@ -312,7 +308,7 @@ describe('==== MESSAGES ====', function () {
 
       countMessages(query)
         .then(({count}) => {
-          assert.equal(count, 3, 'should find 3 messages within the date range');
+          assert.equal(count, 6, 'should find 6 messages within the date range');
 
           done();
         })

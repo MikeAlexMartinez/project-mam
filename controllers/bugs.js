@@ -12,7 +12,8 @@ module.exports.fetchBugs = (query) => {
           sort='createdDate',
           sortDirection=-1,
           limit=20,
-          page=1
+          page=1,
+          select={},
         } = query;
     let skip;
     const filter = {};
@@ -48,6 +49,7 @@ module.exports.fetchBugs = (query) => {
       .sort(sortBy)
       .skip(skip)
       .limit(limit)
+      .select(select)
       .exec((err, bugs) => {
         let data = {};
 
@@ -57,6 +59,7 @@ module.exports.fetchBugs = (query) => {
           data.message = 'error retrieving bugs from db';
           data.type = 'error';
           data.bugs = [];
+          data.err = err;
 
           rej(data);
         } else {
@@ -67,8 +70,8 @@ module.exports.fetchBugs = (query) => {
             data.message = 'No bugs returned';
             data.type = 'warning';
             data.bugs = [];
-            
-            rej(data);
+
+            res(data);
           } else {
             logger('info', `Retrieved ${bugs.length} Bugs succesfully`);
             data.type = 'success';
@@ -109,6 +112,7 @@ module.exports.countBugs = (query) => {
           data.message = 'error counting bugs in db';
           data.type = 'error';
           data.count = null;
+          data.err = err;
 
           rej(data);
         } else {

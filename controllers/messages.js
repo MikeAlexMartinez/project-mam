@@ -12,7 +12,8 @@ module.exports.fetchMessages = (query) => {
           sort='createdDate',
           sortDirection=-1,
           limit=20,
-          page=1
+          page=1,
+          select={}
         } = query;
     let skip;
     const filter = {};
@@ -49,6 +50,7 @@ module.exports.fetchMessages = (query) => {
       .sort(sortBy)
       .skip(skip)
       .limit(limit)
+      .select(select)
       .exec((err, messages) => {
         let data = {};
 
@@ -110,7 +112,8 @@ module.exports.countMessages = (query) => {
           data.message = 'error counting messages in db';
           data.type = 'error';
           data.count = null;
-
+          data.err = err;
+          
           rej(data);
         } else {
 

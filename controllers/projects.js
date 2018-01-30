@@ -15,7 +15,8 @@ module.exports.fetchProjects = (query) => {
           sortDirection=-1,
           limit=10, 
           skip,
-          page=1
+          page=1,
+          select={},
         } = query;
     
     const sortBy = {};
@@ -60,6 +61,7 @@ module.exports.fetchProjects = (query) => {
       .sort(sortBy)
       .skip(skip)
       .limit(limit)
+      .select(select)
       .exec((err, projects) => {
         let data = {};
 
@@ -125,6 +127,7 @@ module.exports.countProjects = (query) => {
           data.message = 'error counting projects in db';
           data.type = 'error';
           data.count = null;
+          data.err = err;
 
           rej(data);
         } else {

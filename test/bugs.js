@@ -125,8 +125,8 @@ describe('==== BUGS ====', function () {
       it('should filter bugs by date in ASC order', function(done) {
         
         const query = {
-          startDate: new Date(2018,1,27).toISOString(),
-          endDate: new Date(2018,1,30).toISOString(),
+          startDate: new Date(2018,0,27).toISOString(),
+          endDate: new Date(2018,0,30).toISOString(),
           sortDirection: 1
         };
         
@@ -151,8 +151,8 @@ describe('==== BUGS ====', function () {
       it('should filter bugs by date and sort in DESC order', function(done) {
         
         const query = {
-          startDate: new Date(2018,1,27).toISOString(),
-          endDate: new Date(2018,1,30).toISOString()
+          startDate: new Date(2018,0,27).toISOString(),
+          endDate: new Date(2018,0,30).toISOString()
         };
         
         fetchBugs(query)
@@ -329,8 +329,8 @@ describe('==== BUGS ====', function () {
     it('should return count of total bugs within date range', (done) => {
       
       const query = {
-        startDate: new Date(2018,1,19),
-        endDate: new Date(2018,1,21),
+        startDate: new Date(2018,0,19),
+        endDate: new Date(2018,0,21),
       };
 
       countBugs(query)
