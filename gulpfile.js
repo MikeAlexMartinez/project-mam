@@ -19,30 +19,30 @@ gulp.task('copyfonts', function() {
 /**
  * The JS gulp task
  **/
-gulp.task("js", function() {
-  gulp.src("./src/js/main.js")
+gulp.task('js', function() {
+  gulp.src('./src/js/*.js')
     .pipe(include({
       includePaths: [
-        __dirname + "/node_modules/jquery/dist",
-        __dirname + "/node_modules/masonry-layout/dist",
-        __dirname + "/node_modules/animsition/dist/js",
-        __dirname + "/node_modules/owl.carousel/dist"
+        __dirname + '/node_modules/jquery/dist',
+        __dirname + '/node_modules/masonry-layout/dist',
+        __dirname + '/node_modules/animsition/dist/js',
+        __dirname + '/node_modules/owl.carousel/dist'
       ]
     })).on('error', console.log)
-    .pipe(gulp.dest("./public/js"));
+    .pipe(gulp.dest('./public/js'));
 });
 
 /**
  * Project specific JS to embed overlay in projects
  */
-gulp.task("project-js", function() {
-  gulp.src("./src/js/project.js")
+gulp.task('project-js', function() {
+  gulp.src('./src/js/project.js')
     .pipe(include({
       includePaths: [
-        __dirname + "/node_modules/jquery/dist",
+        __dirname + '/node_modules/jquery/dist',
       ]
     })).on('error', console.log)
-    .pipe(gulp.dest("./public/js"));
+    .pipe(gulp.dest('./public/js'));
 });
 /**
  * copy view files from templates into relevant directories.
@@ -74,7 +74,7 @@ gulp.task('project-sass', function() {
       includePaths: ['node_modules']
     }).on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./public/css'))
+    .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('watch', function() {
@@ -82,7 +82,7 @@ gulp.task('watch', function() {
   gulp.watch(['./src/sass/*.scss',
               './src/sass/**/*.scss'
             ], ['sass', 'project-sass']);
-  gulp.watch(['./src/js/main.js'], ['js']);
+  gulp.watch(['./src/js/*.js'], ['js']);
   gulp.watch(['./src/js/project.js'], ['project-js']);
 });
 

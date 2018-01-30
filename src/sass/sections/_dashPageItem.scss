@@ -1,0 +1,95 @@
+.sub-dash {
+  position: relative;
+}
+
+.dashPageItem {
+  display: inline-block;
+  vertical-align: top;
+
+  @media all and (max-width: 800px) {
+    width: 90%;
+  }
+  @media all and (min-width: 800px) {
+    width: 41%;
+  }
+
+  margin-bottom: 5%;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  background-color: #efefef;
+  box-shadow: 3px 3px 12px 4px rgba(0,0,0,0.2);
+
+  h2 {
+    margin: 0;
+    padding: 15px;
+    background-color: $bg-title-start;
+    color: $bg-black;
+    font-weight: 500;
+    font-size: 32px;
+    text-transform: capitalize; 
+  }
+
+  .dpi-header-content {
+    text-align: right;
+    padding: 15px;
+    
+    .header-item {
+      .header-cat,
+      .header-val,
+      & {
+        display: inline-block;
+      }
+
+      .header-cat {
+        padding-left: 15px;
+      }
+
+      .header-val {
+        padding: 0 15px;
+        font-weight: 500;
+        font-size: 1.3em;
+        border-right: 2px solid $bg-black;
+      }
+
+      &:last-child .header-val {
+        border-right: none;
+      }
+    }
+  }
+
+  .dpi-footer {
+    text-align: right;
+    
+    a {
+      display: inline-block;
+      font-style: italic;
+      color: $bg-black;
+      text-decoration: none;
+      padding-right: 15px;
+
+      &:hover {
+        color: #000;
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
+  }
+  .dpi-table {
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+
+      thead {
+        background-color: $bg-black;
+      }
+      
+      th {
+        color: #fff;
+        font-weight: 400;
+        padding: 5px;
+      }
+    }
+  }
+}

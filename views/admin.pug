@@ -1,10 +1,18 @@
 extends layout.pug
 
 include includes/_mixins.pug
+include includes/_dashPageItem.pug
 
 block content
   include includes/header.pug
 
   div.nav-slide
     div.sub-content
-      +subpageHeader()
+      +subpageHeader() 
+    div.sub-dash
+      - var sections = ['projects', 'subscribers', 'messages', 'bugs'];
+      for s in sections
+        +dashPageItem(s)
+
+block js
+  include includes/adminjs.pug

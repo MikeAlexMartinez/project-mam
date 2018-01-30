@@ -1,0 +1,142 @@
+mixin dashPageItem(section)
+  div.dashPageItem
+    div.dpi-title
+      h2= section
+    div.dpi-header
+      +#{section + 'Header'}()
+    div.dpi-table
+      +#{section + 'Table'}()
+    div.dpi-footer
+      a(href='#')
+        p View all...
+
+
+//- projects 
+//-   number public
+mixin projectsHeader()
+  div.dpi-header-content
+    div.header-item
+      p.header-cat
+        | Public:
+      p.header-val
+        = data.projects.public
+
+//-   table: 5
+//-     createdDate, title, public, favourite, git, lastUpdate     
+mixin projectsTable()
+  div.p-table-content
+    table.p-table
+      thead
+        tr
+          th(scope="col") Created
+          th(scope="col") Title
+          th(scope="col") Public
+          th(scope="col") Favourite
+          th(scope="col") GitHub
+          th(scope="col") Last Update
+      tbody
+        for p in data.projects.data
+          tr
+            td= p.createdDate
+            td
+              a(href='#')= p.title
+            td
+              i(class=`${p.public ? 'ion-ios-people' : 'ion-ios-people-outline'}`)
+            td
+              i(class=`${p.favourite ? 'ion-ios-heart' : 'ion-ios-heart-outline'}`)
+            td
+              a(href=p.github)
+                i(class='ion-logo-octocat')
+            td= p.lastUpdate
+
+
+
+//- Messages
+//-   header: number unread, number in last 7 days
+mixin messagesHeader()
+  div.dpi-header-content
+    div.header-item
+      p.header-cat
+        | Unread:
+      p.header-val
+        = data.messages.unread
+    div.header-item
+      p.header-cat
+        | New:
+      p.header-val
+        = data.messages.lastWeek
+
+//-   table: 5 
+//-     createdDate, sender, subject, email, read, validated, important, replied
+mixin messagesTable()
+  div.m-table-content
+    table.m-table
+      thead
+        tr
+          th(scope="col") Created
+          th(scope="col") Sender
+          th(scope="col") Subject
+          th(scope="col") E-mail
+          th(scope="col") Read
+          th(scope="col") Replied
+          th(scope="col") Valid
+          th(scope="col") Important
+    
+//- Subscribers
+//-   header: active , invalid, new (last 7)
+mixin subscribersHeader()
+  div.dpi-header-content
+    div.header-item
+      p.header-cat
+        | Active:
+      p.header-val
+        = data.subscribers.active
+    div.header-item
+      p.header-cat
+        | Not Valid:
+      p.header-val
+        = data.subscribers.invalid
+    div.header-item
+      p.header-cat
+        | New:
+      p.header-val
+        = data.subscribers.lastWeek
+
+//-   table: 5 x 5
+//-     createdDate, email, validated, active
+mixin subscribersTable()
+  div.s-table-content
+    table.p-table
+      thead
+        tr
+          th(scope="col") Created
+          th(scope="col") E-mail
+          th(scope="col") Valid
+          th(scope="col") Active
+
+//- Bugs
+//-   header: open, last 7 days
+mixin bugsHeader()
+  div.dpi-header-content
+    div.header-item
+      p.header-cat
+        | Open:
+      p.header-val
+        = data.bugs.open
+    div.header-item
+      p.header-cat
+        | New:
+      p.header-val
+        = data.bugs.lastWeek
+
+//-   table: 5
+//-     createdDate, bugDescription, open, important
+mixin bugsTable()
+  div.b-table-content
+    table.p-table
+      thead
+        tr
+          th(scope="col") Created
+          th(scope="col") Description
+          th(scope="col") Open
+          th(scope="col") Important

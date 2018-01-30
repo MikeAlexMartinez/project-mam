@@ -12,11 +12,13 @@ const { fetchSubscribers, countSubscribers } = require('./subscribers');
 // My helpers
 const { lastWeek } = require('../helpers/dates');
 
-// variable to use in tests
+// global moment => Set to today
 let date = moment(); 
 
 // Constructs Data necessary for dashboard
 module.exports.dashboard = (seed) => {
+
+  // change moment to fixed value passed in from test suite
   if (process.env.NODE_ENV === 'test') {
     date = seed;
   }
@@ -36,6 +38,7 @@ module.exports.dashboard = (seed) => {
       }
     });
   });
+  
 };
 
 // Messages
@@ -78,8 +81,16 @@ function getMessageData(cb) {
 
       const query = {
         limit: 5,
-        select: {_id: 1, sender: 1, subject: 1, email: 1, createdDate: 1,
-                 read: 1, validated: 1, important: 1, replied: 1        
+        select: {
+          _id: 1, 
+          sender: 1, 
+          subject: 1, 
+          email: 1, 
+          createdDate: 1,
+          read: 1, 
+          validated: 1, 
+          important: 1, 
+          replied: 1        
         }
       };
 
@@ -219,7 +230,12 @@ function getSubscriberData(cb) {
           limit: 10
         })
         .then(({subscribers}) => {
-          nestedCb(null, subscribers);
+          
+          const split = [];
+          split.push(subscribers.slice(0,5));
+          split.push(subscribers.slice(5));
+
+          nestedCb(null, split);
         })
         .catch(({err}) => {
           nestedCb(err);
@@ -279,12 +295,19 @@ function getBugData(cb) {
         filters: {
           open: true
         },
-        select: {_id: 1, createdDate: 1, bugDescription: 1, open: 1, important: 1},
+        select: {
+          _id: 1, 
+          createdDate: 1, 
+          bugDescription: 1, 
+          open: 1, 
+          important: 1
+        },
         sortDirection: 1
       };
 
       fetchBugs(query)
         .then(({bugs}) => {
+
           nestedCb(null, bugs);
         })
         .catch(({err}) => {

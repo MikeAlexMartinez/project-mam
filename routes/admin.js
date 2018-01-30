@@ -23,12 +23,14 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
   dashboard()
     .then((data) => {
       const pageData = {
-        location: 'admin', 
-        user: user, 
+        location: 'admin',
+        user: user,
         csrfToken: req.csrfToken(),
         error: '',
         data: data
       };
+
+      console.log(data);
         
       res.render('admin', pageData);
 

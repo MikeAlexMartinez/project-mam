@@ -315,7 +315,7 @@ describe('==== DASHBOARD ====', () => {
 
       const {subscribers} = dashboardData;
             
-      const expectedSubscribers = [ 
+      const expectedSubscribers = [[
         {
           _id: 'subscri01-3c83-4b4b-9089-69362f729ae7',
           email: 'test1@mail.com',
@@ -350,7 +350,8 @@ describe('==== DASHBOARD ====', () => {
           createdDate: new Date(2018,0,26),
           validated: false,
           active: true,
-        },
+        }
+      ],[
         {
           _id: 'subscri06-3c83-4b4b-9089-69362f729ae7',
           email: 'test6@mail.com',
@@ -386,10 +387,11 @@ describe('==== DASHBOARD ====', () => {
           validated: false,
           active: true
         }
-      ];
+      ]];
 
-      assert.equal(subscribers.data.length, 10, 'should return items 10 subscribers');
+      assert.equal(subscribers.data[0].length + subscribers.data[1].length, 10, 'should return items 10 subscribers');
 
+      block
       subscribers.data.forEach((subscriber, i) => {
         const expectedSubscriber = expectedSubscribers[i];
         Object.keys(expectedSubscriber).forEach(key => {
