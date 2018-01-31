@@ -90,11 +90,20 @@ function isLoggedIn(req, res, next) {
   
   if( !req.session.userId ) {
     logger('info', 'admin access DENIED. No session present');
-
-    const message = encodeURIComponent('You must login to view this page...');
-    const type = encodeURIComponent('warning');
-
-    res.redirect('/admin/login?message=' + message + '&type=' + type);
+    
+    // If JSON request (from API call) then respond to error differently
+    if (req.is('json')) {
+      const message = 'You do not have access to this endpoint';
+      const type = 'Warning';
+      
+      res.json({message, type});
+    } else {
+ 
+      const message = encodeURIComponent('You must login to view this page...');
+      const type = encodeURIComponent('warning');
+      
+      res.redirect('/admin/login?message=' + message + '&type=' + type);
+    }
 
   } else {
     

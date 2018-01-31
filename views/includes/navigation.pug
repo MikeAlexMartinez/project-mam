@@ -20,13 +20,13 @@ section(id="navigation" class=`navigation ${location === 'home' ? 'home' : ''}`)
         div(class=`imgContainer ${location === 'blog' ? 'red' : '' }`)
           i.ion-ios-paper
   div.items.bottom
-    if location === 'admin'
-      div#logout.item
+    if logout === true
+      div#logout(class=`item logout`)
         a(href="/logout")
           h3.itemTitle Log out
           div.imgContainer
             i.ion-md-exit
-    div#contact-nav.item
+    div#contact-nav(class=`item ${logout}`)
       a(href="/#contact-name" class=`${location === 'home' ? 'red' : '' }`)
         h3.itemTitle Contact
         div.imgContainer

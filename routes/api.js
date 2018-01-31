@@ -23,7 +23,10 @@ router.use((req, res, next) => {
   const requestsToday = req.requestsToday;
   const ip = req.clientIp;
   
-  logger('info', `type: POST; message: New Message received; ip: ${ip}; requestsToday: ${requestsToday}`);
+  logger(
+    'info', 
+    `type: POST; message: New Message received; ip: ${ip}; requestsToday: ${requestsToday}`
+  );
   next();
 });
 
@@ -44,6 +47,8 @@ const error = (err, res) => {
   }
 
 };
+
+router.use('/secure', require('./secure-api'));
 
 router
   .route('/message')
@@ -66,11 +71,21 @@ router
     if (!name) {
       logger('error', `Invalid name submitted from ip: ${req.ip}`);
       const response = {
-        message: 'Please submit a name',
+        message: 'Please submit a valid name',
         type: 'warning',
         data: ''
       };
-
+      
+      return res.status(409).send(response);
+    }
+    if(!valid.nameLength(name)) {
+      logger('error', `Long name submitted from ip: ${req.ip}`);
+      const response = {
+        message: 'Please a name of 100 characters or less',
+        type: 'warning',
+        data: ''
+      };
+      
       return res.status(409).send(response);
     }
     newMessage.sender = name;
@@ -173,7 +188,7 @@ router
         return res.status(201).send(response);
       })
       .catch((err) => {
-        logger('error',"Error encountered");
+        logger('error','Error encountered');
         error(err, res);
       });
   });
@@ -192,6 +207,16 @@ router
       logger('error', `Invalid name submitted from ip: ${req.ip}`);
       const response = {
         message: 'Please submit a valid name',
+        type: 'warning',
+        data: ''
+      };
+      
+      return res.status(409).send(response);
+    }
+    if(!valid.nameLength(name)) {
+      logger('error', `Long name submitted from ip: ${req.ip}`);
+      const response = {
+        message: 'Please a name of 100 characters or less',
         type: 'warning',
         data: ''
       };
@@ -258,7 +283,7 @@ router
         return res.status(201).send(response);
       })
       .catch((err) => {
-        logger('error',"Error encountered");
+        logger('error','Error encountered');
         error(err, res);
       });
   });

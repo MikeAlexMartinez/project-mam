@@ -1,0 +1,14 @@
+extends layout.pug
+
+include includes/_mixins.pug
+include includes/_dashPageItem.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()
+      
+block js
+  include includes/adminjs.pug
