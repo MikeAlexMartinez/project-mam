@@ -5,9 +5,9 @@ mixin dashPageItem(section)
     div.dpi-header
       +#{section + 'Header'}()
     div.dpi-table
-      +#{section + 'Table'}()
+      +#{section + 'Table'}(section)
     div.dpi-footer
-      a(href='#')
+      a(href=`/admin/${section}`)
         p View all...
 
 
@@ -21,34 +21,41 @@ mixin projectsHeader()
       p.header-val
         = data.projects.public
 
-//-   table: 5
-//-     createdDate, title, public, favourite, git, lastUpdate     
-mixin projectsTable()
+//- table: 5
+//-   createdDate, title, public, favourite, git, lastUpdate     
+mixin projectsTable(section)
   div.p-table-content
     table.p-table
       thead
         tr
+          th(scope="col") Edit
           th(scope="col") Created
           th(scope="col") Title
           th(scope="col") Public
           th(scope="col") Favourite
           th(scope="col") GitHub
           th(scope="col") Last Update
+          th(scope="col") Delete
       tbody
         for p in data.projects.data
           tr
+            td
+              a(href=`/admin/${section}/${p._id}/edit`)
+                i(class=`ion-md-open`)
             td= p.createdDate
             td
-              a(href='#')= p.title
+              a(href=`/admin/${section}/${p._id}`)= p.title
             td
               i(class=`${p.public ? 'ion-ios-people' : 'ion-ios-people-outline'}`)
             td
-              i(class=`${p.favourite ? 'ion-ios-heart' : 'ion-ios-heart-outline'}`)
+              i(class=`${p.favourite ? 'ion-ios-heart deepRed' : 'ion-ios-heart-outline'}`)
             td
-              a(href=p.github)
+              a(href=p.git)
                 i(class='ion-logo-octocat')
             td= p.lastUpdate
-
+            td
+              a(href=`/admin/${section}/${p._id}/delete`)
+                i(class=`ion-md-trash`)
 
 
 //- Messages
@@ -68,11 +75,12 @@ mixin messagesHeader()
 
 //-   table: 5 
 //-     createdDate, sender, subject, email, read, validated, important, replied
-mixin messagesTable()
+mixin messagesTable(section)
   div.m-table-content
     table.m-table
       thead
         tr
+          th(scope="col") Edit
           th(scope="col") Created
           th(scope="col") Sender
           th(scope="col") Subject
@@ -81,6 +89,29 @@ mixin messagesTable()
           th(scope="col") Replied
           th(scope="col") Valid
           th(scope="col") Important
+          th(scope="col") Delete
+      tbody
+        for m in data.messages.data
+          tr
+            td
+              a(href=`/admin/${section}/${m._id}/edit`)
+                i(class=`ion-md-open`)
+            td= m.createdDate
+            td= m.sender
+            td
+              a(href=`/admin/${section}/${m._id}`)= m.subject
+            td= m.email
+            td
+              i(class=`${m.read ? 'ion-ios-mail green' : 'ion-ios-mail-outline'}`)
+            td
+              i(class=`${m.replied ? 'ion-ios-undo green' : 'ion-ios-undo-outline'}`)
+            td
+              i(class=`${m.validated ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td
+              i(class=`${m.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline'}`)
+            td
+              a(href=`/admin/${section}/${m._id}/delete`)
+                i(class=`ion-md-trash`)
     
 //- Subscribers
 //-   header: active , invalid, new (last 7)
@@ -104,15 +135,33 @@ mixin subscribersHeader()
 
 //-   table: 5 x 5
 //-     createdDate, email, validated, active
-mixin subscribersTable()
+mixin subscribersTable(section)
   div.s-table-content
     table.p-table
       thead
         tr
+          th(scope="col") Edit
           th(scope="col") Created
           th(scope="col") E-mail
           th(scope="col") Valid
           th(scope="col") Active
+          th(scope="col") Delete
+      tbody
+        for s in data.subscribers.data
+          tr
+            td
+              a(href=`/admin/${section}/${s._id}/edit`)
+                i(class=`ion-md-open`)
+            td= s.createdDate
+            td
+              a(href=`/admin/${section}/${s._id}`)= s.email
+            td
+              i(class=`${s.valid ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td
+              i(class=`${s.active ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td
+              a(href=`/admin/${section}/${s._id}/delete`)
+                i(class=`ion-md-trash`)
 
 //- Bugs
 //-   header: open, last 7 days
@@ -131,12 +180,30 @@ mixin bugsHeader()
 
 //-   table: 5
 //-     createdDate, bugDescription, open, important
-mixin bugsTable()
+mixin bugsTable(section)
   div.b-table-content
     table.p-table
       thead
         tr
+          th(scope="col") Edit
           th(scope="col") Created
           th(scope="col") Description
           th(scope="col") Open
           th(scope="col") Important
+          th(scope="col") Delete
+      tbody
+        for b in data.bugs.data
+          tr
+            td
+              a(href=`/admin/${section}/${b._id}/edit`)
+                i(class=`ion-md-open`)
+            td= b.createdDate
+            td
+              a(href=`/admin/${section}/${b._id}`)= b.bugDescription
+            td
+              i(class=`${b.open ? 'ion-ios-bug red' : 'ion-ios-bug-outline green'}`)
+            td
+              i(class=`${b.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
+            td
+              a(href=`/admin/${section}/${b._id}/delete`)
+                i(class=`ion-md-trash`)

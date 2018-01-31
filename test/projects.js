@@ -117,8 +117,8 @@ describe('==== PROJECTS ====', function () {
       it('should filter projects by date in ASC order', function(done) {
         
         const query = {
-          startDate: new Date(2017,11,30).toISOString(),
-          endDate: new Date(2017,12,10).toISOString(),
+          startDate: new Date(2017,10,30).toISOString(),
+          endDate: new Date(2017,11,10).toISOString(),
           sortDirection: 1
         };
         
@@ -143,8 +143,8 @@ describe('==== PROJECTS ====', function () {
       it('should filter projects by date and sort in DESC order', function(done) {
         
         const query = {
-          startDate: new Date(2017,11,30).toISOString(),
-          endDate: new Date(2017,12,10).toISOString(),
+          startDate: new Date(2017,10,30).toISOString(),
+          endDate: new Date(2017,11,10).toISOString(),
         };
         
         fetchProjects(query)
@@ -291,8 +291,8 @@ describe('==== PROJECTS ====', function () {
     it('should return count of total projects within date range', (done) => {
       
       const query = {
-        startDate: new Date(2018,1,28),
-        endDate: new Date(2018,1,30),
+        startDate: new Date(2018,0,28),
+        endDate: new Date(2018,0,30),
       };
 
       countProjects(query)

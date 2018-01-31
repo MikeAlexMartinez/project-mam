@@ -3,7 +3,7 @@
 const assert = require('chai').assert;
 const moment = require('moment');
 
-const { match, lastWeek } = require('../helpers/dates');
+const { match, lastWeek, displayDate } = require('../helpers/dates');
 
 describe('==== DATES ====', () => {
 
@@ -74,5 +74,18 @@ describe('==== DATES ====', () => {
       done();
     });
 
+  });
+
+  describe('displayDate()', () => {
+
+    it('should return a date in the format "D / M / YY"', (done) => {
+      const now = new Date(2018,0,31);
+      const test = displayDate(now);
+      const expected = '31 / 1 / 18';
+
+      assert.equal(test, expected, `Expected ${test} to equal ${expected}`);
+
+      done();
+    });
   });
 });

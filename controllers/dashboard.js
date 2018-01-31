@@ -10,7 +10,7 @@ const { fetchProjects, countProjects } = require('./projects');
 const { fetchSubscribers, countSubscribers } = require('./subscribers');
 
 // My helpers
-const { lastWeek } = require('../helpers/dates');
+const { lastWeek, displayDate } = require('../helpers/dates');
 
 // global moment => Set to today
 let date = moment(); 
@@ -96,7 +96,20 @@ function getMessageData(cb) {
 
       fetchMessages(query)
         .then(({messages}) => {
-          nestedCb(null, messages);
+          const formattedMessages = messages.map((m) => {
+            return {
+              _id: m._id,
+              sender: m.sender,
+              subject: m.subject,
+              email: m.email,
+              createdDate: displayDate(m.createdDate),
+              read: m.read,
+              validated: m.validated,
+              important: m.important,
+              replied: m.replied,
+            };
+          });
+          nestedCb(null, formattedMessages);
         })
         .catch(({err}) => {
           nestedCb(err);
@@ -152,7 +165,18 @@ function getProjectData(cb) {
 
       fetchProjects(query)
         .then(({projects}) => {
-          nestedCb(null, projects);
+          const formattedProject = projects.map((m) => {
+            return {
+              _id: m._id,
+              title: m.title,
+              createdDate: displayDate(m.createdDate),
+              lastUpdate: displayDate(m.lastUpdate),
+              public: m.public,
+              favourite: m.favourite,
+              git: m.git,
+            };
+          });
+          nestedCb(null, formattedProject);
         })
         .catch(({err}) => {
           nestedCb(err);
@@ -227,15 +251,19 @@ function getSubscriberData(cb) {
             validated: 1,
             active: 1
           },
-          limit: 10
+          limit: 5
         })
         .then(({subscribers}) => {
-          
-          const split = [];
-          split.push(subscribers.slice(0,5));
-          split.push(subscribers.slice(5));
-
-          nestedCb(null, split);
+          const formattedSubscribers = subscribers.map((m) => {
+            return {
+              _id: m._id,
+              email: m.email,
+              createdDate: displayDate(m.createdDate),
+              validated: m.validated,
+              active: m.active,
+            };
+          });
+          nestedCb(null, formattedSubscribers);
         })
         .catch(({err}) => {
           nestedCb(err);
@@ -307,8 +335,16 @@ function getBugData(cb) {
 
       fetchBugs(query)
         .then(({bugs}) => {
-
-          nestedCb(null, bugs);
+          const formattedBugs = bugs.map((m) => {
+            return {
+              _id: m._id,
+              createdDate: displayDate(m.createdDate),
+              bugDescription: m.bugDescription,
+              open: m.open,
+              important: m.important,
+            };
+          });
+          nestedCb(null, formattedBugs);
         })
         .catch(({err}) => {
           nestedCb(err);

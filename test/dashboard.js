@@ -55,31 +55,31 @@ describe('==== DASHBOARD ====', () => {
           bugDescription: 'Bugging me 6.',
           open: true,
           important: false,
-          createdDate: new Date('2018-01-24T12:10:02.000Z') 
+          createdDate: '24 / 1 / 18'
         },
         { _id: 'bugger05-3c83-4b4b-9089-69362f729ae7',
           bugDescription: 'Bugging me 5.',
           open: true,
           important: false,
-          createdDate: new Date('2018-01-25T12:10:02.000Z')
+          createdDate: '25 / 1 / 18'
         },
         { _id: 'bugger04-3c83-4b4b-9089-69362f729ae7',
           bugDescription: 'Bugging me 4.',
           open: true,
           important: false,
-          createdDate: new Date('2018-01-26T12:10:02.000Z')
+          createdDate: '26 / 1 / 18'
         },
         { _id: 'bugger03-3c83-4b4b-9089-69362f729ae7',
           bugDescription: 'Bugging me 3.',
           open: true,
           important: false,
-          createdDate: new Date('2018-01-27T12:10:02.000Z')
+          createdDate: '27 / 1 / 18'
         },
         { _id: 'bugger02-3c83-4b4b-9089-69362f729ae7',
           bugDescription: 'Bugging me 2.',
           open: true,
           important: false,
-          createdDate: new Date('2018-01-28T12:10:02.000Z')
+          createdDate: '28 / 1 / 18'
         }
       ];
 
@@ -135,7 +135,7 @@ describe('==== DASHBOARD ====', () => {
             important: true,
             validated: true,
             read: false,
-            createdDate: new Date('2018-01-29T12:10:02.000Z'),
+            createdDate: '29 / 1 / 18',
             subject: 'Hello One' 
           },
           { 
@@ -146,7 +146,7 @@ describe('==== DASHBOARD ====', () => {
             important: false,
             validated: true,
             read: false,
-            createdDate: new Date('2018-01-28T12:10:02.000Z'),
+            createdDate: '28 / 1 / 18',
             subject: 'Hello Two' 
           },
           { _id: 'sender03-3c83-4b4b-9089-69362f729ae7',
@@ -156,7 +156,7 @@ describe('==== DASHBOARD ====', () => {
             important: true,
             validated: true,
             read: false,
-            createdDate: new Date('2018-01-27T12:10:02.000Z'),
+            createdDate: '27 / 1 / 18',
             subject: 'Hello three' 
           },
           { _id: 'sender06-3c83-4b4b-9089-69362f729ae7',
@@ -166,7 +166,7 @@ describe('==== DASHBOARD ====', () => {
             important: true,
             validated: true,
             read: false,
-            createdDate: new Date('2018-01-20T13:10:02.000Z'),
+            createdDate: '20 / 1 / 18',
             subject: 'Hello Six' 
           },
           { _id: 'sender07-3c83-4b4b-9089-69362f729ae7',
@@ -176,7 +176,7 @@ describe('==== DASHBOARD ====', () => {
             important: false,
             validated: true,
             read: false,
-            createdDate: new Date('2018-01-19T12:10:02.000Z'),
+            createdDate: '19 / 1 / 18',
             subject: 'Hello Seven' 
           } 
         ];
@@ -219,8 +219,8 @@ describe('==== DASHBOARD ====', () => {
           'title' : 'Project MaM',
           'git' : 'https://github.com/MikeAlexMartinez/project-mam',
           'favourite' : true,
-          'lastUpdate' : new Date(2018, 0, 11),
-          'createdDate' : new Date(2017, 12, 23),
+          'lastUpdate' : '11 / 1 / 18',
+          'createdDate' : '23 / 12 / 17',
           'public' : true,
         },
         {
@@ -228,8 +228,8 @@ describe('==== DASHBOARD ====', () => {
           'title' : 'Deft',
           'git' : 'https://github.com/MikeAlexMartinez/deft-clone',
           'favourite' : true,
-          'lastUpdate' : new Date(2018, 0, 10),
-          'createdDate' : new Date(2017, 12, 21),
+          'lastUpdate' : '10 / 1 / 18',
+          'createdDate' : '21 / 12 / 17',
           'public' : true,
         },
         {
@@ -237,8 +237,8 @@ describe('==== DASHBOARD ====', () => {
           'title' : 'Ranger',
           'git' : 'https://github.com/MikeAlexMartinez/ranger-clone',
           'favourite' : true,
-          'lastUpdate' : new Date(2018, 0, 10),
-          'createdDate' : new Date(2017, 12, 15),
+          'lastUpdate' : '10 / 1 / 18',
+          'createdDate' : '15 / 12 / 17',
           'public' : true,
         },
         {
@@ -246,8 +246,8 @@ describe('==== DASHBOARD ====', () => {
           'title' : 'Minifolio',
           'git' : 'https://github.com/MikeAlexMartinez/minifolio-clone',
           'favourite' : true,
-          'lastUpdate' : new Date(2018, 0, 10),
-          'createdDate' : new Date(2017, 12, 8),
+          'lastUpdate' : '10 / 1 / 18',
+          'createdDate' : '8 / 12 / 17',
           'public' : true
         },
         {
@@ -255,8 +255,8 @@ describe('==== DASHBOARD ====', () => {
           'title' : 'Resume',
           'git' : 'https://github.com/MikeAlexMartinez/resume-clone',
           'favourite' : true,
-          'lastUpdate' : new Date(2018, 0, 9),
-          'createdDate' : new Date(2017, 12, 1),
+          'lastUpdate' : '9 / 1 / 18',
+          'createdDate' : '1 / 12 / 17',
           'public' : true,
         }
       ];
@@ -311,93 +311,55 @@ describe('==== DASHBOARD ====', () => {
       done();
     });
 
-    it('should return 10 newest subscribers', (done) => {
+    it('should return 5 most recent subscribers', (done) => {
 
       const {subscribers} = dashboardData;
             
-      const expectedSubscribers = [[
+      const expectedSubscribers = [
         {
           _id: 'subscri01-3c83-4b4b-9089-69362f729ae7',
           email: 'test1@mail.com',
-          createdDate: new Date(2018,0,30),
+          createdDate: '30 / 1 / 18',
           validated: false,
           active: false,
         },
         {
           _id: 'subscri02-3c83-4b4b-9089-69362f729ae7',
           email: 'test2@mail.com',
-          createdDate: new Date(2018,0,29),
+          createdDate: '29 / 1 / 18',
           validated: true,
           active: true,
         },
         {
           _id: 'subscri03-3c83-4b4b-9089-69362f729ae7',
           email: 'test3@mail.com',
-          createdDate: new Date(2018,0,28),
+          createdDate: '28 / 1 / 18',
           validated: false,
           active: true,
         },
         {
           _id: 'subscri04-3c83-4b4b-9089-69362f729ae7',
           email: 'test4@mail.com',
-          createdDate: new Date(2018,0,27),
+          createdDate: '27 / 1 / 18',
           validated: false,
           active: true,
         },
         {
           _id: 'subscri05-3c83-4b4b-9089-69362f729ae7',
           email: 'test5@mail.com',
-          createdDate: new Date(2018,0,26),
+          createdDate: '26 / 1 / 18',
           validated: false,
           active: true,
         }
-      ],[
-        {
-          _id: 'subscri06-3c83-4b4b-9089-69362f729ae7',
-          email: 'test6@mail.com',
-          createdDate: new Date(2018,0,25),
-          validated: false,
-          active: true,
-        },
-        {
-          _id: 'subscri07-3c83-4b4b-9089-69362f729ae7',
-          email: 'test7@mail.com',
-          createdDate: new Date(2018,0,24),
-          validated: false,
-          active: true,
-        },
-        {
-          _id: 'subscri08-3c83-4b4b-9089-69362f729ae7',
-          email: 'test8@mail.com',
-          createdDate: new Date(2018,0,23),
-          validated: false,
-          active: true,
-        },
-        {
-          _id: 'subscri09-3c83-4b4b-9089-69362f729ae7',
-          email: 'test9@mail.com',
-          createdDate: new Date(2018,0,22),
-          validated: true,
-          active: true,
-        },
-        {
-          _id: 'subscri10-3c83-4b4b-9089-69362f729ae7',
-          email: 'test10@mail.com',
-          createdDate: new Date(2018,0,21),
-          validated: false,
-          active: true
-        }
-      ]];
+      ];
 
-      assert.equal(subscribers.data[0].length + subscribers.data[1].length, 10, 'should return items 10 subscribers');
+      assert.equal(subscribers.data.length, 5, 'should return items 5 subscribers');
 
-      block
       subscribers.data.forEach((subscriber, i) => {
         const expectedSubscriber = expectedSubscribers[i];
         Object.keys(expectedSubscriber).forEach(key => {
           assert.deepEqual(subscriber[key], expectedSubscriber[key],`the value at ${key} should match`);
         });
-
       });
       
       done();
