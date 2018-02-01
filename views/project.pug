@@ -1,0 +1,23 @@
+extends layout.pug
+
+include includes/_mixins.pug
+include includes/_itemControlBar.pug
+include includes/_projectForm.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()
+    if error
+      div.sub-content-error
+        p= message
+    else 
+      div.sub-content-lower
+        +itemControlBar(edit, project.title, project._id)
+        +projectForm(edit)
+
+      
+block js
+  include includes/adminjs.pug

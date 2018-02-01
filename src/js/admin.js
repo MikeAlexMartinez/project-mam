@@ -4,6 +4,11 @@
 $(document).ready(() => {
 
   /**
+   * General error Message
+   */
+  const errorMessage = 'Oops! We encountered an error!';
+
+  /**
    * Navigation menu control
    * 
    */
@@ -34,7 +39,7 @@ $(document).ready(() => {
     // change bug-reporter colour to red
     $('#bug-report .imgContainer').toggleClass('red');
     // rotate and fadin in bug-reporter
-    $('.bug-reporter').toggleClass('show');;
+    $('.bug-reporter').toggleClass('show');
     
   });
 
@@ -82,17 +87,23 @@ $(document).ready(() => {
    * Show general toast message if message exists
    */
   if ($('.toastContainer').hasClass('show')) {
+    const container = $(this);
     const target =  $('.toastGeneral');
-    
+
     setTimeout(() => {
       target.addClass('active');
+      container.css('z-index', 25);
 
       // show message for 3 seconds
       setTimeout(() => {
         target.removeClass('active');
+
+        setTimeout(() => {
+          container.css('z-index', 0);
+        }, 2000);
       }, 3000);
 
-    }, 200)
+    }, 200);
   }
 
 });

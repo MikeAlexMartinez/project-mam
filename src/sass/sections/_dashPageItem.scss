@@ -6,10 +6,10 @@
   display: inline-block;
   vertical-align: top;
 
-  @media all and (max-width: 800px) {
+  @media all and (max-width: 1200px) {
     width: 90%;
   }
-  @media all and (min-width: 800px) {
+  @media all and (min-width: 1200px) {
     width: 41%;
   }
 
@@ -122,7 +122,7 @@
         }
       }
 
-      tr:hover {
+      tr:hover td {
         background-color: #d5ffcc;
       }
     }

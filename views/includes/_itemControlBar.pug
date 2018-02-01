@@ -1,0 +1,12 @@
+mixin itemControlBar(edit, title, id)
+  div.controlBar
+    div.cb-section
+      div.left
+        div.buttonContainer.clicky
+          button(id=`${edit ? 'UpdateButton' : 'EditButton'}` class=`btn ${edit ? 'edit' : 'view'}`)= `${edit ? 'Update' : 'Edit'}`
+      div.center
+        div.cb-title= title
+        div.cb-id= id
+      div.right
+        div.buttonContainer.clicky
+          button(class=`btn delete`) Delete

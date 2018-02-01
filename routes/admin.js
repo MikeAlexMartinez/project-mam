@@ -82,28 +82,44 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
   res.render('section', data);
 });
 // fetch specific project
-router.get('/projects/:id', auth.isLoggedIn, function projects(req, res) {
+router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
   
-  const id = req.params.id;
-  const {data} = fetchProjects({ 
-    filters: {
-      _id: id
-    } 
-  });
-  
-  // check only one project retrieved
-
-
-  // check that 
+  const {mode, id} = req.params;
 
   const pageData = {
-    location: `Admin - ${data[0].title}`,
+    location: `Admin - ${mode} Project`,
     logout: true,
-    load: 'projects',   
+    load: 'projects',
+    edit: mode === 'edit',
     csrfToken: req.csrfToken()
   };
+
+  fetchProjects({
+      filters: {
+        _id: id
+      }
+    })
+    .then(({projects}) => {
+
+      if (projects.length === 1) {
+        pageData.project = projects[0];
+      } else {
+        pageData.error = true;
+        pageData.message = 'Error encountered retrieving project';
+      }
+
+      res.render('project', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.message = 'Error encountered retrieving project';
+
+      res.render('project', pageData);
+    });
   
-  res.render('section', pageData);
 });
 
 // admin messages page
@@ -118,7 +134,7 @@ router.get('/messages', auth.isLoggedIn, function projects(req, res) {
   res.render('section', data);
 });
 // Fetch specific message
-router.get('/messages/:id', auth.isLoggedIn, function projects(req, res) {
+router.get('/messages/:id/:mode', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Messages',
     logout: true,
@@ -141,7 +157,7 @@ router.get('/bugs', auth.isLoggedIn, function projects(req, res) {
   res.render('section', data);
 });
 // fetch specific bug
-router.get('/bugs/:id', auth.isLoggedIn, function projects(req, res) {
+router.get('/bugs/:id/:mode', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Bugs',
     logout: true,
@@ -164,7 +180,7 @@ router.get('/subscribers', auth.isLoggedIn, function projects(req, res) {
   res.render('section', data);
 });
 // fetch specific subscriber
-router.get('/subscribers/:id', auth.isLoggedIn, function projects(req, res) {
+router.get('/subscribers/:id/:mode', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Subscribers',
     logout: true,

@@ -10,7 +10,6 @@ mixin dashPageItem(section)
       a(href=`/admin/${section}`)
         p View all...
 
-
 //- projects 
 //-   number public
 mixin projectsHeader()
@@ -44,7 +43,7 @@ mixin projectsTable(section)
                 i(class=`ion-md-open`)
             td= p.createdDate
             td
-              a(href=`/admin/${section}/${p._id}`)= p.title
+              a(href=`/admin/${section}/${p._id}/view`)= p.title
             td
               i(class=`${p.public ? 'ion-ios-people' : 'ion-ios-people-outline'}`)
             td
@@ -54,7 +53,7 @@ mixin projectsTable(section)
                 i(class='ion-logo-octocat')
             td= p.lastUpdate
             td
-              a(href=`/admin/${section}/${p._id}/delete`)
+              a.deleteProject(href=`/api/secure/project/${p._id}/delete`)
                 i(class=`ion-md-trash`)
 
 
@@ -99,7 +98,7 @@ mixin messagesTable(section)
             td= m.createdDate
             td= m.sender
             td
-              a(href=`/admin/${section}/${m._id}`)= m.subject
+              a(href=`/admin/${section}/${m._id}/view`)= m.subject
             td= m.email
             td
               i(class=`${m.read ? 'ion-ios-mail green' : 'ion-ios-mail-outline'}`)
@@ -110,7 +109,7 @@ mixin messagesTable(section)
             td
               i(class=`${m.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline'}`)
             td
-              a(href=`/admin/${section}/${m._id}/delete`)
+              a.deleteMessage(href=`/api/secure/message/${m._id}/delete`)
                 i(class=`ion-md-trash`)
     
 //- Subscribers
@@ -154,13 +153,13 @@ mixin subscribersTable(section)
                 i(class=`ion-md-open`)
             td= s.createdDate
             td
-              a(href=`/admin/${section}/${s._id}`)= s.email
+              a(href=`/admin/${section}/${s._id}/view`)= s.email
             td
               i(class=`${s.valid ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
             td
               i(class=`${s.active ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
             td
-              a(href=`/admin/${section}/${s._id}/delete`)
+              a.deleteSubscriber(href=`/api/secure/subscriber/${s._id}/delete`)
                 i(class=`ion-md-trash`)
 
 //- Bugs
@@ -199,11 +198,11 @@ mixin bugsTable(section)
                 i(class=`ion-md-open`)
             td= b.createdDate
             td
-              a(href=`/admin/${section}/${b._id}`)= b.bugDescription
+              a(href=`/admin/${section}/${b._id}/view`)= b.bugDescription
             td
               i(class=`${b.open ? 'ion-ios-bug red' : 'ion-ios-bug-outline green'}`)
             td
               i(class=`${b.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
             td
-              a(href=`/admin/${section}/${b._id}/delete`)
+              a.deleteBug(href=`/api/secure/bug/${b._id}/delete`)
                 i(class=`ion-md-trash`)

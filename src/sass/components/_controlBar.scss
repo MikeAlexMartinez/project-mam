@@ -1,0 +1,37 @@
+.sub-content-lower {
+  margin-top: 0px;
+  padding: 0px 50px;
+}
+
+.cb-section {
+  position: relative;
+  width: 100%;
+  text-align: center;
+
+  .left,
+  .right,
+  .center {
+    display: inline-block;
+  }
+  .left,
+  .right {
+    padding: 2%;
+    width: 20%;
+
+    .btn {
+      width: 100%;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  }
+  .center {
+    width: 60%;
+    
+    .cb-title {
+      font-size: 2em;
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+
+  }
+}

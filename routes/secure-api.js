@@ -28,7 +28,8 @@ router
   .post();
 
 router
-  .route('/project/:id')  
+  .route('/project/:id')
+  .get()  
   .put()
   .delete();
 
