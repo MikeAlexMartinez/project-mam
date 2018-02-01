@@ -178,12 +178,12 @@ $(document).ready(() => {
    * Show general toast message if message exists
    */
   if ($('.toastContainer').hasClass('show')) {
-    const container = $(this);
+    const container = $('.toastContainer');
+    container.css('z-index', 25);
     const target =  $('.toastGeneral');
 
     setTimeout(() => {
       target.addClass('active');
-      container.css('z-index', 25);
 
       // show message for 3 seconds
       setTimeout(() => {
@@ -191,7 +191,7 @@ $(document).ready(() => {
 
         setTimeout(() => {
           container.css('z-index', 0);
-        }, 2000);
+        }, 500);
       }, 3000);
 
     }, 200);
