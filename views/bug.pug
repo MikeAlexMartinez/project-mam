@@ -15,8 +15,8 @@ block content
         p= errMessage
     else 
       div.sub-content-lower
-        +itemControlBar(edit, project.title, project._id)
-        +projectForm(edit)
+        +itemControlBar(edit, 'Bug', bug._id)
+        +bugForm(edit)
 
       
 block js

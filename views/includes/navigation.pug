@@ -20,7 +20,32 @@ section(id="navigation" class=`navigation ${location === 'home' ? 'home' : ''}`)
         div(class=`imgContainer ${location === 'blog' ? 'red' : '' }`)
           i.ion-ios-paper
   div.items.bottom
-    if logout === true
+    if admin === true
+      div#gotoDashboard(class=`item`)
+        a(href="/admin")
+          h3.itemTitle Dashboard
+          div.imgContainer
+            i.ion-md-apps
+      div#gotoMessages(class=`item`)
+        a(href="/admin/projects")
+          h3.itemTitle Projects
+          div.imgContainer
+            i.ion-md-bookmarks
+      div#gotoMessages(class=`item`)
+        a(href="/admin/messages")
+          h3.itemTitle Messages
+          div.imgContainer
+            i.ion-md-chatboxes
+      div#gotoMessages(class=`item`)
+        a(href="/admin/bugs")
+          h3.itemTitle Bugs
+          div.imgContainer
+            i.ion-md-bug
+      div#gotoMessages(class=`item`)
+        a(href="/admin/subcribers")
+          h3.itemTitle Subscribers
+          div.imgContainer
+            i.ion-md-archive
       div#logout(class=`item logout`)
         a(href="/logout")
           h3.itemTitle Log out

@@ -1,18 +1,15 @@
 'use strict';
 
-const path = require('path');
-
 const express = require('express');
 const router = express.Router();
-const async = require('async');
 
 const logger = require('../winston');
 
-// Schemas
-const User = require('../models/user');
-
 // Controllers and helper functions
 const { fetchProjects } = require('../controllers/projects');
+const { fetchMessages } = require('../controllers/messages');
+const { fetchBugs } = require('../controllers/bugs');
+const { fetchSubscribers } = require('../controllers/subscribers');
 
 const { dashboard } = require('../controllers/dashboard');
 const auth = require('../controllers/authentication/auth');
@@ -74,7 +71,7 @@ router.get('/login', function projects(req, res) {
 router.get('/projects', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Projects',
-    logout: true,
+    admin: true,
     load: 'projects',   
     csrfToken: req.csrfToken()
   };
@@ -88,7 +85,7 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
 
   const pageData = {
     location: `Admin - ${mode} Project`,
-    logout: true,
+    admin: true,
     load: 'projects',
     edit: mode === 'edit',
     csrfToken: req.csrfToken()
@@ -105,7 +102,7 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
         pageData.project = projects[0];
       } else {
         pageData.error = true;
-        pageData.message = 'Error encountered retrieving project';
+        pageData.errMessage = 'Error encountered retrieving project';
       }
 
       res.render('project', pageData);
@@ -115,7 +112,7 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
       logger('error', err);
 
       pageData.error = true;
-      pageData.message = 'Error encountered retrieving project';
+      pageData.errMessage = 'Error encountered retrieving project';
 
       res.render('project', pageData);
     });
@@ -126,7 +123,7 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
 router.get('/messages', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Messages',
-    logout: true,
+    admin: true,
     load: 'messages',    
     csrfToken: req.csrfToken()
   };
@@ -135,21 +132,49 @@ router.get('/messages', auth.isLoggedIn, function projects(req, res) {
 });
 // Fetch specific message
 router.get('/messages/:id/:mode', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Messages',
-    logout: true,
-    load: 'messages',    
+    
+  const {mode, id} = req.params;
+
+  const pageData = {
+    location: `Admin - ${mode} Message`,
+    admin: true,
+    load: 'messages',
+    edit: mode === 'edit',
     csrfToken: req.csrfToken()
   };
-  
-  res.render('section', data);
+
+  fetchMessages({
+      filters: {
+        _id: id
+      }
+    })
+    .then(({messages}) => {
+
+      if (messages.length === 1) {
+        pageData.message = messages[0];
+      } else {
+        pageData.error = true;
+        pageData.errMessage = 'Error encountered retrieving message';
+      }
+
+      res.render('message', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving message';
+
+      res.render('message', pageData);
+    });
 });
 
 // admin bugs page
 router.get('/bugs', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Bugs',
-    logout: true,
+    admin: true,
     load: 'bugs',
     csrfToken: req.csrfToken()
   };
@@ -158,21 +183,49 @@ router.get('/bugs', auth.isLoggedIn, function projects(req, res) {
 });
 // fetch specific bug
 router.get('/bugs/:id/:mode', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Bugs',
-    logout: true,
+
+  const {mode, id} = req.params;
+  
+  const pageData = {
+    location: `Admin - ${mode} Bug`,
+    admin: true,
     load: 'bugs',
+    edit: mode === 'edit',
     csrfToken: req.csrfToken()
   };
-  
-  res.render('section', data);
+
+  fetchBugs({
+      filters: {
+        _id: id
+      }
+    })
+    .then(({bugs}) => {
+
+      if (bugs.length === 1) {
+        pageData.bug = bugs[0];
+      } else {
+        pageData.error = true;
+        pageData.errMessage = 'Error encountered retrieving bug';
+      }
+
+      res.render('bug', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving bug';
+
+      res.render('bug', pageData);
+    });
 });
 
 // admin subscribers page
 router.get('/subscribers', auth.isLoggedIn, function projects(req, res) {
   const data = {
     location: 'Administration - Subscribers',
-    logout: true,
+    admin: true,
     load: 'subscribers',
     csrfToken: req.csrfToken()
   };
@@ -181,14 +234,42 @@ router.get('/subscribers', auth.isLoggedIn, function projects(req, res) {
 });
 // fetch specific subscriber
 router.get('/subscribers/:id/:mode', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Subscribers',
-    logout: true,
+
+  const {mode, id} = req.params;
+  
+  const pageData = {
+    location: `Admin - ${mode} Subscriber`,
+    admin: true,
     load: 'subscribers',
+    edit: mode === 'edit',
     csrfToken: req.csrfToken()
   };
-  
-  res.render('section', data);
+
+  fetchSubscribers({
+      filters: {
+        _id: id
+      }
+    })
+    .then(({subscribers}) => {
+
+      if (subscribers.length === 1) {
+        pageData.subscriber = subscribers[0];
+      } else {
+        pageData.error = true;
+        pageData.errMessage = 'Error encountered retrieving subscriber';
+      }
+
+      res.render('subscriber', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving subscriber';
+
+      res.render('subscriber', pageData);
+    });
 });
 
 module.exports = router;
