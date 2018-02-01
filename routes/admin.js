@@ -90,7 +90,7 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
         pageData.error = true;
         pageData.errMessage = 'Nothing to see here!';
       } else {
-        pageData.project = projects;
+        pageData.projects = projects;
       }
 
       res.render('allProjects', pageData);
@@ -104,7 +104,7 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
 
       res.render('project', pageData);
     });
-    
+
 });
 // fetch specific project
 router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
