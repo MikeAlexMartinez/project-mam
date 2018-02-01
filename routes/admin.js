@@ -14,6 +14,24 @@ const { fetchSubscribers } = require('../controllers/subscribers');
 const { dashboard } = require('../controllers/dashboard');
 const auth = require('../controllers/authentication/auth');
 
+// admin-login page
+router.get('/login', function projects(req, res) {
+  // Should make toast into middleware
+  const message = req.query.message || '';
+  const status = message !== '';
+  const type = req.query.type;
+
+  const data = {
+    location: 'admin-login',
+    status: status,
+    message: message,
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken()
+  };
+
+  res.render('adminLogin', data);
+});
+
 // admin page
 router.get('', auth.isLoggedIn, function projects(req, res) {
   
@@ -23,7 +41,7 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
     .then((data) => {
       const pageData = {
         location: 'admin',
-        logout: true,
+        admin: true,
         user: user,
         csrfToken: req.csrfToken(),
         error: '',
@@ -47,24 +65,6 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
     });
 
 
-});
-
-// admin-login page
-router.get('/login', function projects(req, res) {
-  // Should make toast into middleware
-  const message = req.query.message || '';
-  const status = message !== '';
-  const type = req.query.type;
-
-  const data = {
-    location: 'admin-login',
-    status: status,
-    message: message,
-    type: `${status ? type : 'hide'}`,
-    csrfToken: req.csrfToken()
-  };
-
-  res.render('adminLogin', data);
 });
 
 // admin projects page
