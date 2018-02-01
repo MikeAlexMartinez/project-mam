@@ -1,0 +1,19 @@
+extends layout.pug
+
+include includes/_mixins.pug
+include includes/_itemTables.pug
+include includes/_pagination.pug
+
+block content
+  include includes/header.pug
+
+  div.nav-slide
+    div.sub-content
+      +subpageHeader()
+    div.sc-list
+      +projectTableLarge
+    +pagination()
+
+
+block js
+  include includes/mainjs.pug

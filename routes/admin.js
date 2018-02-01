@@ -69,14 +69,42 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
 
 // admin projects page
 router.get('/projects', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Projects',
+  
+  let { page } = req.query;
+  const pageData = {
+    location: 'Administration - All Projects',
     admin: true,
     load: 'projects',   
     csrfToken: req.csrfToken()
   };
+
+  if (!page) page = 1;
   
-  res.render('section', data);
+  fetchProjects({
+      page: page,
+      limit: 20
+    })
+    .then(({projects}) => {
+
+      if (projects.length === 0) {
+        pageData.error = true;
+        pageData.errMessage = 'Nothing to see here!';
+      } else {
+        pageData.project = projects;
+      }
+
+      res.render('allProjects', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving project';
+
+      res.render('project', pageData);
+    });
+    
 });
 // fetch specific project
 router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
