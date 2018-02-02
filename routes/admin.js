@@ -5,7 +5,7 @@ const router = express.Router();
 
 const logger = require('../winston');
 
-// Controllers and helper functions
+// Controllers
 const { fetchProjects } = require('../controllers/projects');
 const { fetchMessages } = require('../controllers/messages');
 const { fetchBugs } = require('../controllers/bugs');
@@ -13,6 +13,9 @@ const { fetchSubscribers } = require('../controllers/subscribers');
 
 const { dashboard } = require('../controllers/dashboard');
 const auth = require('../controllers/authentication/auth');
+
+// Helpers
+const { displayDate } = require('../helpers/dates');
 
 // admin-login page
 router.get('/login', function projects(req, res) {
@@ -74,8 +77,10 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
   const pageData = {
     location: 'Administration - All Projects',
     admin: true,
-    load: 'projects',   
-    csrfToken: req.csrfToken()
+    load: 'projects',
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken(),
+    prod: process.env.NODE_ENV === 'production'
   };
 
   if (!page) page = 1;
@@ -86,11 +91,19 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
     })
     .then(({projects}) => {
 
+      const formattedProjects = projects.map((p) => {   
+        return {
+          ...p._doc,
+          createdDate: displayDate(p._doc.createdDate),
+          lastUpdate: displayDate(p._doc.lastUpdate)
+        }
+      });
+
       if (projects.length === 0) {
         pageData.error = true;
         pageData.errMessage = 'Nothing to see here!';
       } else {
-        pageData.projects = projects;
+        pageData.projects = formattedProjects;
       }
 
       res.render('allProjects', pageData);
@@ -102,7 +115,7 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
       pageData.error = true;
       pageData.errMessage = 'Error encountered retrieving project';
 
-      res.render('project', pageData);
+      res.render('allProjects', pageData);
     });
 
 });

@@ -16,6 +16,9 @@ The homepage of this website should meet the following criteria or 'user-stories
 
 To Do List:
 - Add admin pages and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
+  - add delete button functionality
+  - add forms
+  - create main page tables
 - Add tests for all API endpoints
 - Create gulp task and uniform format to bring in projects to home page automatically.
 - Add tests for controller code

@@ -1,3 +1,53 @@
-.itemForm {
-  
+.tableContainer {
+  margin: 0 50px;
+  overflow-x: auto;
+
+  .p-table {
+    width: 100%;
+
+    thead {
+      background-color: $bg-black;
+      font-size: 1.3em;
+    }
+    
+    th {
+      color: #fff;
+      font-weight: 400;
+      padding: 10px 15px;
+      white-space: nowrap;
+    }
+
+    td {
+      white-space: nowrap;
+      padding: 15px 20px;
+      text-align: center;
+      
+      a {
+        text-decoration: none;
+        color: $bg-black;
+      }
+
+      i {
+        font-size: 1.5em;
+        text-decoration: none;
+        color: $bg-black;
+        
+        &.green {
+          color: #20D13A;
+        }
+
+        &.red {
+          color: #DE5656;
+        }
+
+        &.deepRed {
+          color: #D32F2F;
+        }
+      }
+    }
+
+    tr:hover td {
+      background-color: #d5ffcc;
+    }
+  }
 }

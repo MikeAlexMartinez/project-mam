@@ -22,8 +22,6 @@ function captureIp(req, res, next) {
   const ipAddress = req.clientIp;
   const type = net.isIP(ipAddress);
 
-  console.log(req.clientIp);
-
   // find One and Update create if doesn't exist
   Ip.findOne({ip: ipAddress}, (err, ip) => {
     if (err) {

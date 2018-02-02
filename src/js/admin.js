@@ -84,6 +84,18 @@ $(document).ready(() => {
   });
 
   /**
+   * Delete button
+   */
+  $('.deleteButton').click((evt) => {
+    const target = $(evt.target);
+    const item = target.attr('target');
+
+        
+
+  });
+
+
+  /**
    * Show general toast message if message exists
    */
   if ($('.toastContainer').hasClass('show')) {

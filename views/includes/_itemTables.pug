@@ -1,5 +1,53 @@
-mixin projectTableLarge(edit)
-  div.tableContainer
+mixin projectTableLarge(section)
+  if error
+    div.Error
+      h1= errMessage
+  else
+    div.tableContainer
+      table.p-table
+        thead
+          tr
+            th(scope="col") Edit
+            th(scope="col") View
+            th(scope="col") Created
+            th(scope="col") Title
+            th(scope="col") Mini-Detail
+            th(scope="col") Public
+            th(scope="col") Favourite
+            th(scope="col") Real
+            th(scope="col") GitHub
+            th(scope="col") Last Update
+            th(scope="col") Type
+            th(scope="col") Sub-Type
+            th(scope="col") Delete
+        tbody
+          for p in projects
+            tr
+              td
+                a(href=`/admin/${section}/${p._id}/edit`)
+                  i(class=`ion-md-open`)
+              td
+                a(href=`${prod ? p.link : p.devlink}`)
+                  i(class=`ion-md-eye`)
+              td= p.createdDate
+              td
+                a(href=`/admin/${section}/${p._id}/view`)= p.title
+              td= `${p.miniDetail.length > 30 ? p.miniDetail.substring(0,27) + '...' : p.miniDetail}`
+              td
+                i(class=`${p.public ? 'ion-ios-people' : 'ion-ios-people-outline'}`)
+              td
+                i(class=`${p.favourite ? 'ion-ios-heart deepRed' : 'ion-ios-heart-outline'}`)
+              td
+                i(class=`${p.real ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+              td
+                a(href=p.git)
+                  i(class='ion-logo-octocat')
+              td= p.lastUpdate
+              td= p.type
+              td= p.subtype
+              td
+                a.deleteButton(target=`/api/secure/project/${p._id}/delete`)
+                  i(class=`ion-md-trash`)
 
 mixin bugTableLarge(edit)
   div.tableContainer
