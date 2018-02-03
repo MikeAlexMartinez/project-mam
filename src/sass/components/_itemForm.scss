@@ -1,8 +1,11 @@
 .tableContainer {
+  z-index: 1;
   margin: 0 50px;
   overflow-x: auto;
+  max-height: 65vh;
+  overflow-y: auto;
 
-  .p-table {
+  .table {
     width: 100%;
 
     thead {

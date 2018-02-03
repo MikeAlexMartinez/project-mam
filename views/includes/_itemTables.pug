@@ -4,7 +4,7 @@ mixin projectTableLarge(section)
       h1= errMessage
   else
     div.tableContainer
-      table.p-table
+      table.table
         thead
           tr
             th(scope="col") Edit
@@ -49,11 +49,120 @@ mixin projectTableLarge(section)
                 a.deleteButton
                   i(class=`ion-md-trash` target=`/api/secure/project/${p._id}` item=p._id)
 
-mixin bugTableLarge(edit)
+mixin bugTableLarge(section)
   div.tableContainer
+    table.table
+      thead
+        tr
+          th(scope="col") Edit
+          th(scope="col") Created
+          th(scope="col") Sender
+          th(scope="col") E-mail
+          th(scope="col") Description
+          th(scope="col") Open
+          th(scope="col") Important
+          th(scope="col") Valid
+          th(scope="col") Read
+          th(scope="col") Source
+          th(scope="col") IP
+          th(scope="col") Delete
+      tbody
+        for b in bugs
+          tr(id=b._id)
+            td
+              a(href=`/admin/${section}/${b._id}/edit`)
+                i(class=`ion-md-open`)
+            td= b.createdDate
+            td= b.sender
+            td= b.email
+            td
+              a(href=`/admin/${section}/${b._id}/view`)= b.bugDescription
+            td
+              i(class=`${b.open ? 'ion-ios-bug red' : 'ion-ios-bug-outline green'}`)
+            td
+              i(class=`${b.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
+            td
+              i(class=`${b.valid ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
+            td
+              i(class=`${b.read ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
+            td= b.source
+            td= b.ip
+            td
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/bug/${b._id}` item=b._id)
 
-mixin messageTableLarge(edit)
+mixin messageTableLarge(section)
   div.tableContainer
+    table.table
+      thead
+        tr
+          th(scope="col") Edit
+          th(scope="col") Created
+          th(scope="col") Sender
+          th(scope="col") E-mail
+          th(scope="col") Subject
+          th(scope="col") Message
+          th(scope="col") Read
+          th(scope="col") Replied
+          th(scope="col") Valid
+          th(scope="col") Important
+          th(scope="col") Source
+          th(scope="col") IP
+          th(scope="col") Delete
+      tbody
+        for m in messages
+          tr(id=m._id)
+            td
+              a(href=`/admin/${section}/${m._id}/edit`)
+                i(class=`ion-md-open`)
+            td= m.createdDate
+            td= m.sender
+            td= m.email
+            td
+              a(href=`/admin/${section}/${m._id}/view`)= m.subject
+            td= `${m.message >= 30 ? m.message.substring(0,27) + '...' : m.message}`
+            td
+              i(class=`${m.read ? 'ion-ios-mail green' : 'ion-ios-mail-outline'}`)
+            td
+              i(class=`${m.replied ? 'ion-ios-undo green' : 'ion-ios-undo-outline'}`)
+            td
+              i(class=`${m.validated ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td
+              i(class=`${m.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline'}`)
+            td= m.source
+            td= m.ip
+            td
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/message/${m._id}` item=m._id)
 
-mixin subscriberTableLarge(edit)
+mixin subscriberTableLarge(section)
   div.tableContainer
+    table.table
+      thead
+        tr
+          th(scope="col") Edit
+          th(scope="col") Created
+          th(scope="col") E-mail
+          th(scope="col") Valid
+          th(scope="col") Active
+          th(scope="col") Source
+          th(scope="col") IP
+          th(scope="col") Delete
+      tbody
+        for s in subscribers
+          tr(id=s._id)
+            td
+              a(href=`/admin/${section}/${s._id}/edit`)
+                i(class=`ion-md-open`)
+            td= s.createdDate
+            td
+              a(href=`/admin/${section}/${s._id}/view`)= s.email
+            td
+              i(class=`${s.valid ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td
+              i(class=`${s.active ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
+            td= s.source
+            td= s.ip
+            td
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/subscriber/${s._id}` item=s._id)

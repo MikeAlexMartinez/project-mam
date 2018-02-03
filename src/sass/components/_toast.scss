@@ -48,7 +48,8 @@
 }
 
 .toastContainer {
-  position: absolute;
+  display: none;
+  position: fixed;
   width: 75%;
   left: 12.5%;
   top: 10%;
@@ -91,6 +92,4 @@
       background-color: $bg-submit-warning;
     }
   }
-
-
 }

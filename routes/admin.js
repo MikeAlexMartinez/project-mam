@@ -164,14 +164,52 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
 
 // admin messages page
 router.get('/messages', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Messages',
-    admin: true,
-    load: 'messages',    
-    csrfToken: req.csrfToken()
-  };
   
-  res.render('section', data);
+  let { page, message, type } = req.query;
+  const status = message !== '';
+  const pageData = {
+    location: 'Administration - All Messages',
+    admin: true,
+    load: 'messages',
+    status: '',
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken(),
+    prod: process.env.NODE_ENV === 'production'
+  };
+
+  if (!page) page = 1;
+  
+  fetchMessages({
+      page: page,
+      limit: 20
+    })
+    .then(({messages}) => {
+
+      const formattedMessages = messages.map((m) => {   
+        return {
+          ...m._doc,
+          createdDate: displayDate(m._doc.createdDate)
+        }
+      });
+
+      if (messages.length === 0) {
+        pageData.error = true;
+        pageData.errMessage = 'Nothing to see here!';
+      } else {
+        pageData.messages = formattedMessages;
+      }
+
+      res.render('allMessages', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving messagese';
+
+      res.render('allMessages', pageData);
+    });
 });
 // Fetch specific message
 router.get('/messages/:id/:mode', auth.isLoggedIn, function projects(req, res) {
@@ -215,14 +253,52 @@ router.get('/messages/:id/:mode', auth.isLoggedIn, function projects(req, res) {
 
 // admin bugs page
 router.get('/bugs', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Bugs',
+  
+  let { page, message, type } = req.query;
+  const status = message !== '';
+  const pageData = {
+    location: 'Administration - All Bugs',
     admin: true,
     load: 'bugs',
-    csrfToken: req.csrfToken()
+    status: '',
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken(),
+    prod: process.env.NODE_ENV === 'production'
   };
+
+  if (!page) page = 1;
   
-  res.render('section', data);
+  fetchBugs({
+      page: page,
+      limit: 20
+    })
+    .then(({bugs}) => {
+
+      const formattedBugs = bugs.map((b) => {   
+        return {
+          ...b._doc,
+          createdDate: displayDate(b._doc.createdDate)
+        }
+      });
+
+      if (formattedBugs.length === 0) {
+        pageData.error = true;
+        pageData.errMessage = 'Nothing to see here!';
+      } else {
+        pageData.bugs = formattedBugs;
+      }
+
+      res.render('allBugs', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving bugs';
+
+      res.render('allBugs', pageData);
+    });
 });
 // fetch specific bug
 router.get('/bugs/:id/:mode', auth.isLoggedIn, function projects(req, res) {
@@ -266,14 +342,52 @@ router.get('/bugs/:id/:mode', auth.isLoggedIn, function projects(req, res) {
 
 // admin subscribers page
 router.get('/subscribers', auth.isLoggedIn, function projects(req, res) {
-  const data = {
-    location: 'Administration - Subscribers',
+  
+  let { page, message, type } = req.query;
+  const status = message !== '';
+  const pageData = {
+    location: 'Administration - All Subscribers',
     admin: true,
     load: 'subscribers',
-    csrfToken: req.csrfToken()
+    status: '',
+    type: `${status ? type : 'hide'}`,
+    csrfToken: req.csrfToken(),
+    prod: process.env.NODE_ENV === 'production'
   };
+
+  if (!page) page = 1;
   
-  res.render('section', data);
+  fetchSubscribers({
+      page: page,
+      limit: 20
+    })
+    .then(({subscribers}) => {
+
+      const formattedSubscribers = subscribers.map((s) => {   
+        return {
+          ...s._doc,
+          createdDate: displayDate(s._doc.createdDate)
+        }
+      });
+
+      if (formattedSubscribers.length === 0) {
+        pageData.error = true;
+        pageData.errMessage = 'Nothing to see here!';
+      } else {
+        pageData.subscribers = formattedSubscribers;
+      }
+
+      res.render('allSubscribers', pageData);
+
+    })
+    .catch((err) => {
+      logger('error', err);
+
+      pageData.error = true;
+      pageData.errMessage = 'Error encountered retrieving subscribers';
+
+      res.render('allSubscribers', pageData);
+    });
 });
 // fetch specific subscriber
 router.get('/subscribers/:id/:mode', auth.isLoggedIn, function projects(req, res) {

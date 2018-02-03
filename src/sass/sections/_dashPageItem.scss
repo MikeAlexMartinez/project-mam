@@ -125,6 +125,10 @@
       tr:hover td {
         background-color: #d5ffcc;
       }
+    
+      .deleteButton {
+        cursor: pointer;
+      }
     }
   }
 }

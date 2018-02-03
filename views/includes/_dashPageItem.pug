@@ -37,7 +37,7 @@ mixin projectsTable(section)
           th(scope="col") Delete
       tbody
         for p in data.projects.data
-          tr
+          tr(id= p._id)
             td
               a(href=`/admin/${section}/${p._id}/edit`)
                 i(class=`ion-md-open`)
@@ -53,8 +53,8 @@ mixin projectsTable(section)
                 i(class='ion-logo-octocat')
             td= p.lastUpdate
             td
-              a.deleteProject(href=`/api/secure/project/${p._id}/delete`)
-                i(class=`ion-md-trash`)
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/project/${p._id}` item=p._id)
 
 
 //- Messages
@@ -91,7 +91,7 @@ mixin messagesTable(section)
           th(scope="col") Delete
       tbody
         for m in data.messages.data
-          tr
+          tr(id=m._id)
             td
               a(href=`/admin/${section}/${m._id}/edit`)
                 i(class=`ion-md-open`)
@@ -109,8 +109,8 @@ mixin messagesTable(section)
             td
               i(class=`${m.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline'}`)
             td
-              a.deleteMessage(href=`/api/secure/message/${m._id}/delete`)
-                i(class=`ion-md-trash`)
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/message/${m._id}` item=m._id)
     
 //- Subscribers
 //-   header: active , invalid, new (last 7)
@@ -147,7 +147,7 @@ mixin subscribersTable(section)
           th(scope="col") Delete
       tbody
         for s in data.subscribers.data
-          tr
+          tr(id=s._id)
             td
               a(href=`/admin/${section}/${s._id}/edit`)
                 i(class=`ion-md-open`)
@@ -159,8 +159,8 @@ mixin subscribersTable(section)
             td
               i(class=`${s.active ? 'ion-md-checkmark green' : 'ion-md-close red'}`)
             td
-              a.deleteSubscriber(href=`/api/secure/subscriber/${s._id}/delete`)
-                i(class=`ion-md-trash`)
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/subscriber/${s._id}` item=s._id)
 
 //- Bugs
 //-   header: open, last 7 days
@@ -192,7 +192,7 @@ mixin bugsTable(section)
           th(scope="col") Delete
       tbody
         for b in data.bugs.data
-          tr
+          tr(id=b._id)
             td
               a(href=`/admin/${section}/${b._id}/edit`)
                 i(class=`ion-md-open`)
@@ -204,5 +204,5 @@ mixin bugsTable(section)
             td
               i(class=`${b.important ? 'ion-ios-alert red' : 'ion-ios-alert-outline green'}`)
             td
-              a.deleteBug(href=`/api/secure/bug/${b._id}/delete`)
-                i(class=`ion-md-trash`)
+              a.deleteButton
+                i(class=`ion-md-trash` target=`/api/secure/bug/${b._id}` item=b._id)

@@ -107,7 +107,7 @@ function isLoggedIn(req, res, next) {
     
     User.findById(req.session.userId)
       .exec((err, user) => {
-        
+
         if ( err || !user ) {
           logger('info','user session not found');
           
@@ -116,17 +116,20 @@ function isLoggedIn(req, res, next) {
     
           res.redirect('/admin/login?message=' + message + '&type=' + type);
           
+        } else {
+
+          logger('info','user session verified');
+ 
+          const { username, numLogins, lastLogin } = user;
+          
+          req.user = {
+            username,
+            numLogins,
+            lastLogin
+          };
+          
+          next();
         }
-
-        const { username, numLogins, lastLogin } = user;
-        
-        req.user = {
-          username,
-          numLogins,
-          lastLogin
-        };
-
-        next();
       });
   }
 }

@@ -10517,6 +10517,7 @@ $(document).ready(() => {
     });
 
     // show toastContainer with
+    toastContainer.css('display', 'block');
     toastContainer.css('z-index', 25);
     toastGeneral.addClass('active');
         
@@ -10526,7 +10527,7 @@ $(document).ready(() => {
       
       setTimeout(() => {
         toastContainer.css('z-index', 0);
-
+        toastContainer.css('display', 'none');
         toastGeneral.empty();
 
       }, 3000);
@@ -10539,6 +10540,7 @@ $(document).ready(() => {
    */
   if ($('.toastContainer').hasClass('show')) {
     const container = $('.toastContainer');
+    container.css('display', 'block');
     container.css('z-index', 25);
     const target =  $('.toastGeneral');
 
@@ -10551,6 +10553,7 @@ $(document).ready(() => {
 
         setTimeout(() => {
           container.css('z-index', 0);
+          container.css('display', 'none');
         }, 500);
       }, 3000);
 

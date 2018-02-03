@@ -179,6 +179,7 @@ $(document).ready(() => {
    */
   if ($('.toastContainer').hasClass('show')) {
     const container = $('.toastContainer');
+    container.css('display', 'block')
     container.css('z-index', 25);
     const target =  $('.toastGeneral');
 
