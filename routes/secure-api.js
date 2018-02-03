@@ -31,7 +31,35 @@ router
   .route('/project/:id')
   .get()  
   .put()
-  .delete();
+  .delete((req, res) => {
+    const { id } = req.params;
+
+    console.log(`Request received to delete item ${id}`);
+
+    const response = {
+      message: '',
+      type: '',
+      data: undefined
+    };
+
+    Project.findOneAndRemove({ _id: id }, {passRawResult: true}, (err, result, raw) => {
+      if (err) {
+        logger('error', err);
+        response.message = 'Error deleting item from database';
+        response.type = 'Error'
+
+        res.status(500).json(response);
+      } else { 
+        logger('info', `Successfully deleted ${id} from database`)
+        
+        response.message = `Successfully deleted ${id} from database`;
+        response.type = 'success';
+        response.data = result;
+        
+        res.status(200).json(response);
+      }
+    });
+  });
 
 /**
  * Bugs

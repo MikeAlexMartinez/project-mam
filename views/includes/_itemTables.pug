@@ -22,7 +22,7 @@ mixin projectTableLarge(section)
             th(scope="col") Delete
         tbody
           for p in projects
-            tr
+            tr(id= p._id)
               td
                 a(href=`/admin/${section}/${p._id}/edit`)
                   i(class=`ion-md-open`)
@@ -46,8 +46,8 @@ mixin projectTableLarge(section)
               td= p.type
               td= p.subtype
               td
-                a.deleteButton(target=`/api/secure/project/${p._id}/delete`)
-                  i(class=`ion-md-trash`)
+                a.deleteButton
+                  i(class=`ion-md-trash` target=`/api/secure/project/${p._id}` item=p._id)
 
 mixin bugTableLarge(edit)
   div.tableContainer

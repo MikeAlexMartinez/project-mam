@@ -10452,10 +10452,85 @@ $(document).ready(() => {
    */
   $('.deleteButton').click((evt) => {
     const target = $(evt.target);
-    const item = target.attr('target');
+    const route = target.attr('target');
+    const item = target.attr('item');
+    const toastContainer = $('.toastContainer');
+    const toastGeneral = $('.toastGeneral');
+    const row = $(`#${item}`);
 
+    // add 
+    toastGeneral.addClass('warning');
+
+    // append message and buttons
+    toastGeneral.append(
+      '<div class="appendedToast">' +
+        '<div class="toastMessage">' +
+          '<p> Are you sure you want to Delete this item?</p>' +
+        '</div>' +
+        '<div class="toastControls">' +
+          '<div class="buttonContainer clicky">' + 
+            '<button id="toastCancel" class="btn">Cancel</button>' +
+          '</div>' +
+          '<div class="buttonContainer clicky">' +
+            '<button id="toastDelete" class="btn red">Delete</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+
+    $('#toastCancel').click((evt) => {
+      console.log('delete action cancelled');
+      toastGeneral.removeClass('active');
+
+      setTimeout(() => {
+        toastContainer.css('z-index', 0);
+
+        toastGeneral.empty();
+
+      }, 3000);
+    });
+
+    $('#toastDelete').click((evt) => {
+      console.log('delete action submitted');
+
+      const del = $.ajax({
+        url: route,
+        dataType: 'json',
+        method: 'delete',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      del.done(function deletedProject(res) {
         
+        // remove toast
+        clearToast('Success');
 
+        // remove item from table
+        row.remove();
+
+      }).fail(function failDelete(res) {
+        clearToast('Error');
+      });
+
+    });
+
+    // show toastContainer with
+    toastContainer.css('z-index', 25);
+    toastGeneral.addClass('active');
+        
+    function clearToast(m) {
+      console.log(m);
+      toastGeneral.removeClass('active');
+      
+      setTimeout(() => {
+        toastContainer.css('z-index', 0);
+
+        toastGeneral.empty();
+
+      }, 3000);
+    }
   });
 
 

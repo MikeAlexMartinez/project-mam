@@ -73,11 +73,13 @@ router.get('', auth.isLoggedIn, function projects(req, res) {
 // admin projects page
 router.get('/projects', auth.isLoggedIn, function projects(req, res) {
   
-  let { page } = req.query;
+  let { page, message, type } = req.query;
+  const status = message !== '';
   const pageData = {
     location: 'Administration - All Projects',
     admin: true,
     load: 'projects',
+    status: '',
     type: `${status ? type : 'hide'}`,
     csrfToken: req.csrfToken(),
     prod: process.env.NODE_ENV === 'production'
