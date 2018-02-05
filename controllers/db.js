@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 
 const logger = require('../winston');
 
-const dbURL = 'mongodb://localhost:27017/project-mam';
+const dbURL = `mongodb://127.0.0.1:27017/project-mam`;
 
 const options = {
-  useMongoClient: true,
+  user: process.env.DB_CLIENT,
+  pass: process.env.DB_CLIENT_PWD,
+  useMongoClient: true
 };
 
 mongoose.Promise = global.Promise;
