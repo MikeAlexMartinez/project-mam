@@ -26,7 +26,16 @@ if (path.parse(args[1]).name === '_mocha') {
 }
 
 if (path.parse(args[1]).name === 'mongodb.init' ) {
-  refreshCollections()
+  
+  require('dotenv').config();
+
+  let colsToRefresh = [];
+
+  if (args[2]) {
+    colsToRefresh = colsToRefresh.concat(args[2].split(','));
+  }
+  
+  refreshCollections(colsToRefresh)
     .then(() => {
       console.log('Database Refresh Complete!');
     })
@@ -35,10 +44,12 @@ if (path.parse(args[1]).name === 'mongodb.init' ) {
     });
 }
 
-function refreshCollections() {
+function refreshCollections(cols) 
+{
   return new Promise((res, rej) => {
     console.log("Running");
-    const collectionsToInsert = [
+    
+    let collectionsToInsert = [
       {
         name: 'projecttypes',
         data: projectTypes
@@ -60,6 +71,13 @@ function refreshCollections() {
         data: bugs
       }
     ];
+    
+    if (cols.length > 0) {
+
+      collectionsToInsert = collectionsToInsert.filter((v) => {
+        return cols.indexOf(v.name) !== -1;
+      });
+    }
 
     let remainingCollections = collectionsToInsert.length;
     
@@ -95,7 +113,7 @@ function refreshCollections() {
      */
     function refreshCollection(colToInsert) {
       return new Promise((res, rej) => {
-        const url = 'mongodb://localhost:27017/project-mam';
+        const url = `mongodb://${process.env.DB_CLIENT}:${process.env.DB_CLIENT_PWD}@127.0.0.1:27017/project-mam`;
         
         MongoClient.connect(url, function(err, db) {
           // check for error if no error continue

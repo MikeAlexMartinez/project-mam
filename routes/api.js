@@ -14,9 +14,11 @@ const logger = require('../winston');
 const valid = require('../helpers/validators');
 const auth = require('../controllers/authentication/auth');
 const mid = require('../helpers/middlewares');
+const bruteforce = require('../controllers/bruteforce');
 
 router.use(auth.captureIp);
 router.use(mid.createSource);
+router.use(bruteforce.prevent);
 
 router.use((req, res, next) => {
   // check number of requests today 

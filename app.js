@@ -17,7 +17,7 @@ const uuidv4 = require('uuid/v4');
 const MongoStore = require('connect-mongo')(session);
 const requestIp = require('request-ip');
 
-const secret = process.env.SECRET || '53cr3t';
+const secret = process.env.SECRET;
 
 // bring in connection
 const mongoose = require('./controllers/db');

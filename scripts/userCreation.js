@@ -1,11 +1,8 @@
 'use strict';
 
+require('dotenv').config();
 
-const dotenv = require('dotenv');
-dotenv.config();
-
-const mongoose = require('../controllers/db'); 
-const db = mongoose.connection;
+const mongoose = require('../controllers/db');
 
 const User = require('../models/user');
 
