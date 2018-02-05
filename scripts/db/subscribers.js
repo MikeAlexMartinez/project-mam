@@ -6,6 +6,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test1@mail.com',
     createdDate: new Date(2018,0,30),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: false,
     ip: '195.248.81.66'
@@ -15,6 +16,7 @@ const subscribers = [
     source: 'templates/minifolio',
     email: 'test2@mail.com',
     createdDate: new Date(2018,0,29),
+    lastUpdate: new Date(2018,1,5),
     validated: true,
     active: true,
     ip: '195.248.81.67'
@@ -24,6 +26,7 @@ const subscribers = [
     source: 'project-mam',
     email: 'test3@mail.com',
     createdDate: new Date(2018,0,28),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.68'
@@ -33,6 +36,7 @@ const subscribers = [
     source: 'templates/ranger',
     email: 'test4@mail.com',
     createdDate: new Date(2018,0,27),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.69'
@@ -42,6 +46,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test5@mail.com',
     createdDate: new Date(2018,0,26),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.66'
@@ -51,6 +56,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test6@mail.com',
     createdDate: new Date(2018,0,25),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.70'
@@ -60,6 +66,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test7@mail.com',
     createdDate: new Date(2018,0,24),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.71'
@@ -69,6 +76,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test8@mail.com',
     createdDate: new Date(2018,0,23),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.72'
@@ -78,6 +86,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test9@mail.com',
     createdDate: new Date(2018,0,22),
+    lastUpdate: new Date(2018,1,5),
     validated: true,
     active: true,
     ip: '195.248.81.73'
@@ -87,6 +96,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test10@mail.com',
     createdDate: new Date(2018,0,21),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.74'
@@ -96,6 +106,7 @@ const subscribers = [
     source: 'templates/deft',
     email: 'test11@mail.com',
     createdDate: new Date(2018,0,20),
+    lastUpdate: new Date(2018,1,5),
     validated: false,
     active: true,
     ip: '195.248.81.75'

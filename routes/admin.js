@@ -96,8 +96,8 @@ router.get('/projects', auth.isLoggedIn, function projects(req, res) {
       const formattedProjects = projects.map((p) => {   
         return {
           ...p._doc,
-          createdDate: displayDate(p._doc.createdDate),
-          lastUpdate: displayDate(p._doc.lastUpdate)
+          createdDate: displayDate(p._doc.createdDate, ' D / M / YY '),
+          lastUpdate: displayDate(p._doc.lastUpdate, ' D / M / YY ')
         }
       });
 
@@ -188,7 +188,7 @@ router.get('/messages', auth.isLoggedIn, function projects(req, res) {
       const formattedMessages = messages.map((m) => {   
         return {
           ...m._doc,
-          createdDate: displayDate(m._doc.createdDate)
+          createdDate: displayDate(m._doc.createdDate, ' D / M / YY ')
         }
       });
 
@@ -277,7 +277,7 @@ router.get('/bugs', auth.isLoggedIn, function projects(req, res) {
       const formattedBugs = bugs.map((b) => {   
         return {
           ...b._doc,
-          createdDate: displayDate(b._doc.createdDate)
+          createdDate: displayDate(b._doc.createdDate, ' D / M / YY ')
         }
       });
 
@@ -366,7 +366,7 @@ router.get('/subscribers', auth.isLoggedIn, function projects(req, res) {
       const formattedSubscribers = subscribers.map((s) => {   
         return {
           ...s._doc,
-          createdDate: displayDate(s._doc.createdDate)
+          createdDate: displayDate(s._doc.createdDate, ' D / M / YY ')
         }
       });
 
@@ -410,7 +410,10 @@ router.get('/subscribers/:id/:mode', auth.isLoggedIn, function projects(req, res
     .then(({subscribers}) => {
 
       if (subscribers.length === 1) {
-        pageData.subscriber = subscribers[0];
+        const subscriber = Object.assign({}, subscribers[0]._doc);
+        subscriber.createdDate = displayDate(subscriber.createdDate, 'YYYY-MM-DD');
+        console.log(subscriber);
+        pageData.subscriber = subscriber;
       } else {
         pageData.error = true;
         pageData.errMessage = 'Error encountered retrieving subscriber';

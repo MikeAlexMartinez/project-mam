@@ -46,11 +46,12 @@ exports.lastWeek = (target=moment()) => {
 
 /**
  * Takes a date object and returns a string in the format ""
- * @param {Date} date
+ * @param {Date} date - The date being passed
+ * @param {String} string - outlines format to return
  * @return {String}
  */
-exports.displayDate = (date) => {
+exports.displayDate = (date, string) => {
   const mom = moment(date);
-  const retStr = mom.format('D / M / YY');
+  const retStr = mom.format(string);
   return retStr;
-}
+};

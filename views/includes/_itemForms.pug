@@ -12,5 +12,33 @@ mixin messageForm(edit)
 
 mixin subscriberForm(edit)
   div.itemFormContainer
-    div(class=`itemForm ${edit ? 'editMode' : 'viewMode'}`)
+    form(class=`itemForm ${edit ? 'editMode' : 'viewMode'}` action="" id="subscriberForm")
+      input(type="hidden" value=`${csrfToken}` name="_csrf" hidden)
+      div.mainInputs
+        div.form-group
+          label E-mail
+          input(id="sub-email" class="entry" type="email" name="email" value=subscriber.email required)
+        div.form-group
+          label Created Date
+          input(id="sub-created" class="entry" type="date" value=subscriber.createdDate name="createdDate" required disabled)
+        div.form-group
+          label Last Update
+          input(id="sub-updated" class="entry" type="date" value=subscriber.lastUpdate name="lastUpdate" required)
+        div.form-group
+          label IP
+          input(id="sub-ip" class="entry" type="text" maxlength="20" value=subscriber.ip name="ip" required)
+        div.form-group
+          label Source  
+          input(id="sub-source" class="entry" type="text" maxlength="20" value=subscriber.source name="source" required)
+      fieldset.switches
+        div.form-group
+          label Valid
+          input(id="sub-valid" class="switch" type="checkbox" checked=subscriber.valid name="valid" required)
+        div.form-group
+          label Active
+          input(id="sub-active" class="switch" type="checkbox" checked=subscriber.active name="active" required)
+      div.buttonContainer.clicky
+        button(id="sub-submit" type="submit" class="btn") Send
+        div#contactToast.toast
+
 

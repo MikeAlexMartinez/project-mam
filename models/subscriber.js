@@ -10,6 +10,7 @@ const subscriberSchema = new Schema({
   source: String,
   email: {type: String, index: { unique: true }},
   createdDate: { type: Date, default: Date.now },
+  lastUpdate: { type: Date, default: Date.now },
   validated: { type: Boolean, default: false },
   active: { type: Boolean, default: true },
   ip: {type: String, required: true}
