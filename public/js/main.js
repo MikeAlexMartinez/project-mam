@@ -10503,15 +10503,13 @@ $(document).ready(() => {
    */
   $('#bug-report').click((evt) => {
     evt.preventDefault();
-    evt.stopPropagation();
 
     toggleBugReporter();
   });
 
-  $('#closeBugReporter').click((evt) => {
+  $('#closeBugReporter .ion-md-close-circle').click((evt) => {
     evt.preventDefault();
-    evt.stopPropagation();
-    
+
     toggleBugReporter();
   });
   
@@ -10519,7 +10517,7 @@ $(document).ready(() => {
     // change bug-reporter colour to red
     $('#bug-report .imgContainer').toggleClass('red');
     // rotate and fadin in bug-reporter
-    $('.bug-reporter').toggleClass('show');;
+    $('.bug-reporter').toggleClass('show');
   }
   
   /**
@@ -10530,9 +10528,6 @@ $(document).ready(() => {
     console.log('new Bug Submitted!');
 
     // do validations here....
-
-
-
     const data = {
       sender: $('#bug-name').val(),
       email: $('#bug-email').val(),
