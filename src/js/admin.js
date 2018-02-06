@@ -123,7 +123,7 @@ $(document).ready(() => {
 
         toastGeneral.empty();
 
-      }, 3000);
+      }, 1000);
     });
 
     $('#toastDelete').click((evt) => {
@@ -166,7 +166,7 @@ $(document).ready(() => {
         toastContainer.css('display', 'none');
         toastGeneral.empty();
 
-      }, 3000);
+      }, 1000);
     }
   });
 
@@ -191,7 +191,7 @@ $(document).ready(() => {
           container.css('z-index', 0);
           container.css('display', 'none');
         }, 500);
-      }, 3000);
+      }, 2000);
 
     }, 200);
   }
