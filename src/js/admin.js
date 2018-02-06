@@ -42,7 +42,7 @@ $(document).ready(() => {
   $('#closeBugReporter').click((evt) => {
     evt.preventDefault();
     evt.stopPropagation();
-    
+
     toggleBugReporter();
   });
   
@@ -180,6 +180,13 @@ $(document).ready(() => {
     }
   });
 
+  /**
+   * Item control change from view mode to Edit mode
+   */
+  $('#EditButton').click(function() {
+    const updateLocation = window.location.href.replace(/\/view$/,'/edit');
+    window.location = updateLocation;
+  });
 
   /**
    * Show general toast message if message exists

@@ -12,12 +12,13 @@ const messageSchema = new Schema({
   email: { type: String, required: true},
   message: { type: String, required: true},
   createdDate: { type: Date, default: Date.now },
+  lastUpdate: { type: Date, default: Date.now },
+  source: String,
+  ip: { type: String, required: true},
   read: { type: Boolean, default: false },
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
   replied: { type: Boolean, default: false },
-  source: String,
-  ip: { type: String, required: true},
 });
 
 const Message = db.model('Message', messageSchema);

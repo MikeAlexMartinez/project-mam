@@ -11,12 +11,13 @@ const bugSchema = new Schema({
   email: { type: String, required: true},
   bugDescription: { type: String, required: true},
   createdDate: { type: Date, default: Date.now },
+  lastUpdate: { type: Date, default: Date.now },
+  source: String,
+  ip: { type: String, required: true},
   validated: { type: Boolean, default: false },
   important: { type: Boolean, default: false },
   open: { type: Boolean, default: false },
-  read: { type: Boolean, default: false },
-  source: String,
-  ip: { type: String, required: true}
+  read: { type: Boolean, default: false }
 });
 
 const Bug = db.model('Bug', bugSchema);
