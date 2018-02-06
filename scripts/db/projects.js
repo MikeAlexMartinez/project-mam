@@ -5,7 +5,7 @@ const projects = [
     '_id' : 'ai1cca36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Project MaM',
     'link' : 'https://www.projectmam.com/',
-    'devlink': 'http://localhost:3030/',
+    'devlink': 'https://localhost:3030/',
     'miniDetail' : 'ProjectMaM is my personal website which displays my IT project portfolio and also is where I will keep my blog posts.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -42,7 +42,7 @@ const projects = [
     '_id' : 'deftca36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Deft',
     'link' : 'https://www.projectmam.com/view/deft-clone',
-    'devlink': 'http://localhost:3030/view/deft-clone',
+    'devlink': 'https://localhost:3030/view/deft-clone',
     'miniDetail' : 'Deft is the third FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -79,7 +79,7 @@ const projects = [
     '_id' : 'ranger36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Ranger',
     'link' : 'https://www.projectmam.com/view/ranger-clone',
-    'devlink': 'http://localhost:3030/view/ranger-clone',
+    'devlink': 'https://localhost:3030/view/ranger-clone',
     'miniDetail' : 'Ranger is the third FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -116,7 +116,7 @@ const projects = [
     '_id' : 'minifo36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Minifolio',
     'link' : 'https://www.projectmam.com/view/minifolio-clone',
-    'devlink': 'http://localhost:3030/view/minifolio-clone',
+    'devlink': 'https://localhost:3030/view/minifolio-clone',
     'miniDetail' : 'Minifolio is the First FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
@@ -153,7 +153,7 @@ const projects = [
     '_id' : 'resume36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Resume',
     'link' : 'https://www.projectmam.com/view/resume-clone',
-    'devlink': 'http://localhost:3030/view/resume-clone',
+    'devlink': 'https://localhost:3030/view/resume-clone',
     'miniDetail' : 'Resume is one of the first tasks set by P1xt in their web dev curriculum.',
     'associatedBlogPosts' : [],
     'detail': [
@@ -190,7 +190,7 @@ const projects = [
     '_id' : 'fakeme36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Fake',
     'link' : 'https://www.projectmam.com/view/fake',
-    'devlink': 'http://localhost:3030/view/fake',
+    'devlink': 'https://localhost:3030/view/fake',
     'miniDetail' : 'Fake project for testing.',
     'associatedBlogPosts' : [],
     'detail': [

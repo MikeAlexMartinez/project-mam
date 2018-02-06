@@ -96,19 +96,25 @@ function getMessageData(cb) {
 
       fetchMessages(query)
         .then(({messages}) => {
-          const formattedMessages = messages.map((m) => {
-            return {
-              _id: m._id,
-              sender: m.sender,
-              subject: m.subject,
-              email: m.email,
-              createdDate: displayDate(m.createdDate),
-              read: m.read,
-              validated: m.validated,
-              important: m.important,
-              replied: m.replied,
-            };
-          });
+          let formattedMessages = [];
+
+          if (messages.length > 0) {
+
+            formattedMessages = messages.map((m) => {
+              return {
+                _id: m._id,
+                sender: m.sender,
+                subject: m.subject,
+                email: m.email,
+                createdDate: displayDate(m.createdDate),
+                read: m.read,
+                validated: m.validated,
+                important: m.important,
+                replied: m.replied,
+              };
+            });
+          }
+          console.log(formattedMessages);
           nestedCb(null, formattedMessages);
         })
         .catch(({err}) => {

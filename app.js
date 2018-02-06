@@ -55,21 +55,21 @@ app.use((req, res, next) => {
       directives: {
         defaultSrc: [`'self'`],
         scriptSrc: [
-          "'self'",
+          '\'self\'',
           function(req, res) {
-            return "'nonce-" + res.locals.nonce + "'";
+            return '\'nonce-' + res.locals.nonce + '\'';
           }  
         ],
         styleSrc: [
           `'self'`, 
           '*.googleapis.com',
           function(req, res) {
-            return "'nonce-" + res.locals.nonce + "'";
+            return '\'nonce-' + res.locals.nonce + '\'';
           }
         ],
         fontSrc: [`'self'`, '*.gstatic.com', 'data:']
       }
-    })
+    });
   }
   next();
 });
@@ -79,15 +79,10 @@ app.use(requestIp.mw());
 app.use(auth.captureIp);
 
 // Cookie Parsing
-app.use(cookieParser(secret, {}));
+app.use(cookieParser(secret, { secure: true }));
 
 // Set up session management with MongoDB and express-session
 // needs to be set as using proxy
-let secureCookies = false;
-if (process.env.NODE_ENV === 'production') {
-  secureCookies = true;
-  app.set('trust proxy', 1);
-}
 app.use(session({
   secret: secret,
   resave: true,
@@ -95,7 +90,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24,
-    secure: secureCookies,
+    secure: true,
   },
   SameSite: 'strict',
   // move storage out of RAM and into Mongo
@@ -114,6 +109,7 @@ const csrfProtection = csurf({ cookies: true });
 app.use(csrfProtection);
 app.use(function(err, req, res, next) {
   if (err.code !== 'EBADCSRFTOKEN') return next(err);
+  console.log(err);
   res.status(403).json({"error": "session has expired or tampered with"});
 });
 
@@ -167,10 +163,4 @@ app.use((err, req, res, next) => {
     });
 });
 
-// start app
-app.listen(3030, () => {
-  logger('info',`Running server in ${process.env.NODE_ENV} mode!`);
-  logger('info','Listening for requests on port 3030...');
-});
-
-module.export = app;
+module.exports = app;

@@ -9,9 +9,6 @@ const { noCache } = require('../helpers/middlewares');
 const logger = require('../winston');
 const bruteforce = require('../controllers/bruteforce');
 
-// enable csurf
-const csrfProtection = csurf({ cookie: true });
-
 // Controllers
 const { fetchProjects } = require('../controllers/projects');
 

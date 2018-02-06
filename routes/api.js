@@ -18,7 +18,6 @@ const bruteforce = require('../controllers/bruteforce');
 
 router.use(auth.captureIp);
 router.use(mid.createSource);
-router.use(bruteforce.prevent);
 
 router.use((req, res, next) => {
   // check number of requests today 

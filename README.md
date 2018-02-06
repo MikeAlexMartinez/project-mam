@@ -13,12 +13,13 @@ The homepage of this website should meet the following criteria or 'user-stories
 
 - User Story: I navigate to different sections of the webpage by clicking buttons in the navigation.
 
-
 To Do List:
+- Add https to localhost so that I can test use of secure cookies
+- Fix bug reporter in projects (z-index)
+- add close button to bug reporters
+- fix timing of delete button in admin
 - Add admin pages and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
-  - add delete button functionality
-  - add forms
-  - create main page tables
+  - add forms to update items
 - Add tests for all API endpoints
 - Create gulp task and uniform format to bring in projects to home page automatically.
 - Add tests for controller code
@@ -27,3 +28,9 @@ To Do List:
 - Use nodemailer (or equivalent) to verify subscriptions and messages
 - Add 2FA to admin login and saves
 
+Steps to Go Live:
+- Add Admin user to mongodb
+- Add client user for project-mam in mongodb
+- Execute mongodb script for projects only "Node scripts/mongodb.init.js projects"
+- Create Admin user with admin script "Node scripts/userCreation.js"
+- npm run production
