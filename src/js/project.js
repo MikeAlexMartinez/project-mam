@@ -17,7 +17,6 @@
   });
   
   function toggleBugReporter() {
-
     
     if ( !$('.ov-bugReporter').hasClass('show') ) {
       // raise z-index of bug-reporter

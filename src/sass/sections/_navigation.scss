@@ -249,4 +249,13 @@
     font-weight: 600;
     font-style: italic;
   }
+
+  #closeBugReporter {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 1.4em;
+
+    cursor: pointer;
+  }
 }

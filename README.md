@@ -15,9 +15,7 @@ The homepage of this website should meet the following criteria or 'user-stories
 
 To Do List:
 - Add https to localhost so that I can test use of secure cookies
-- Fix bug reporter in projects (z-index)
 - add close button to bug reporters
-- fix timing of delete button in admin
 - Add admin pages and behind-the-scenes management pages so that I can manage website content and view messages from within the website.
   - add forms to update items
 - Add tests for all API endpoints

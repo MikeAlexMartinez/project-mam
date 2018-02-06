@@ -127,12 +127,22 @@ $(document).ready(() => {
     evt.preventDefault();
     evt.stopPropagation();
 
+    toggleBugReporter();
+  });
+
+  $('#closeBugReporter').click((evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    
+    toggleBugReporter();
+  });
+  
+  function toggleBugReporter() {
     // change bug-reporter colour to red
     $('#bug-report .imgContainer').toggleClass('red');
     // rotate and fadin in bug-reporter
     $('.bug-reporter').toggleClass('show');;
-    
-  });
+  }
   
   /**
    * Bug reporting form handling
@@ -142,6 +152,7 @@ $(document).ready(() => {
     console.log('new Bug Submitted!');
 
     // do validations here....
+
 
 
     const data = {
