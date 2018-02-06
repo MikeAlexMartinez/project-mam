@@ -12,6 +12,10 @@
         padding-right: 10px;
         text-align: right;
       }
+
+      .entry {
+        min-width: 75%;
+      }
     }
   }
 
@@ -21,6 +25,7 @@
     padding: 0px;
 
     .form-group {
+      position: relative;
       display: block;
       margin-top: 10px;
       
@@ -29,6 +34,7 @@
         width: 150px;
         padding-right: 10px;
         text-align: right;
+        vertical-align: middle;
       }
     }
 
@@ -39,5 +45,6 @@
 
   .buttonContainer {
     text-align: center;
+    margin-bottom: 50px;
   }
 }

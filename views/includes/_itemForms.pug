@@ -1,14 +1,101 @@
 mixin projectForm(edit)
   div.itemFormContainer
-    div(class=`itemForm ${edit ? 'editMode' : 'viewMode'}`)
+    form(class=`itemForm ${edit ? 'editMode' : 'viewMode'}` action="" id="projectForm")
+      input(type="hidden" value=`${csrfToken}` name="_csrf" hidden)
+      div.mainInputs
+        div.form-group
+          label Title
+          input(id="p-title" class="entry" type="text" name="title" value=project.title required disabled=!edit)
+        div.form-group
+          label Created Date
+          input(id="p-created" class="entry" type="date" value=project.createdDate name="createdDate" required disabled)
+        div.form-group
+          label Last Update
+          input(id="p-updated" class="entry" type="date" value=project.lastUpdate name="lastUpdate" required)
+        div.form-group
+          label Link
+          input(id="p-link" class="entry" type="text" value=project.link name="link" required)
+        div.form-group
+          label Dev Link
+          input(id="p-devlink" class="entry" type="text" value=project.devlink name="devlink" required)
+        div.form-group
+          label Git  
+          input(id="p-git" class="entry" type="text" maxlength="20" value=project.git name="git" required)
+        div.form-group
+          label Minidetail
+          textarea(cols="30", rows="10" id="p-minidetail" class="entry" type="text" maxlength="20" name="miniDetail" required)= project.miniDetail
+        div.form-group
+          label Main Picture
+          input(id="p-mainPicture" class="entry" type="text" maxlength="20" value=project.mainPicture name="mainPicture" required)
+        div.form-group
+          label Type
+          input(id="p-type" class="entry" type="text" maxlength="20" value=project.type name="type" required)
+        div.form-group
+          label SubType  
+          input(id="p-subtype" class="entry" type="text" maxlength="20" value=project.subtype name="subtype" required)
+        div.form-group
+          label Detail
+          textarea(cols="30", rows="10" id="p-detail" class="entry" type="text" maxlength="20" name="detail" required)= project.detail
+      fieldset.switches
+        div.form-group
+          label Real
+          input(id="p-real" class="switch" type="checkbox" checked=project.real name="real" required)
+        div.form-group
+          label Favourite
+          input(id="p-favourite" class="switch" type="checkbox" checked=project.favourite name="favourite" required)
+        div.form-group
+          label Public
+          input(id="p-public" class="switch" type="checkbox" checked=project.public name="public" required)
+      div.buttonContainer.clicky
+        button(id="submitBug" type="submit" class="btn") Send
+        div#contactToast.toast
 
 mixin bugForm(edit)
   div.itemFormContainer
-    div(class=`itemForm ${edit ? 'editMode' : 'viewMode'}`)
+    form(class=`itemForm ${edit ? 'editMode' : 'viewMode'}` action="" id="bugForm")
+      input(type="hidden" value=`${csrfToken}` name="_csrf" hidden)
+      div.mainInputs
+        div.form-group
+          label Sender
+          input(id="b-sender" class="entry" type="name" name="sender" value=bug.sender required disabled=!edit)
+        div.form-group
+          label Created Date
+          input(id="b-created" class="entry" type="date" value=bug.createdDate name="createdDate" required disabled)
+        div.form-group
+          label Last Update
+          input(id="b-updated" class="entry" type="date" value=bug.lastUpdate name="lastUpdate" required)
+        div.form-group
+          label E-mail
+          input(id="b-email" class="entry" type="email" value=bug.email name="email" required)
+        div.form-group
+          label Bug Description
+          textarea(cols="30", rows="10" id="b-bugDescription" class="entry" type="text" name="bugDescription" required)= bug.bugDescription
+        div.form-group
+          label IP
+          input(id="b-ip" class="entry" type="text" maxlength="20" value=bug.ip name="ip" required)
+        div.form-group
+          label Source  
+          input(id="b-source" class="entry" type="text" maxlength="20" value=bug.source name="source" required)
+      fieldset.switches
+        div.form-group
+          label Valid
+          input(id="b-valid" class="switch" type="checkbox" checked=bug.valid name="valid" required)
+        div.form-group
+          label Important
+          input(id="b-important" class="switch" type="checkbox" checked=bug.important name="important" required)
+        div.form-group
+          label Open
+          input(id="b-open" class="switch" type="checkbox" checked=bug.open name="read" required)
+        div.form-group
+          label Read
+          input(id="b-read" class="switch" type="checkbox" checked=bug.read name="replied" required)
+      div.buttonContainer.clicky
+        button(id="submitBug" type="submit" class="btn") Send
+        div#contactToast.toast
 
 mixin messageForm(edit)
   div.itemFormContainer
-    form(class=`itemForm ${edit ? 'editMode' : 'viewMode'}` action="" id="subscriberForm")
+    form(class=`itemForm ${edit ? 'editMode' : 'viewMode'}` action="" id="messageForm")
       input(type="hidden" value=`${csrfToken}` name="_csrf" hidden)
       div.mainInputs
         div.form-group
@@ -28,7 +115,7 @@ mixin messageForm(edit)
           input(id="m-email" class="entry" type="email" value=message.email name="email" required)
         div.form-group
           label Message
-          textarea(cols="30", rows="10" id="m-messsage" class="entry" type="text" value=message.message name="message" required)
+          textarea(cols="30", rows="10" id="m-messsage" class="entry" type="text" name="message" required)= message.message
         div.form-group
           label IP
           input(id="m-ip" class="entry" type="text" maxlength="20" value=message.ip name="ip" required)

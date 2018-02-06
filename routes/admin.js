@@ -142,7 +142,10 @@ router.get('/projects/:id/:mode', auth.isLoggedIn, function projects(req, res) {
     .then(({projects}) => {
 
       if (projects.length === 1) {
-        pageData.project = projects[0];
+        const project = Object.assign({}, projects[0]._doc);
+        project.createdDate = displayDate(project.createdDate, 'YYYY-MM-DD');
+        project.lastUpdate = displayDate(project.lastUpdate, 'YYYY-MM-DD');
+        pageData.project = project;
       } else {
         pageData.error = true;
         pageData.errMessage = 'Error encountered retrieving project';
@@ -232,7 +235,12 @@ router.get('/messages/:id/:mode', auth.isLoggedIn, function projects(req, res) {
     .then(({messages}) => {
 
       if (messages.length === 1) {
-        pageData.message = messages[0];
+        
+        const message = Object.assign({}, messages[0]._doc);
+        message.createdDate = displayDate(message.createdDate, 'YYYY-MM-DD');
+        message.lastUpdate = displayDate(message.lastUpdate, 'YYYY-MM-DD');
+        pageData.message = message;
+
       } else {
         pageData.error = true;
         pageData.errMessage = 'Error encountered retrieving message';
@@ -321,7 +329,10 @@ router.get('/bugs/:id/:mode', auth.isLoggedIn, function projects(req, res) {
     .then(({bugs}) => {
 
       if (bugs.length === 1) {
-        pageData.bug = bugs[0];
+        const bug = Object.assign({}, bugs[0]._doc);
+        bug.createdDate = displayDate(bug.createdDate, 'YYYY-MM-DD');
+        bug.lastUpdate = displayDate(bug.lastUpdate, 'YYYY-MM-DD');
+        pageData.bug = bug;
       } else {
         pageData.error = true;
         pageData.errMessage = 'Error encountered retrieving bug';
@@ -412,7 +423,6 @@ router.get('/subscribers/:id/:mode', auth.isLoggedIn, function projects(req, res
       if (subscribers.length === 1) {
         const subscriber = Object.assign({}, subscribers[0]._doc);
         subscriber.createdDate = displayDate(subscriber.createdDate, 'YYYY-MM-DD');
-        console.log(subscriber);
         pageData.subscriber = subscriber;
       } else {
         pageData.error = true;
