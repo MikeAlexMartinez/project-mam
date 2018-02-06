@@ -11116,12 +11116,19 @@ $(document).ready(() => {
 
     const data = {
       source: $('#contact-source').val(),
-      name: $('#contact-name').val(),
+      sender: $('#contact-name').val(),
       email: $('#contact-email').val(),
-      message: $('#contact-message').val(),
-    };
-
-    const posting = $.post('/api/message', data, "json");
+			message: $('#contact-message').val(),
+		};
+		
+		const posting = $.post({
+      url: '/api/message', 
+      data: data, 
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
 
     posting.done(function(data) {
       
@@ -11146,9 +11153,16 @@ $(document).ready(() => {
       source: $('#subscribe-source').val(),
       email: $('#subscribe-email').val(),
       active: true,
-    };
-
-    const posting = $.post('/api/subscribe', data, "json");
+		};
+		
+		const posting = $.post({
+      url: '/api/subscriber', 
+      data: data, 
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
 
     posting.done(function(data) {
       
@@ -11156,12 +11170,10 @@ $(document).ready(() => {
 
     }).fail(function(err) {
 
-      const message = err.responseJSON.message;
-
       if(err.status === 409) {
-        showToast('subscribe', 'warning', message);
+        showToast('subscribe', 'success', 'Thanks for subscribing! (^_^)')
       } else {
-        showToast('subscribe', 'error', message);
+        showToast('subscribe', 'error', 'Oops, we encountered an error!');
       }
 
     });

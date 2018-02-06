@@ -96,7 +96,6 @@
 }
 
 .ov-bugReporterContainer {
-  z-index: 20;
   position: fixed;
   height: 80%;
   top: 10%;
@@ -181,6 +180,16 @@
       font-weight: 600;
       font-style: italic;
     }
+  }
+
+  #closeBugReporter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    font-size: 1.2em;
+
+    cursor: pointer;
   }
 }
 

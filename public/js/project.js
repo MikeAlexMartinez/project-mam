@@ -6,14 +6,35 @@
    */
   $('#bug-report').click((evt) => {
     evt.preventDefault();
-    evt.stopPropagation();
 
+    toggleBugReporter();
+  });
+  
+  $('#closeBugReporter').click((evt) => {
+    evt.preventDefault();
+    
+    toggleBugReporter();
+  });
+  
+  function toggleBugReporter() {
+
+    if ( !$('.ov-bugReporter').hasClass('show') ) {
+      // raise z-index of bug-reporter
+      $('.ov-bugReporterContainer').css('z-index', 21);
+    }
+    
     // change bug-reporter colour to red
     $('#bug-report .imgContainer').toggleClass('red');
     // rotate and fadin in bug-reporter
     $('.ov-bugReporter').toggleClass('show');
     
-  });
+    setTimeout(() => {
+      if ( !$('.ov-bugReporter').hasClass('show') ) {
+        // raise z-index of bug-reporter
+        $('.ov-bugReporterContainer').css('z-index', 0);
+      }
+    }, 1000);
+  }
 
   /**
    * Bug reporting submissions in projects

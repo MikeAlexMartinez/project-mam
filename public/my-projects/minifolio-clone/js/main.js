@@ -52,12 +52,19 @@ $(document).ready(function() {
 
       const data = {
         source: $('#form-source').val(),
-        name: $('#form-name').val(),
+        sender: $('#form-name').val(),
         email: $('#form-email').val(),
         message: $('#form-message').val(),
       };
 
-      const posting = $.post('/api/message', data, "json");
+      const posting = $.post({
+        url: '/api/message', 
+        data: data, 
+        dataType: 'json',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
 
       posting.done(function(data) {
         console.log(data);

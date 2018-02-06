@@ -2,8 +2,8 @@
 /* base */
 /* breakpoints */
 /* clearfix - source: https://css-tricks.com/snippets/css/clear-fix/ */
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700);
-@import url(http://fonts.googleapis.com/css?family=Roboto%20Slab:300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto%20Slab:300,400,500,600,700);
 .cf:before,
 .cf:after {
   content: "";
@@ -31,6 +31,7 @@ h4 {
   font-size: 28px; }
 
 .content {
+  z-index: 15;
   margin-top: 750px; }
   .content.small {
     margin-top: 400px; }

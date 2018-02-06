@@ -4275,6 +4275,7 @@ body {
 
 /* sections */
 .title {
+  z-index: 19;
   /* fallback background */
   background: rgba(112, 83, 196, 0.95);
   /* main */
