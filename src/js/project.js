@@ -18,8 +18,10 @@
   
   function toggleBugReporter() {
 
+    
     if ( !$('.ov-bugReporter').hasClass('show') ) {
       // raise z-index of bug-reporter
+      $('.ov-bugReporterContainer').toggleClass('show');
       $('.ov-bugReporterContainer').css('z-index', 21);
     }
     
@@ -32,6 +34,7 @@
       if ( !$('.ov-bugReporter').hasClass('show') ) {
         // raise z-index of bug-reporter
         $('.ov-bugReporterContainer').css('z-index', 0);
+        $('.ov-bugReporterContainer').toggleClass('show');
       }
     }, 1000);
   }

@@ -99,7 +99,7 @@
   position: fixed;
   height: 80%;
   top: 10%;
-  left: 0;
+  left: -100%;
   text-align: left;
 
   @media all and (max-width: 750px) {
@@ -111,6 +111,10 @@
   @media all and (min-width: 1000px) {
     width: 50%;
   }
+
+  &.show {
+    left: 0;
+  } 
 
   overflow: hidden;
   
