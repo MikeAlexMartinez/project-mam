@@ -79,7 +79,7 @@ app.use(requestIp.mw());
 app.use(auth.captureIp);
 
 // Cookie Parsing
-app.use(cookieParser(secret, { secure: true }));
+app.use(cookieParser(secret, {}));
 
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
@@ -93,8 +93,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24,
-    secure: true,
+    maxAge: 1000 * 60 * 60 * 24
   },
   SameSite: 'strict',
   // move storage out of RAM and into Mongo
