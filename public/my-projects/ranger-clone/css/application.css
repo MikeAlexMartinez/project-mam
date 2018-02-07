@@ -444,6 +444,7 @@ template {
       width: 1250px; } }
 
 body {
+  overflow-x: hidden;
   text-align: center;
   font-family: "Work Sans", Arial, sans-serif;
   font-size: 20px; }

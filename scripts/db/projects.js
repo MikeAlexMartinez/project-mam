@@ -80,7 +80,7 @@ const projects = [
     'title' : 'Ranger',
     'link' : 'https://www.projectmam.com/view/ranger-clone',
     'devlink': 'https://localhost:3030/view/ranger-clone',
-    'miniDetail' : 'Ranger is the third FreeCSS template clone that I\'ve created.',
+    'miniDetail' : 'Ranger is the second FreeCSS template clone that I\'ve created.',
     'associatedBlogPosts' : [ ],
     'detail': [
       {
