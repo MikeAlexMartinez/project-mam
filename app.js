@@ -82,7 +82,7 @@ app.use(auth.captureIp);
 app.use(cookieParser(secret, { secure: true }));
 
 if (process.env.NODE_ENV === 'production') {
-  app.set('trust proxy', 'loopback');
+  app.set('trust proxy', 1);
 }
 
 // Set up session management with MongoDB and express-session
