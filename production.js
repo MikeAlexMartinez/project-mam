@@ -13,8 +13,8 @@ const sslOptions = {
   key: fs.readFileSync('./certs/privkey.pem', 'utf8')
 };
 
-https.createServer(sslOptions, app).listen(3030, () => {
-  console.log('server started at port 3030');
+https.createServer(sslOptions, app).listen(8080, () => {
+  logger('info', 'server started at port 8080');
 });
 
 process.on('unhandledRejection', error => {
