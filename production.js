@@ -1,14 +1,20 @@
 'use strict';
 
+const fs = require('fs');
+const https = require('https');
 const logger = require('./winston');
 
 process.env.NODE_ENV = 'production';
 
 const app = require('./app');
 
-app.listen(3030, () => {
-  logger('info',`Running server in ${process.env.NODE_ENV} mode!`);
-  logger('info','Listening for requests on port 3030...');
+const sslOptions = {
+  cert: fs.readFileSync('./certs/fullchain.pem', 'utf8'),
+  key: fs.readFileSync('./certs/privkey.pem', 'utf8')
+};
+
+https.createServer(sslOptions, app).listen(3030, () => {
+  console.log('server started at port 3030');
 });
 
 process.on('unhandledRejection', error => {
