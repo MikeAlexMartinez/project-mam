@@ -2,6 +2,27 @@
 
 const projects = [
   {
+    '_id' : 'hanoi36-3d7a-40f4-8f06-ae03cc22f045',
+    'title' : 'Towers of Hanoi Solver',
+    'link' : 'https://www.projectmam.com/view/hanoi-towers/',
+    'devlink': 'https://localhost:3030/view/hanoi-towers/',
+    'miniDetail' : 'The Towers of Hanoi Solver shows an animated solution to the Towers of Hanoi puzzle, accepting parameters defining the number of disks that should be used, and which towers to start and end the puzzle on.',
+    'associatedBlogPosts' : [ ],
+    'detail': [
+    ],
+    'git' : 'https://github.com/MikeAlexMartinez/hanoi-towers',
+    'real' : true,
+    'favourite' : true,
+    'lastUpdate' : new Date(2018, 1, 13),
+    'createdDate' : new Date(2018, 1, 1),
+    'public' : true,
+    'tags': ['node', 'express', 'gulp', 'jshint', 'javascript', 'jQuery', 'pug', 'HTML5', 'CSS3'],
+    'pictures' : ['/myImages/projects/hanoi-towers/hanoi-towers-front.png'],
+    'mainPicture' : '/myImages/projects/hanoi-towers/hanoi-towers-front.png',
+    'type': 'P1xt',
+    'subtype': 'Puzzle'
+  },
+  {
     '_id' : 'ai1cca36-3d7a-40f4-8f06-ae03cc22f045',
     'title' : 'Project MaM',
     'link' : 'https://www.projectmam.com/',

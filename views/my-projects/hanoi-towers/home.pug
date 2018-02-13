@@ -1,0 +1,40 @@
+extends ./layout.pug
+
+
+block content
+  div.controls
+    div.form-group.inputs
+      label Disks
+      input(id='blockCount' class='textInput' type='text' maxlength='2' placeholder='5' value='5')
+    div.form-group.inputs
+      label Start
+      input(id='startStack' class='textInput' type='text' maxlength='1' placeholder='L' value='L')
+    div.form-group.inputs
+      label Target
+      input(id='targetStack' class='textInput' type='text' maxlength='1' placeholder='C' value='C')
+    div.form-group
+      label.checkboxLabel Animations
+      div.boxes
+        input(type='checkbox' id='transitions' checked value='true')
+        label(for='transitions')
+    div.form-group.buttons
+      button.btn.clicky#start Solve
+      button.btn.clicky#reset(disabled) Reset
+  div.solverContainer
+    div#solverToast
+    div.board
+      div.title Towers of Hanoi Solver
+      div.score
+        div.scoreItem
+          | Total Moves: 
+          span#totalScore 0
+        div.scoreItem
+          | Target Moves: 
+          span#targetScore 0
+      div.base
+      div#stickOne.stick L
+      div#stickTwo.stick C
+      div#stickThree.stick R
+
+block js
+  script(src="/my-projects/hanoi-towers/js/main.js")

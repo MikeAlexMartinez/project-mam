@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    include includes/head.pug
+    //- this file is added to allow easier routing back to projectmam
+    //- from within project
+    include ../../projectcss.pug
+  
+  body
+    //- this file is added to allow easier routing back to projectmam
+    //- from within project
+    include ../../overlay.pug
+    block content
+
+    block js
+    //- this file is added to allow easier routing back to projectmam
+    //- from within project
+    include ../../projectjs.pug
