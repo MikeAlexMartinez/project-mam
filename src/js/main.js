@@ -2,6 +2,7 @@
 //=include jquery.js
 //=include masonry.pkgd.min.js
 //=include owl.carousel.min.js
+//=include imagesloaded.pkgd.min.js
 
 $(document).ready(() => {
   
@@ -28,20 +29,26 @@ $(document).ready(() => {
     }
   });
 
+  
   // Add custom owl carousel buttons
   // Go to next item in carousel
   $('.owlBtn.next').click(function() {
     skillsOwl.trigger('next.owl.carousel');
   });
-
+  
   // Go to previous item in carousel
   $('.owlBtn.prev').click(function() {
     skillsOwl.trigger('prev.owl.carousel');
   });
-
+  
   // Set height of owl buttons
   setOwlBtnHeight();
-
+  
+  // Reset height when images load
+  skillsOwl.imagesLoaded().progress(function(instance, image) {
+    setOwlBtnHeight();
+  });
+  
   // Reset height when window resizes
   $( window ).resize(() => {
     setOwlBtnHeight();
@@ -51,11 +58,16 @@ $(document).ready(() => {
    * Set up masonry grid gallery
    * 
    **/
-  $('#gallery .grid').masonry({
+  const $grid = $('#gallery .grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true,
     gutter: 20,
+  });
+
+  // re-render grid each time an image successfully loads
+  $grid.imagesLoaded().progress(function() {
+    $grid.masonry('layout');
   });
 
   /**

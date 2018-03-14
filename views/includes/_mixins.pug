@@ -16,8 +16,9 @@ mixin serviceItem(sI)
 
 mixin project(p)
   .grid-item
-    img(src=p.image)
-    +projectOverlay(p)
+    a(href=p.link)
+      img(src=p.image)
+      +projectOverlay(p)
 
 mixin projectOverlay(p)
   figcaption.imgInfo.cf

@@ -16,6 +16,17 @@
     .brandLogo img {
       right: 0;
     }
+
+    p {
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 2em;
+    }
+    
+    h1 {
+      font-size: 1.5em;
+      font-weight: 400;
+    }
   }
   
   @media all and (min-width: $screen-lg) {
@@ -30,6 +41,17 @@
 
     .brandLogo img {
       right: -35px;
+    }
+
+    p {
+      font-size: 1.1em;
+      font-weight: 400;
+      line-height: 2em;
+    }
+    
+    h1 {
+      font-size: 1.75em;
+      font-weight: 400;
     }
   }
 
@@ -104,8 +126,8 @@
     }
 
     img {
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 60%;
+      max-height: 60%;
     }
   }
   

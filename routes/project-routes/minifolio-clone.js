@@ -32,7 +32,7 @@ const allRoutes = [
         csrfToken: req.csrfToken()
       };
 
-      res.render(`${views}About`, data);
+      res.render(`${views}about`, data);
     },
   },
   {
